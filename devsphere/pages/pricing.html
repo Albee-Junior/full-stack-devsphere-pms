@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/pricing.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" placeholder="Search…" aria-label="Search" />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <nav
+          class="breadcrumbs"
+          aria-label="Breadcrumb"
+          style="margin-bottom: var(--space-4)"
+        >
+          <a href="dashboard.html">North Studio</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span aria-current="page">Pricing</span>
+        </nav>
+
+        <section class="pricing-hero">
+          <span class="pricing-hero__eyebrow">Plans</span>
+          <h1>Simple pricing. No surprises.</h1>
+          <p>
+            Start free and upgrade only when your team outgrows it. Every plan
+            includes the core workspace features you need to plan, communicate,
+            and ship.
+          </p>
+          <div class="pricing-billing" role="group" aria-label="Billing period">
+            <button type="button" class="pricing-billing__opt">Monthly</button>
+            <button
+              type="button"
+              class="pricing-billing__opt pricing-billing__opt--active"
+            >
+              Annual <span class="pricing-billing__save">Save 20%</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Plan cards -->
+        <div class="pricing-grid">
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <span class="plan-card__name">Free</span>
+              <span class="plan-card__desc"
+                >For individuals exploring DevSphere.</span
+              >
+            </div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">$0</span>
+              <span class="plan-card__period">/ forever</span>
+            </div>
+            <ul class="plan-card__features">
+              <li><i class="fa-solid fa-check"></i> Personal workspace</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Essential task management
+              </li>
+              <li><i class="fa-solid fa-check"></i> Basic messaging</li>
+              <li><i class="fa-solid fa-check"></i> Limited storage</li>
+              <li><i class="fa-solid fa-check"></i> Core productivity tools</li>
+            </ul>
+            <a href="#" class="btn btn--secondary btn--block">Current plan</a>
+          </article>
+
+          <article class="plan-card plan-card--featured">
+            <span class="plan-card__badge">Most popular</span>
+            <div class="plan-card__head">
+              <span class="plan-card__name">Pro</span>
+              <span class="plan-card__desc"
+                >For professionals who need more.</span
+              >
+            </div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">$10</span>
+              <span class="plan-card__period">/ month, billed annually</span>
+            </div>
+            <ul class="plan-card__features">
+              <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+              <li><i class="fa-solid fa-check"></i> Expanded storage</li>
+              <li><i class="fa-solid fa-check"></i> Advanced project tools</li>
+              <li><i class="fa-solid fa-check"></i> More AI capabilities</li>
+              <li><i class="fa-solid fa-check"></i> Advanced analytics</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Additional customization
+              </li>
+            </ul>
+            <a href="#" class="btn btn--primary btn--block">Upgrade to Pro</a>
+          </article>
+
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <span class="plan-card__name">Team</span>
+              <span class="plan-card__desc"
+                >For teams that build together.</span
+              >
+            </div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">$20</span>
+              <span class="plan-card__period">/ user, billed annually</span>
+            </div>
+            <ul class="plan-card__features">
+              <li><i class="fa-solid fa-check"></i> Everything in Pro</li>
+              <li><i class="fa-solid fa-check"></i> Shared workspaces</li>
+              <li><i class="fa-solid fa-check"></i> Team management</li>
+              <li><i class="fa-solid fa-check"></i> Advanced permissions</li>
+              <li><i class="fa-solid fa-check"></i> Team-level reporting</li>
+            </ul>
+            <a href="#" class="btn btn--secondary btn--block"
+              >Upgrade to Team</a
+            >
+          </article>
+
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <span class="plan-card__name">Business</span>
+              <span class="plan-card__desc"
+                >For organizations with advanced needs.</span
+              >
+            </div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount">$38</span>
+              <span class="plan-card__period">/ user, billed annually</span>
+            </div>
+            <ul class="plan-card__features">
+              <li><i class="fa-solid fa-check"></i> Everything in Team</li>
+              <li><i class="fa-solid fa-check"></i> Advanced administration</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Organization-level controls
+              </li>
+              <li><i class="fa-solid fa-check"></i> Expanded reporting</li>
+              <li><i class="fa-solid fa-check"></i> Additional governance</li>
+            </ul>
+            <a href="#" class="btn btn--secondary btn--block"
+              >Upgrade to Business</a
+            >
+          </article>
+
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <span class="plan-card__name">Enterprise</span>
+              <span class="plan-card__desc"
+                >Custom deployment, support, and SLAs.</span
+              >
+            </div>
+            <div class="plan-card__price">
+              <span class="plan-card__amount plan-card__amount--custom"
+                >Custom</span
+              >
+            </div>
+            <ul class="plan-card__features">
+              <li><i class="fa-solid fa-check"></i> Everything in Business</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Organization-specific
+                deployment
+              </li>
+              <li><i class="fa-solid fa-check"></i> Dedicated support</li>
+              <li><i class="fa-solid fa-check"></i> Custom SLAs</li>
+              <li><i class="fa-solid fa-check"></i> Volume discounts</li>
+            </ul>
+            <a href="#" class="btn btn--secondary btn--block">Contact sales</a>
+          </article>
+        </div>
+
+        <!-- Comparison -->
+        <div class="compare-wrap">
+          <div class="compare-head">
+            <h2>Compare plans</h2>
+            <span
+              style="
+                font-size: var(--text-xs);
+                color: var(--color-text-tertiary);
+              "
+              >All prices are placeholder — actual pricing subject to
+              change</span
+            >
+          </div>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Free</th>
+                <th>Pro</th>
+                <th>Team</th>
+                <th>Business</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="is-feature">Workspaces</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td class="is-feature">Project storage</td>
+                <td>Limited</td>
+                <td>Expanded</td>
+                <td>Team pool</td>
+                <td>Business pool</td>
+                <td>Custom</td>
+              </tr>
+              <tr>
+                <td class="is-feature">AI capabilities</td>
+                <td>Basic</td>
+                <td>Advanced</td>
+                <td>Advanced</td>
+                <td>Advanced + controls</td>
+                <td>Custom</td>
+              </tr>
+              <tr>
+                <td class="is-feature">Team management</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+              <tr>
+                <td class="is-feature">Advanced permissions</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+              <tr>
+                <td class="is-feature">Team reporting</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+              <tr>
+                <td class="is-feature">Organization-level admin</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+              <tr>
+                <td class="is-feature">Audit logs</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+              <tr>
+                <td class="is-feature">Dedicated support</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+              <tr>
+                <td class="is-feature">Custom SLAs</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-dash">—</td>
+                <td class="is-check"><i class="fa-solid fa-check"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- FAQ -->
+        <h2
+          style="
+            font-size: var(--text-xl);
+            font-weight: var(--font-semibold);
+            text-align: center;
+            margin-bottom: var(--space-4);
+            color: var(--color-text-primary);
+          "
+        >
+          Frequently asked questions
+        </h2>
+        <div class="pricing-faq">
+          <details>
+            <summary>Can I change plans at any time?</summary>
+            <p>
+              Yes. You can upgrade or downgrade your plan at any time. When you
+              upgrade, you gain immediate access to new features. When you
+              downgrade, changes take effect at the end of your current billing
+              period.
+            </p>
+          </details>
+          <details>
+            <summary>What happens when my free trial ends?</summary>
+            <p>
+              Pro and Team plans include a 14-day free trial. When the trial
+              ends, you'll be moved to the Free plan unless you've upgraded. No
+              charges are made automatically — we never require a credit card to
+              start a trial.
+            </p>
+          </details>
+          <details>
+            <summary>Is there a discount for education or nonprofits?</summary>
+            <p>
+              We offer discounts for verified educational institutions and
+              registered nonprofits. Contact our sales team with your
+              organization's details to learn more.
+            </p>
+          </details>
+          <details>
+            <summary>What payment methods do you accept?</summary>
+            <p>
+              We accept all major credit cards and support invoiced billing for
+              annual Business and Enterprise plans. Contact sales for invoice
+              arrangements.
+            </p>
+          </details>
+          <details>
+            <summary>How does billing work for teams?</summary>
+            <p>
+              Team, Business, and Enterprise plans are billed per user. Team and
+              Business seats can be added or removed at any time; billing is
+              prorated for changes made mid-cycle.
+            </p>
+          </details>
+          <details>
+            <summary>Can I get a refund?</summary>
+            <p>
+              We offer refunds within 14 days of your initial purchase for
+              annual plans. Please contact support to discuss your situation.
+            </p>
+          </details>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Pricing context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Plans</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">Your plan</h3>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--space-3);
+              padding: var(--space-3);
+              background: var(--color-surface-secondary);
+              border-radius: var(--radius-md);
+            "
+          >
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-accent-soft);
+                color: var(--color-accent-hover);
+              "
+              >P</span
+            >
+            <div style="flex: 1; min-width: 0">
+              <div
+                style="
+                  font-size: var(--text-sm);
+                  font-weight: var(--font-semibold);
+                  color: var(--color-text-primary);
+                "
+              >
+                Pro
+              </div>
+              <div
+                style="
+                  font-size: var(--text-2xs);
+                  color: var(--color-text-tertiary);
+                "
+              >
+                Renews Dec 4, 2024
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Usage</h3>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--space-2);
+              font-size: var(--text-xs);
+            "
+          >
+            <div style="display: flex; justify-content: space-between">
+              <span style="color: var(--color-text-secondary)">Storage</span>
+              <strong style="color: var(--color-text-primary)"
+                >4.2 / 10 GB</strong
+              >
+            </div>
+            <div class="progress" style="height: 4px">
+              <span style="width: 42%"></span>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-top: var(--space-2);
+              "
+            >
+              <span style="color: var(--color-text-secondary)">AI usage</span>
+              <strong style="color: var(--color-text-primary)">82 / 200</strong>
+            </div>
+            <div class="progress" style="height: 4px">
+              <span style="width: 41%"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Questions?</h3>
+          <p
+            style="
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+              line-height: 1.55;
+            "
+          >
+            Talk to our team about your plan, billing, or a custom quote.
+          </p>
+          <button
+            type="button"
+            class="btn btn--secondary btn--sm btn--block"
+            style="margin-top: var(--space-2)"
+          >
+            <i class="fa-regular fa-envelope"></i> Contact sales
+          </button>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

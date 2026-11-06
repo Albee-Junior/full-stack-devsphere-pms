@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comments — Beta milestone · DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/whiteboard.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search comments…"
+            aria-label="Search"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a
+            href="whiteboard.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="true"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <nav
+          class="breadcrumbs"
+          aria-label="Breadcrumb"
+          style="margin-bottom: var(--space-4)"
+        >
+          <a href="projects.html">Projects</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="project-detail.html">Campus Learning Portal</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="whiteboard.html">Beta planning · Sprint 12</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span aria-current="page">Beta milestone · Comments</span>
+        </nav>
+
+        <div class="wb-comments-page">
+          <div class="wb-comments-page__main">
+            <!-- Item header -->
+            <section class="wb-comments-item">
+              <div class="wb-comments-item__preview">
+                <i class="fa-solid fa-note-sticky"></i>
+              </div>
+              <div class="wb-comments-item__body">
+                <span class="wb-comments-item__type"
+                  >Sticky note · on Beta planning · Sprint 12</span
+                >
+                <h1 class="wb-comments-item__title">Beta milestone</h1>
+                <div class="wb-comments-item__meta">
+                  <span
+                    ><i class="fa-regular fa-user"></i> Created by Maya
+                    Chen</span
+                  >
+                  <span class="dot"></span>
+                  <span><i class="fa-regular fa-clock"></i> 3 days ago</span>
+                  <span class="dot"></span>
+                  <span><i class="fa-solid fa-comment"></i> 6 comments</span>
+                </div>
+              </div>
+              <div class="wb-comments-item__actions">
+                <a href="whiteboard.html" class="btn btn--secondary btn--sm">
+                  <i class="fa-solid fa-arrow-left"></i> Back to board
+                </a>
+              </div>
+            </section>
+
+            <!-- Summary -->
+            <section class="wb-comments-summary">
+              <div class="wb-comments-summary__metric">
+                <span class="wb-comments-summary__value">6</span>
+                <span class="wb-comments-summary__label">Total</span>
+              </div>
+              <div class="wb-comments-summary__metric">
+                <span
+                  class="wb-comments-summary__value wb-comments-summary__value--open"
+                  >4</span
+                >
+                <span class="wb-comments-summary__label">Unresolved</span>
+              </div>
+              <div class="wb-comments-summary__metric">
+                <span
+                  class="wb-comments-summary__value wb-comments-summary__value--resolved"
+                  >2</span
+                >
+                <span class="wb-comments-summary__label">Resolved</span>
+              </div>
+              <div
+                class="wb-comments-summary__bar"
+                aria-label="4 unresolved, 2 resolved"
+              >
+                <span
+                  class="wb-comments-summary__bar-open"
+                  style="width: 66%"
+                ></span>
+                <span
+                  class="wb-comments-summary__bar-resolved"
+                  style="width: 34%"
+                ></span>
+              </div>
+            </section>
+
+            <!-- Filter tabs -->
+            <div
+              class="wb-comments-tabs"
+              role="tablist"
+              aria-label="Filter comments"
+            >
+              <button
+                type="button"
+                class="wb-comments-tab is-active"
+                role="tab"
+                aria-selected="true"
+              >
+                All <span class="count">6</span>
+              </button>
+              <button
+                type="button"
+                class="wb-comments-tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Unresolved <span class="count">4</span>
+              </button>
+              <button
+                type="button"
+                class="wb-comments-tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Resolved <span class="count">2</span>
+              </button>
+              <button
+                type="button"
+                class="wb-comments-tab"
+                role="tab"
+                aria-selected="false"
+              >
+                Mine <span class="count">1</span>
+              </button>
+            </div>
+
+            <!-- Thread -->
+            <div class="wb-thread">
+              <article class="wb-thread-item">
+                <span class="avatar avatar--sm avatar--blue">MC</span>
+                <div class="wb-thread-item__main">
+                  <div class="wb-thread-item__head">
+                    <span class="wb-thread-item__name">Maya Chen</span>
+                    <span class="wb-thread-item__time">2 hours ago</span>
+                    <span
+                      class="wb-thread-item__status wb-thread-item__status--open"
+                    >
+                      <i class="fa-regular fa-circle"></i> Unresolved
+                    </span>
+                  </div>
+                  <div class="wb-thread-item__body">
+                    Should we split the accessibility audit into two tasks — one
+                    for keyboard navigation and one for color contrast? The
+                    combined estimate feels too optimistic.
+                  </div>
+                  <div class="wb-thread-item__actions">
+                    <button
+                      type="button"
+                      class="wb-thread-item__action wb-thread-item__action--resolve"
+                    >
+                      <i class="fa-solid fa-check"></i> Resolve
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-regular fa-comment"></i> Reply
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-regular fa-thumbs-up"></i> 2
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+                  </div>
+
+                  <div class="wb-thread-item__replies">
+                    <div class="wb-reply">
+                      <span class="avatar avatar--xs avatar--teal">JR</span>
+                      <div class="wb-reply__main">
+                        <div class="wb-reply__head">
+                          <span class="wb-reply__name">James Rivera</span>
+                          <span class="wb-reply__time">1 hour ago</span>
+                        </div>
+                        <div class="wb-reply__body">
+                          +1. The keyboard audit alone is probably 2 days of
+                          work once you include screen reader testing.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="wb-thread-item wb-thread-item--resolved">
+                <span class="avatar avatar--sm">AK</span>
+                <div class="wb-thread-item__main">
+                  <div class="wb-thread-item__head">
+                    <span class="wb-thread-item__name">You</span>
+                    <span class="wb-thread-item__time">30 minutes ago</span>
+                    <span
+                      class="wb-thread-item__status wb-thread-item__status--resolved"
+                    >
+                      <i class="fa-solid fa-check"></i> Resolved
+                    </span>
+                  </div>
+                  <div class="wb-thread-item__body">
+                    Locked the scope — audit stays as one task, we'll break it
+                    out only if it slips past Nov 8.
+                  </div>
+                  <div class="wb-thread-item__actions">
+                    <button
+                      type="button"
+                      class="wb-thread-item__action wb-thread-item__action--reopen"
+                    >
+                      <i class="fa-solid fa-rotate-left"></i> Reopen
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-regular fa-comment"></i> Reply
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="wb-thread-item">
+                <span class="avatar avatar--sm avatar--amber">DP</span>
+                <div class="wb-thread-item__main">
+                  <div class="wb-thread-item__head">
+                    <span class="wb-thread-item__name">David Park</span>
+                    <span class="wb-thread-item__time">1 hour ago</span>
+                    <span
+                      class="wb-thread-item__status wb-thread-item__status--open"
+                    >
+                      <i class="fa-regular fa-circle"></i> Unresolved
+                    </span>
+                  </div>
+                  <div class="wb-thread-item__body">
+                    Can we confirm the definition of "done" for the beta
+                    milestone? Does it include load testing, or is that deferred
+                    to launch?
+                  </div>
+                  <div class="wb-thread-item__actions">
+                    <button
+                      type="button"
+                      class="wb-thread-item__action wb-thread-item__action--resolve"
+                    >
+                      <i class="fa-solid fa-check"></i> Resolve
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-regular fa-comment"></i> Reply
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="wb-thread-item">
+                <span class="avatar avatar--sm avatar--gold">AO</span>
+                <div class="wb-thread-item__main">
+                  <div class="wb-thread-item__head">
+                    <span class="wb-thread-item__name">Amara Okafor</span>
+                    <span class="wb-thread-item__time">3 hours ago</span>
+                    <span
+                      class="wb-thread-item__status wb-thread-item__status--open"
+                    >
+                      <i class="fa-regular fa-circle"></i> Unresolved
+                    </span>
+                  </div>
+                  <div class="wb-thread-item__body">
+                    Suggest adding a checkpoint on Nov 11 to verify we're still
+                    on track — that gives us 4 days of buffer to adjust if we
+                    slip.
+                  </div>
+                  <div class="wb-thread-item__actions">
+                    <button
+                      type="button"
+                      class="wb-thread-item__action wb-thread-item__action--resolve"
+                    >
+                      <i class="fa-solid fa-check"></i> Resolve
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-regular fa-comment"></i> Reply
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+                  </div>
+
+                  <div class="wb-thread-item__replies">
+                    <div class="wb-reply">
+                      <span class="avatar avatar--xs avatar--pink">SA</span>
+                      <div class="wb-reply__main">
+                        <div class="wb-reply__head">
+                          <span class="wb-reply__name">Sofia Alvarez</span>
+                          <span class="wb-reply__time">2 hours ago</span>
+                        </div>
+                        <div class="wb-reply__body">
+                          Good idea — I'll add it to the project calendar once
+                          we agree on the time.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="wb-thread-item wb-thread-item--resolved">
+                <span class="avatar avatar--sm avatar--pink">SA</span>
+                <div class="wb-thread-item__main">
+                  <div class="wb-thread-item__head">
+                    <span class="wb-thread-item__name">Sofia Alvarez</span>
+                    <span class="wb-thread-item__time">1 day ago</span>
+                    <span
+                      class="wb-thread-item__status wb-thread-item__status--resolved"
+                    >
+                      <i class="fa-solid fa-check"></i> Resolved
+                    </span>
+                  </div>
+                  <div class="wb-thread-item__body">
+                    Added a link to the beta scope doc — see the
+                    "beta-scope.pdf" attachment on the project.
+                  </div>
+                  <div class="wb-thread-item__actions">
+                    <button
+                      type="button"
+                      class="wb-thread-item__action wb-thread-item__action--reopen"
+                    >
+                      <i class="fa-solid fa-rotate-left"></i> Reopen
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="wb-thread-item">
+                <span class="avatar avatar--sm avatar--blue">MC</span>
+                <div class="wb-thread-item__main">
+                  <div class="wb-thread-item__head">
+                    <span class="wb-thread-item__name">Maya Chen</span>
+                    <span class="wb-thread-item__time">1 day ago</span>
+                    <span
+                      class="wb-thread-item__status wb-thread-item__status--open"
+                    >
+                      <i class="fa-regular fa-circle"></i> Unresolved
+                    </span>
+                  </div>
+                  <div class="wb-thread-item__body">
+                    Opening this thread for the beta milestone scope discussion
+                    — we'll resolve items as we lock decisions.
+                  </div>
+                  <div class="wb-thread-item__actions">
+                    <button
+                      type="button"
+                      class="wb-thread-item__action wb-thread-item__action--resolve"
+                    >
+                      <i class="fa-solid fa-check"></i> Resolve
+                    </button>
+                    <button type="button" class="wb-thread-item__action">
+                      <i class="fa-regular fa-comment"></i> Reply
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Composer -->
+            <div class="wb-thread-composer">
+              <div class="wb-thread-composer__head">
+                <span class="avatar avatar--xs">AK</span>
+                Commenting as
+                <strong
+                  style="
+                    color: var(--color-text-primary);
+                    font-weight: var(--font-semibold);
+                  "
+                  >Alex Kim</strong
+                >
+              </div>
+              <textarea
+                placeholder="Add a comment on this item…"
+                aria-label="New comment"
+              ></textarea>
+              <div class="wb-thread-composer__foot">
+                <div>
+                  <button
+                    type="button"
+                    class="icon-btn"
+                    aria-label="Attach file"
+                  >
+                    <i class="fa-solid fa-paperclip"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="icon-btn"
+                    aria-label="Mention someone"
+                  >
+                    <i class="fa-solid fa-at"></i>
+                  </button>
+                  <button type="button" class="icon-btn" aria-label="Add emoji">
+                    <i class="fa-regular fa-face-smile"></i>
+                  </button>
+                </div>
+                <div>
+                  <button type="button" class="btn btn--secondary btn--sm">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn btn--primary btn--sm">
+                    Post comment
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side -->
+          <aside class="wb-comments-page__side" aria-label="Item context">
+            <div class="wb-side-card">
+              <h3 class="wb-side-card__title">Item details</h3>
+              <div class="wb-side-list">
+                <div class="wb-side-list__row">
+                  <span>Type</span><strong>Sticky note</strong>
+                </div>
+                <div class="wb-side-list__row">
+                  <span>Board</span><strong>Beta planning · S12</strong>
+                </div>
+                <div class="wb-side-list__row">
+                  <span>Position</span><strong>X 180 · Y 140</strong>
+                </div>
+                <div class="wb-side-list__row">
+                  <span>Created</span><strong>3 days ago</strong>
+                </div>
+                <div class="wb-side-list__row">
+                  <span>Author</span><strong>Maya Chen</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="wb-side-card">
+              <h3 class="wb-side-card__title">Status summary</h3>
+              <div class="wb-side-list">
+                <div class="wb-side-list__row">
+                  <span>Total</span><strong>6</strong>
+                </div>
+                <div class="wb-side-list__row">
+                  <span style="color: var(--color-warning)">Unresolved</span
+                  ><strong>4</strong>
+                </div>
+                <div class="wb-side-list__row">
+                  <span style="color: var(--color-success)">Resolved</span
+                  ><strong>2</strong>
+                </div>
+              </div>
+              <div class="progress" style="height: 6px">
+                <span
+                  style="width: 34%; background: var(--color-success)"
+                ></span>
+              </div>
+              <p
+                style="
+                  font-size: var(--text-2xs);
+                  color: var(--color-text-tertiary);
+                  margin: 0;
+                  line-height: 1.5;
+                "
+              >
+                Resolving comments helps the team stay aligned. Aim to keep
+                unresolved count under 5 per item.
+              </p>
+            </div>
+
+            <div class="wb-side-card">
+              <h3 class="wb-side-card__title">Participants</h3>
+              <div class="rp-participant">
+                <span class="avatar avatar--sm avatar--blue">MC</span>
+                <div class="rp-participant__body">
+                  <span class="rp-participant__name">Maya Chen</span>
+                  <span class="rp-participant__role">2 comments</span>
+                </div>
+              </div>
+              <div class="rp-participant">
+                <span class="avatar avatar--sm">AK</span>
+                <div class="rp-participant__body">
+                  <span class="rp-participant__name">You</span>
+                  <span class="rp-participant__role">1 comment</span>
+                </div>
+              </div>
+              <div class="rp-participant">
+                <span class="avatar avatar--sm avatar--teal">JR</span>
+                <div class="rp-participant__body">
+                  <span class="rp-participant__name">James Rivera</span>
+                  <span class="rp-participant__role">1 reply</span>
+                </div>
+              </div>
+              <div class="rp-participant">
+                <span class="avatar avatar--sm avatar--gold">AO</span>
+                <div class="rp-participant__body">
+                  <span class="rp-participant__name">Amara Okafor</span>
+                  <span class="rp-participant__role">1 comment</span>
+                </div>
+              </div>
+              <div class="rp-participant">
+                <span class="avatar avatar--sm avatar--pink">SA</span>
+                <div class="rp-participant__body">
+                  <span class="rp-participant__name">Sofia Alvarez</span>
+                  <span class="rp-participant__role">1 comment</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wb-side-card">
+              <h3 class="wb-side-card__title">Related</h3>
+              <a
+                href="whiteboard.html"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2px;
+                  padding: var(--space-2) 0;
+                  border-bottom: 1px solid var(--color-border-subtle);
+                "
+              >
+                <span
+                  style="
+                    font-size: var(--text-sm);
+                    font-weight: var(--font-medium);
+                    color: var(--color-text-primary);
+                  "
+                  >Open on whiteboard</span
+                >
+                <span
+                  style="
+                    font-size: var(--text-2xs);
+                    color: var(--color-text-tertiary);
+                  "
+                  >Jump back to Beta planning · S12</span
+                >
+              </a>
+              <a
+                href="whiteboard.html"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2px;
+                  padding: var(--space-2) 0;
+                "
+              >
+                <span
+                  style="
+                    font-size: var(--text-sm);
+                    font-weight: var(--font-medium);
+                    color: var(--color-text-primary);
+                  "
+                  >All comments on board</span
+                >
+                <span
+                  style="
+                    font-size: var(--text-2xs);
+                    color: var(--color-text-tertiary);
+                  "
+                  >7 comments across 3 items</span
+                >
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

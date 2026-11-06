@@ -1,0 +1,22 @@
+meta {
+  name: Install free extension
+  type: http
+  seq: 20
+}
+
+post {
+  url: {{baseUrl}}/extensions/focus-timer/install
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 201
+}

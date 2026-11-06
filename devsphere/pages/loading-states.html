@@ -1,0 +1,1376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading states — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/components/loaders.css" />
+    <style>
+      /* Demo-only helpers */
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: var(--space-4);
+        margin-bottom: var(--space-6);
+      }
+      .demo-tile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-3);
+        min-height: 160px;
+        padding: var(--space-5);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        position: relative;
+        text-align: center;
+      }
+      .demo-tile--dark {
+        background: #11111b;
+        border-color: #303044;
+        color: #f4f2ff;
+      }
+      .demo-tile--dark .ds-loader__label {
+        color: #b4b4cc;
+      }
+      .demo-label {
+        font-size: 10px;
+        font-weight: var(--font-semibold);
+        color: var(--color-text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: var(--space-2);
+      }
+      .demo-section-head {
+        margin: var(--space-8) 0 var(--space-4);
+        padding-bottom: var(--space-2);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .demo-section-head h2 {
+        font-size: var(--text-lg);
+        font-weight: var(--font-semibold);
+        color: var(--color-text-primary);
+      }
+      .demo-section-head p {
+        font-size: var(--text-xs);
+        color: var(--color-text-tertiary);
+        margin-top: var(--space-1);
+      }
+    </style>
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ===== Topbar (identical shell) ===== -->
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a
+          href="../index.html"
+          class="topbar__brand"
+          aria-label="DevSphere home"
+        >
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-symbol.svg"
+            alt=""
+            width="26"
+            height="26"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-symbol-dark.svg"
+            alt=""
+            width="26"
+            height="26"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" placeholder="Search…" aria-label="Search" />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">Loading states</span>
+            </nav>
+            <h1 class="page-title">Loading states</h1>
+            <p class="page-subtitle">
+              The DevSphere loading system — six modes for every context. All
+              animations respect
+              <code
+                style="
+                  background: var(--color-surface-tertiary);
+                  padding: 1px 6px;
+                  border-radius: 4px;
+                  font-family: var(--font-mono);
+                  font-size: 0.9em;
+                "
+                >prefers-reduced-motion</code
+              >.
+            </p>
+          </div>
+        </header>
+
+        <!-- Hidden SVG defs shared by all orbit loaders -->
+        <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+          <defs>
+            <linearGradient id="dsLoaderGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7C3AED" />
+              <stop offset="1" stop-color="#2563EB" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- ============ MODE 1: ORBIT ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>
+              1 · Orbit loader
+              <span
+                class="badge badge--primary"
+                style="font-size: 10px; margin-left: 6px"
+                >Primary</span
+              >
+            </h2>
+            <p>
+              The DevSphere mark. Node orbits the sphere while the core pulses —
+              used for page transitions, initial loads, and empty states.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <div class="demo-tile">
+              <div
+                class="ds-loader ds-loader--sm"
+                role="status"
+                aria-label="Loading"
+              >
+                <svg
+                  class="ds-loader__svg"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="ds-loader__sphere"
+                    cx="24"
+                    cy="24"
+                    r="19.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  />
+                  <ellipse
+                    class="ds-loader__orbit-path"
+                    cx="24"
+                    cy="24"
+                    rx="19.5"
+                    ry="7"
+                    transform="rotate(-30 24 24)"
+                    fill="none"
+                    stroke="url(#dsLoaderGrad)"
+                    stroke-width="1.4"
+                    opacity="0.75"
+                  />
+                  <g class="ds-loader__core">
+                    <path
+                      d="M18 14 L18 34 L23 34 Q33 34 33 24 Q33 14 23 14 Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="25.5" cy="24" r="2.8" fill="currentColor" />
+                  </g>
+                  <circle
+                    class="ds-loader__node"
+                    cx="24"
+                    cy="3"
+                    r="2"
+                    fill="#D4A853"
+                  />
+                </svg>
+              </div>
+              <span class="demo-label">Small · 20px</span>
+            </div>
+
+            <div class="demo-tile">
+              <div
+                class="ds-loader ds-loader--md"
+                role="status"
+                aria-label="Loading"
+              >
+                <svg
+                  class="ds-loader__svg"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="ds-loader__sphere"
+                    cx="24"
+                    cy="24"
+                    r="19.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  />
+                  <ellipse
+                    class="ds-loader__orbit-path"
+                    cx="24"
+                    cy="24"
+                    rx="19.5"
+                    ry="7"
+                    transform="rotate(-30 24 24)"
+                    fill="none"
+                    stroke="url(#dsLoaderGrad)"
+                    stroke-width="1.4"
+                    opacity="0.75"
+                  />
+                  <g class="ds-loader__core">
+                    <path
+                      d="M18 14 L18 34 L23 34 Q33 34 33 24 Q33 14 23 14 Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="25.5" cy="24" r="2.8" fill="currentColor" />
+                  </g>
+                  <circle
+                    class="ds-loader__node"
+                    cx="24"
+                    cy="3"
+                    r="2"
+                    fill="#D4A853"
+                  />
+                </svg>
+              </div>
+              <span class="demo-label">Medium · 32px</span>
+            </div>
+
+            <div class="demo-tile">
+              <div
+                class="ds-loader ds-loader--lg"
+                role="status"
+                aria-label="Loading"
+              >
+                <svg
+                  class="ds-loader__svg"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="ds-loader__sphere"
+                    cx="24"
+                    cy="24"
+                    r="19.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  />
+                  <ellipse
+                    class="ds-loader__orbit-path"
+                    cx="24"
+                    cy="24"
+                    rx="19.5"
+                    ry="7"
+                    transform="rotate(-30 24 24)"
+                    fill="none"
+                    stroke="url(#dsLoaderGrad)"
+                    stroke-width="1.4"
+                    opacity="0.75"
+                  />
+                  <g class="ds-loader__core">
+                    <path
+                      d="M18 14 L18 34 L23 34 Q33 34 33 24 Q33 14 23 14 Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="25.5" cy="24" r="2.8" fill="currentColor" />
+                  </g>
+                  <circle
+                    class="ds-loader__node"
+                    cx="24"
+                    cy="3"
+                    r="2"
+                    fill="#D4A853"
+                  />
+                </svg>
+              </div>
+              <span class="demo-label">Large · 64px</span>
+            </div>
+
+            <div class="demo-tile demo-tile--dark">
+              <div
+                class="ds-loader ds-loader--md"
+                role="status"
+                aria-label="Loading"
+              >
+                <svg
+                  class="ds-loader__svg"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="19.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="19.5"
+                    ry="7"
+                    transform="rotate(-30 24 24)"
+                    fill="none"
+                    stroke="url(#dsLoaderGrad)"
+                    stroke-width="1.4"
+                    opacity="0.75"
+                  />
+                  <g class="ds-loader__core">
+                    <path
+                      d="M18 14 L18 34 L23 34 Q33 34 33 24 Q33 14 23 14 Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="25.5" cy="24" r="2.8" fill="currentColor" />
+                  </g>
+                  <circle
+                    class="ds-loader__node"
+                    cx="24"
+                    cy="3"
+                    r="2"
+                    fill="#E5BA62"
+                  />
+                </svg>
+              </div>
+              <span class="demo-label">On dark surface</span>
+            </div>
+          </div>
+
+          <!-- Context: card, overlay, full-page caption -->
+          <div class="demo-grid">
+            <div
+              class="demo-tile"
+              style="position: relative; min-height: 200px"
+            >
+              <div
+                class="ds-loader ds-loader--md ds-loader--card"
+                role="status"
+              >
+                <svg
+                  class="ds-loader__svg"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="19.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="19.5"
+                    ry="7"
+                    transform="rotate(-30 24 24)"
+                    fill="none"
+                    stroke="url(#dsLoaderGrad)"
+                    stroke-width="1.4"
+                    opacity="0.75"
+                  />
+                  <g class="ds-loader__core">
+                    <path
+                      d="M18 14 L18 34 L23 34 Q33 34 33 24 Q33 14 23 14 Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="25.5" cy="24" r="2.8" fill="currentColor" />
+                  </g>
+                  <circle
+                    class="ds-loader__node"
+                    cx="24"
+                    cy="3"
+                    r="2"
+                    fill="#D4A853"
+                  />
+                </svg>
+                <span class="ds-loader__label">Loading project…</span>
+              </div>
+              <span class="demo-label">Card-level with caption</span>
+            </div>
+
+            <div class="demo-tile demo-tile--dark">
+              <div class="ds-loader ds-loader--md" role="status">
+                <svg
+                  class="ds-loader__svg"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="19.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="19.5"
+                    ry="7"
+                    transform="rotate(-30 24 24)"
+                    fill="none"
+                    stroke="url(#dsLoaderGrad)"
+                    stroke-width="1.4"
+                    opacity="0.75"
+                  />
+                  <g class="ds-loader__core">
+                    <path
+                      d="M18 14 L18 34 L23 34 Q33 34 33 24 Q33 14 23 14 Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="25.5" cy="24" r="2.8" fill="currentColor" />
+                  </g>
+                  <circle
+                    class="ds-loader__node"
+                    cx="24"
+                    cy="3"
+                    r="2"
+                    fill="#E5BA62"
+                  />
+                </svg>
+                <span class="ds-loader__label">Connecting to meeting…</span>
+              </div>
+              <span class="demo-label">Video call connecting</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MODE 2: SPINNER ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>2 · Ring spinner</h2>
+            <p>
+              Compact, used for inline actions with unknown duration — inside
+              buttons, form submits, or small search fields.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <div class="demo-tile">
+              <span
+                class="ds-spinner ds-spinner--sm"
+                role="status"
+                aria-label="Loading"
+              ></span>
+              <span class="demo-label">Small · 14px</span>
+            </div>
+            <div class="demo-tile">
+              <span
+                class="ds-spinner ds-spinner--md"
+                role="status"
+                aria-label="Loading"
+              ></span>
+              <span class="demo-label">Medium · 20px</span>
+            </div>
+            <div class="demo-tile">
+              <span
+                class="ds-spinner ds-spinner--lg"
+                role="status"
+                aria-label="Loading"
+              ></span>
+              <span class="demo-label">Large · 32px</span>
+            </div>
+            <div class="demo-tile">
+              <span
+                class="ds-spinner ds-spinner--md ds-spinner--secondary"
+                role="status"
+                aria-label="Loading"
+              ></span>
+              <span class="demo-label">Secondary color</span>
+            </div>
+            <div class="demo-tile demo-tile--dark">
+              <span
+                class="ds-spinner ds-spinner--md ds-spinner--inverse"
+                role="status"
+                aria-label="Loading"
+              ></span>
+              <span class="demo-label">On dark · inverse</span>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div
+            style="
+              display: flex;
+              gap: var(--space-3);
+              flex-wrap: wrap;
+              margin-bottom: var(--space-6);
+            "
+          >
+            <button
+              type="button"
+              class="btn btn--primary btn--sm is-loading"
+              aria-busy="true"
+              aria-live="polite"
+            >
+              <span class="ds-spinner"></span> Saving…
+            </button>
+            <button
+              type="button"
+              class="btn btn--primary is-loading"
+              aria-busy="true"
+            >
+              <span class="ds-spinner"></span> Deploying…
+            </button>
+            <button
+              type="button"
+              class="btn btn--lg btn--primary is-loading"
+              aria-busy="true"
+            >
+              <span class="ds-spinner"></span> Publishing…
+            </button>
+            <button
+              type="button"
+              class="btn btn--secondary is-loading"
+              aria-busy="true"
+            >
+              <span class="ds-spinner ds-spinner--secondary"></span> Loading…
+            </button>
+          </div>
+        </section>
+
+        <!-- ============ MODE 3: DOTS ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>3 · Bouncing dots</h2>
+            <p>
+              Used for AI "thinking" states, typing indicators, and message-send
+              progress.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <div class="demo-tile">
+              <div class="ds-dots"><span></span><span></span><span></span></div>
+              <span class="demo-label">Inline dots</span>
+            </div>
+
+            <div class="demo-tile">
+              <div class="ds-dots ds-dots--primary ds-dots--lg">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="demo-label">Primary · large</span>
+            </div>
+
+            <div class="demo-tile demo-tile--dark">
+              <div class="ds-dots ds-dots--inverse">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="demo-label">On dark surface</span>
+            </div>
+
+            <div class="demo-tile" style="align-items: stretch">
+              <div class="ds-thinking">
+                <div class="ds-dots ds-dots--primary">
+                  <span></span><span></span><span></span>
+                </div>
+                <span>DevSphere AI is thinking…</span>
+              </div>
+              <span class="demo-label">AI generation state</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MODE 4: PROGRESS BAR ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>4 · Progress bar</h2>
+            <p>
+              Indeterminate for unknown duration, determinate for uploads with
+              measurable progress.
+            </p>
+          </div>
+
+          <div
+            class="demo-grid"
+            style="grid-template-columns: 1fr; gap: var(--space-3)"
+          >
+            <div
+              style="
+                padding: var(--space-4);
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <p class="demo-label" style="margin: 0 0 var(--space-3)">
+                Indeterminate — file indexing
+              </p>
+              <div
+                class="ds-bar"
+                role="progressbar"
+                aria-label="Indexing files"
+                aria-busy="true"
+              ></div>
+            </div>
+
+            <div
+              style="
+                padding: var(--space-4);
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <p class="demo-label" style="margin: 0 0 var(--space-3)">
+                Determinate · 42%
+              </p>
+              <div
+                class="ds-bar ds-bar--determinate"
+                role="progressbar"
+                aria-valuenow="42"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="--ds-progress: 42%"
+              ></div>
+            </div>
+
+            <div
+              style="
+                padding: var(--space-4);
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <p class="demo-label" style="margin: 0 0 var(--space-3)">
+                Determinate · 78%
+              </p>
+              <div
+                class="ds-bar ds-bar--determinate"
+                role="progressbar"
+                aria-valuenow="78"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="--ds-progress: 78%"
+              ></div>
+            </div>
+
+            <div
+              style="
+                padding: var(--space-4);
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <p class="demo-label" style="margin: 0 0 var(--space-3)">
+                Complete · success
+              </p>
+              <div
+                class="ds-bar ds-bar--determinate ds-bar--success"
+                role="progressbar"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="--ds-progress: 100%"
+              ></div>
+            </div>
+
+            <!-- Upload composite -->
+            <div
+              style="
+                padding: var(--space-4);
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <p class="demo-label" style="margin: 0 0 var(--space-3)">
+                Upload composite
+              </p>
+              <div class="ds-upload">
+                <div class="ds-upload__head">
+                  <span class="ds-upload__name">Q4-roadmap.pdf</span>
+                  <strong>64%</strong>
+                </div>
+                <div
+                  class="ds-bar ds-bar--determinate ds-bar--sm"
+                  role="progressbar"
+                  aria-valuenow="64"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="--ds-progress: 64%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MODE 5: SKELETON ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>5 · Skeleton shimmer</h2>
+            <p>
+              Placeholder shapes matching the final layout. Used while data
+              loads into a known structure.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <div class="demo-tile" style="align-items: stretch">
+              <div class="ds-skeleton-group">
+                <span
+                  class="ds-skeleton ds-skeleton--title"
+                  style="width: 70%"
+                ></span>
+                <span class="ds-skeleton ds-skeleton--text"></span>
+                <span
+                  class="ds-skeleton ds-skeleton--text"
+                  style="width: 85%"
+                ></span>
+                <span
+                  class="ds-skeleton ds-skeleton--text"
+                  style="width: 50%"
+                ></span>
+              </div>
+              <span class="demo-label">Text block</span>
+            </div>
+
+            <div class="demo-tile" style="align-items: stretch">
+              <div class="ds-skeleton-card">
+                <div class="ds-skeleton-card__head">
+                  <span class="ds-skeleton ds-skeleton--avatar"></span>
+                  <div class="ds-skeleton-group" style="flex: 1">
+                    <span
+                      class="ds-skeleton ds-skeleton--text"
+                      style="width: 50%"
+                    ></span>
+                    <span
+                      class="ds-skeleton ds-skeleton--text"
+                      style="width: 30%; height: 10px"
+                    ></span>
+                  </div>
+                </div>
+                <span
+                  class="ds-skeleton ds-skeleton--rect"
+                  style="height: 80px"
+                ></span>
+              </div>
+              <span class="demo-label">Card placeholder</span>
+            </div>
+
+            <div class="demo-tile" style="align-items: stretch">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: var(--space-3);
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-3);
+                  "
+                >
+                  <span class="ds-skeleton ds-skeleton--avatar"></span>
+                  <span
+                    class="ds-skeleton ds-skeleton--text"
+                    style="flex: 1"
+                  ></span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-3);
+                  "
+                >
+                  <span class="ds-skeleton ds-skeleton--avatar"></span>
+                  <span
+                    class="ds-skeleton ds-skeleton--text"
+                    style="flex: 1"
+                  ></span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-3);
+                  "
+                >
+                  <span class="ds-skeleton ds-skeleton--avatar"></span>
+                  <span
+                    class="ds-skeleton ds-skeleton--text"
+                    style="flex: 1; width: 60%"
+                  ></span>
+                </div>
+              </div>
+              <span class="demo-label">List rows</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MODE 6: PULSE ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>6 · Pulse indicator</h2>
+            <p>
+              For ongoing states that are idle — "connected", "live", "synced".
+              Doesn't imply pending work.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <div class="demo-tile">
+              <span
+                class="ds-pulse"
+                role="status"
+                aria-label="Connected"
+              ></span>
+              <span class="demo-label">Connected · success</span>
+            </div>
+            <div class="demo-tile">
+              <span
+                class="ds-pulse ds-pulse--primary"
+                role="status"
+                aria-label="Live"
+              ></span>
+              <span class="demo-label">Live · primary</span>
+            </div>
+            <div class="demo-tile">
+              <span
+                class="ds-pulse ds-pulse--warning"
+                role="status"
+                aria-label="Reconnecting"
+              ></span>
+              <span class="demo-label">Reconnecting · warning</span>
+            </div>
+            <div class="demo-tile">
+              <span
+                class="ds-pulse ds-pulse--danger"
+                role="status"
+                aria-label="Disconnected"
+              ></span>
+              <span class="demo-label">Disconnected · danger</span>
+            </div>
+          </div>
+
+          <!-- In-context example -->
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--space-3);
+              padding: var(--space-3) var(--space-4);
+              background: var(--color-surface);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              margin-bottom: var(--space-6);
+            "
+          >
+            <span class="ds-pulse"></span>
+            <span
+              style="
+                font-size: var(--text-sm);
+                color: var(--color-text-primary);
+                font-weight: var(--font-medium);
+              "
+              >Live — 4 people viewing</span
+            >
+            <span
+              style="
+                font-size: var(--text-xs);
+                color: var(--color-text-tertiary);
+                margin-left: auto;
+              "
+              >Campus Learning Portal</span
+            >
+          </div>
+        </section>
+
+        <!-- ============ USAGE GUIDE ============ -->
+        <section>
+          <div class="demo-section-head">
+            <h2>Where to use each mode</h2>
+          </div>
+          <div class="panel">
+            <div class="panel__body">
+              <table
+                class="analytics-table"
+                style="
+                  width: 100%;
+                  border-collapse: collapse;
+                  font-size: var(--text-sm);
+                "
+              >
+                <thead>
+                  <tr>
+                    <th
+                      style="
+                        text-align: left;
+                        padding: var(--space-3);
+                        background: var(--color-surface-secondary);
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.06em;
+                        color: var(--color-text-tertiary);
+                      "
+                    >
+                      Context
+                    </th>
+                    <th
+                      style="
+                        text-align: left;
+                        padding: var(--space-3);
+                        background: var(--color-surface-secondary);
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.06em;
+                        color: var(--color-text-tertiary);
+                      "
+                    >
+                      Loader mode
+                    </th>
+                    <th
+                      style="
+                        text-align: left;
+                        padding: var(--space-3);
+                        background: var(--color-surface-secondary);
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.06em;
+                        color: var(--color-text-tertiary);
+                      "
+                    >
+                      Size
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      Initial app load
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Orbit
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      lg / xl
+                    </td>
+                  </tr>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      Page transition
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Orbit or Bar
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      sm / md
+                    </td>
+                  </tr>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      Card content
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Skeleton
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      match layout
+                    </td>
+                  </tr>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      Form submit / Button action
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Spinner (inline)
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      button-relative
+                    </td>
+                  </tr>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      AI response generation
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Dots
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      md
+                    </td>
+                  </tr>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      File upload
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Determinate bar
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      sm / md
+                    </td>
+                  </tr>
+                  <tr
+                    style="border-bottom: 1px solid var(--color-border-subtle)"
+                  >
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      Video call connecting
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Orbit + caption
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      md / lg
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-primary);
+                        font-weight: var(--font-medium);
+                      "
+                    >
+                      Online / synced indicator
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      Pulse
+                    </td>
+                    <td
+                      style="
+                        padding: var(--space-3);
+                        color: var(--color-text-secondary);
+                      "
+                    >
+                      8px
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

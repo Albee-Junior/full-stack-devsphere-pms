@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messenger — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/messenger.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-plus"></i> Create workspace
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search projects, people, files, and more…"
+            aria-label="Global search"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <details class="dropdown">
+          <summary
+            class="btn btn--primary btn--sm topbar__create"
+            aria-haspopup="menu"
+          >
+            <i class="fa-solid fa-plus"></i><span>Create</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Create new</strong><span>In North Studio</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-folder-plus"></i> Project
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-list-check"></i> Task
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-file-lines"></i> Document
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-folder"></i> Folder
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-video"></i> Meeting
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-chalkboard"></i> Whiteboard
+            </button>
+          </div>
+        </details>
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="icon-btn icon-btn--badge"
+            aria-label="Notifications, 3 unread"
+            aria-haspopup="menu"
+          >
+            <i class="fa-regular fa-bell"></i
+            ><span class="icon-btn__badge">3</span>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu">
+            <div class="dropdown__header">
+              <strong>Notifications</strong><span>You have 3 unread</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--blue">MC</span
+              ><span
+                ><strong>Maya Chen</strong> completed "Fix login redirect
+                bug"</span
+              >
+            </button>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--teal">JR</span
+              ><span><strong>James Rivera</strong> mentioned you</span>
+            </button>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--gold">AO</span
+              ><span
+                ><strong>Amara Okafor</strong> shared "Q4 roadmap.pdf"</span
+              >
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a
+            href="messenger.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="#" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extentions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="#" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main app-main--flush" id="main">
+      <div class="messenger">
+        <!-- Conversation list -->
+        <aside class="messenger__conversations" aria-label="Conversations">
+          <div class="messenger__conv-header">
+            <div class="messenger__conv-title">
+              <span>Messages</span>
+              <button
+                type="button"
+                class="icon-btn"
+                aria-label="New conversation"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </div>
+            <label class="messenger__conv-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                placeholder="Search conversations"
+                aria-label="Search conversations"
+              />
+            </label>
+          </div>
+
+          <div class="messenger__conv-list">
+            <div class="messenger__conv-section">Pinned</div>
+
+            <button
+              type="button"
+              class="messenger__conv-item messenger__conv-item--active"
+            >
+              <span class="avatar avatar--purple">CL</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Campus Learning Portal</span>
+                  <time>2m</time>
+                </div>
+                <span class="messenger__conv-preview"
+                  ><strong>David:</strong> pushed the API changes</span
+                >
+              </div>
+              <span class="messenger__conv-unread">2</span>
+            </button>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar avatar--blue">MC</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Maya Chen</span>
+                  <time>12m</time>
+                </div>
+                <span class="messenger__conv-preview">Perfect, thanks!</span>
+              </div>
+            </button>
+
+            <div class="messenger__conv-section">Direct messages</div>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar avatar--teal avatar--status">JR</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>James Rivera</span>
+                  <time>32m</time>
+                </div>
+                <span class="messenger__conv-preview"
+                  >Will review the PR today</span
+                >
+              </div>
+            </button>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar avatar--gold">AO</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Amara Okafor</span>
+                  <time>1h</time>
+                </div>
+                <span class="messenger__conv-preview">Shared a file</span>
+              </div>
+            </button>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar avatar--pink">SA</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Sofia Alvarez</span>
+                  <time>2h</time>
+                </div>
+                <span class="messenger__conv-preview"
+                  >Sending the audit tomorrow</span
+                >
+              </div>
+            </button>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar avatar--amber">DP</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>David Park</span>
+                  <time>5h</time>
+                </div>
+                <span class="messenger__conv-preview">On it</span>
+              </div>
+            </button>
+
+            <div class="messenger__conv-section">Groups</div>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar avatar--secondary">AG</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Client Team — Apex Group</span>
+                  <time>45m</time>
+                </div>
+                <span class="messenger__conv-preview"
+                  >Proposal v2 is ready</span
+                >
+              </div>
+            </button>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar">DC</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Design Crit</span>
+                  <time>3h</time>
+                </div>
+                <span class="messenger__conv-preview"
+                  >Sofia: added new mockups</span
+                >
+              </div>
+            </button>
+
+            <button type="button" class="messenger__conv-item">
+              <span class="avatar">PS</span>
+              <div class="messenger__conv-body">
+                <div class="messenger__conv-name">
+                  <span>Product Sync</span>
+                  <time>Yesterday</time>
+                </div>
+                <span class="messenger__conv-preview"
+                  >Maya: minutes posted</span
+                >
+              </div>
+            </button>
+          </div>
+        </aside>
+
+        <!-- Thread -->
+        <section class="messenger__thread" aria-label="Current conversation">
+          <header class="messenger__thread-header">
+            <button
+              type="button"
+              class="icon-btn messenger__back"
+              data-action="toggle-thread"
+              aria-label="Back to conversations"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <span class="avatar avatar--purple">CL</span>
+            <div class="messenger__thread-info">
+              <span class="messenger__thread-name">Campus Learning Portal</span>
+              <span class="messenger__thread-meta">
+                <span class="status-dot status-dot--success"></span>
+                6 members · 3 online
+              </span>
+            </div>
+            <div class="messenger__thread-actions">
+              <button
+                type="button"
+                class="icon-btn"
+                aria-label="Start video call"
+              >
+                <i class="fa-solid fa-video"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-btn"
+                aria-label="Start voice call"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-btn"
+                aria-label="Conversation options"
+              >
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </header>
+
+          <div class="messenger__messages" role="log" aria-live="polite">
+            <div class="messenger__day-divider">Today</div>
+
+            <div class="message-group">
+              <span class="avatar avatar--sm avatar--amber">DP</span>
+              <div class="message-group__content">
+                <div class="message-group__head">
+                  <span class="message-group__name">David Park</span>
+                  <span class="message-group__time">09:42</span>
+                </div>
+                <div class="message">
+                  Pushed the v2 API endpoints to staging — ready for a review
+                  pass.
+                </div>
+                <div class="message-group__attachments">
+                  <a href="#" class="message-file">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>api-v2-changelog.md</span>
+                    <small>18 KB</small>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="message-group">
+              <span class="avatar avatar--sm avatar--blue">MC</span>
+              <div class="message-group__content">
+                <div class="message-group__head">
+                  <span class="message-group__name">Maya Chen</span>
+                  <span class="message-group__time">09:45</span>
+                </div>
+                <div class="message">
+                  Nice. I'll do a quick pass after the weekly review.
+                </div>
+              </div>
+            </div>
+
+            <div class="message-group">
+              <span class="avatar avatar--sm avatar--teal">JR</span>
+              <div class="message-group__content">
+                <div class="message-group__head">
+                  <span class="message-group__name">James Rivera</span>
+                  <span class="message-group__time">10:12</span>
+                </div>
+                <div class="message">
+                  Heads up — the accessibility audit is on the beta scope now,
+                  so we should factor that into staging too.
+                </div>
+              </div>
+            </div>
+
+            <div class="message-group message-group--own">
+              <span class="avatar avatar--sm">AK</span>
+              <div class="message-group__content">
+                <div class="message-group__head">
+                  <span class="message-group__name">You</span>
+                  <span class="message-group__time">10:14</span>
+                </div>
+                <div class="message">
+                  Agreed. Let's make sure the dashboard accessibility audit is
+                  on the list before beta goes out.
+                </div>
+              </div>
+            </div>
+
+            <div class="message-group">
+              <span class="avatar avatar--sm avatar--blue">MC</span>
+              <div class="message-group__content">
+                <div class="message-group__head">
+                  <span class="message-group__name">Maya Chen</span>
+                  <span class="message-group__time">10:16</span>
+                </div>
+                <div class="message">
+                  Added it to the Beta milestone — sub-tasks are on the task
+                  board now.
+                </div>
+              </div>
+            </div>
+
+            <div class="message-group">
+              <span class="avatar avatar--sm avatar--amber">DP</span>
+              <div class="message-group__content">
+                <div class="message-group__head">
+                  <span class="message-group__name">David Park</span>
+                  <span class="message-group__time">10:18</span>
+                </div>
+                <div class="typing-indicator" aria-label="David is typing">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="messenger__composer">
+            <div class="messenger__composer-inner">
+              <textarea
+                placeholder="Write a message…"
+                aria-label="Message"
+                rows="1"
+              ></textarea>
+              <div class="messenger__composer-tools">
+                <button type="button" class="icon-btn" aria-label="Attach file">
+                  <i class="fa-solid fa-paperclip"></i>
+                </button>
+                <button type="button" class="icon-btn" aria-label="Add emoji">
+                  <i class="fa-regular fa-face-smile"></i>
+                </button>
+                <button
+                  type="button"
+                  class="icon-btn"
+                  aria-label="Record voice message"
+                >
+                  <i class="fa-solid fa-microphone"></i>
+                </button>
+                <button
+                  type="button"
+                  class="icon-btn"
+                  aria-label="Mention someone"
+                >
+                  <i class="fa-solid fa-at"></i>
+                </button>
+                <button
+                  type="button"
+                  class="messenger__composer-send"
+                  aria-label="Send message"
+                >
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Conversation information">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Conversation</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Participants · 6</h3>
+            <a href="#" class="rp-section__action">Manage</a>
+          </div>
+          <div class="rp-participant">
+            <span class="avatar avatar--sm avatar--blue avatar--status"
+              >MC</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Maya Chen</span>
+              <span class="rp-participant__role">Project Lead · online</span>
+            </div>
+          </div>
+          <div class="rp-participant">
+            <span class="avatar avatar--sm avatar--teal avatar--status"
+              >JR</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">James Rivera</span>
+              <span class="rp-participant__role">Developer · online</span>
+            </div>
+          </div>
+          <div class="rp-participant">
+            <span class="avatar avatar--sm avatar--amber avatar--status"
+              >DP</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">David Park</span>
+              <span class="rp-participant__role">Developer · online</span>
+            </div>
+          </div>
+          <div class="rp-participant">
+            <span class="avatar avatar--sm avatar--gold">AO</span>
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Amara Okafor</span>
+              <span class="rp-participant__role">Researcher · offline</span>
+            </div>
+          </div>
+          <div class="rp-participant">
+            <span class="avatar avatar--sm avatar--pink">SA</span>
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Sofia Alvarez</span>
+              <span class="rp-participant__role">Designer · offline</span>
+            </div>
+          </div>
+          <div class="rp-participant">
+            <span class="avatar avatar--sm">AK</span>
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">You</span>
+              <span class="rp-participant__role">Product Lead</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Pinned</h3>
+          </div>
+          <div class="rp-pinned">
+            <span class="rp-pinned__author">Maya Chen</span>
+            Beta milestone scope locked — final delivery date Nov 15. See the
+            milestone in the project.
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Shared files · 4</h3>
+            <a href="file-explorer.html" class="rp-section__action">View all</a>
+          </div>
+          <div class="rp-file">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="rp-file__body">
+              <span class="rp-file__name">api-v2-changelog.md</span>
+              <span class="rp-file__meta">18 KB · David · today</span>
+            </div>
+          </div>
+          <div class="rp-file">
+            <i class="fa-solid fa-file-pdf"></i>
+            <div class="rp-file__body">
+              <span class="rp-file__name">beta-scope.pdf</span>
+              <span class="rp-file__meta">240 KB · Maya · 2 days ago</span>
+            </div>
+          </div>
+          <div class="rp-file">
+            <i class="fa-solid fa-file-image"></i>
+            <div class="rp-file__body">
+              <span class="rp-file__name">dashboard-v3-mockup.png</span>
+              <span class="rp-file__meta">420 KB · Sofia · last week</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="#" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a
+        href="messenger.html"
+        class="mobile-nav__item mobile-nav__item--active"
+        aria-current="page"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

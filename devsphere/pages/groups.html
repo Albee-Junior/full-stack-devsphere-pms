@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groups — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/groups.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search groups…"
+            aria-label="Search groups"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="icon-btn icon-btn--badge"
+            aria-label="Notifications, 3 unread"
+            aria-haspopup="menu"
+          >
+            <i class="fa-regular fa-bell"></i
+            ><span class="icon-btn__badge">3</span>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu">
+            <div class="dropdown__header">
+              <strong>Notifications</strong><span>You have 3 unread</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--blue">MC</span
+              ><span
+                ><strong>Frontend Development</strong> has a new
+                discussion</span
+              >
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a
+            href="groups.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">Groups</span>
+            </nav>
+            <h1 class="page-title">Groups</h1>
+            <p class="page-subtitle">
+              Organize people around shared goals, interests, and projects.
+            </p>
+          </div>
+          <div class="page-actions">
+            <button type="button" class="btn btn--primary btn--sm">
+              <i class="fa-solid fa-plus"></i> Create group
+            </button>
+          </div>
+        </header>
+
+        <nav class="groups-tabs" aria-label="Groups sections">
+          <button
+            type="button"
+            class="groups-tab groups-tab--active"
+            aria-current="page"
+          >
+            My groups
+          </button>
+          <button type="button" class="groups-tab">Discover</button>
+          <button type="button" class="groups-tab">Invitations</button>
+        </nav>
+
+        <div class="groups-grid">
+          <article class="group-card">
+            <div class="group-card__head">
+              <span class="group-card__icon">FD</span>
+              <div class="group-card__title-block">
+                <h2 class="group-card__name">Frontend Development</h2>
+                <div class="group-card__meta">
+                  <span class="status-dot status-dot--success"></span>
+                  <span>1,240 members</span>
+                  <span class="dot"></span>
+                  <span>12 active now</span>
+                </div>
+              </div>
+            </div>
+            <p class="group-card__desc">
+              A group for engineers working on browser-based products. Weekly
+              code reviews, architecture discussions, and shared patterns for
+              performance and accessibility.
+            </p>
+            <div class="group-card__tags">
+              <span class="group-card__tag">#frontend</span>
+              <span class="group-card__tag">#performance</span>
+              <span class="group-card__tag">#a11y</span>
+            </div>
+            <div class="group-card__footer">
+              <div class="group-card__stats">
+                <span><i class="fa-solid fa-comment"></i> 48 discussions</span>
+                <span><i class="fa-solid fa-folder"></i> 6 projects</span>
+              </div>
+              <a href="#" class="btn btn--secondary btn--sm">Open</a>
+            </div>
+          </article>
+
+          <article class="group-card">
+            <div class="group-card__head">
+              <span class="group-card__icon group-card__icon--blue">PD</span>
+              <div class="group-card__title-block">
+                <h2 class="group-card__name">Product Design Study</h2>
+                <div class="group-card__meta">
+                  <span class="status-dot status-dot--success"></span>
+                  <span>820 members</span>
+                  <span class="dot"></span>
+                  <span>8 active now</span>
+                </div>
+              </div>
+            </div>
+            <p class="group-card__desc">
+              Reading group and design critique circle. We meet every other
+              Thursday to review work and discuss design systems, research
+              methods, and product thinking.
+            </p>
+            <div class="group-card__tags">
+              <span class="group-card__tag">#design</span>
+              <span class="group-card__tag">#research</span>
+              <span class="group-card__tag">#study</span>
+            </div>
+            <div class="group-card__footer">
+              <div class="group-card__stats">
+                <span><i class="fa-solid fa-comment"></i> 24 discussions</span>
+                <span><i class="fa-solid fa-calendar"></i> Bi-weekly</span>
+              </div>
+              <a href="#" class="btn btn--secondary btn--sm">Open</a>
+            </div>
+          </article>
+
+          <article class="group-card">
+            <div class="group-card__head">
+              <span class="group-card__icon group-card__icon--gold">FC</span>
+              <div class="group-card__title-block">
+                <h2 class="group-card__name">Freelance Collective</h2>
+                <div class="group-card__meta">
+                  <span class="status-dot status-dot--success"></span>
+                  <span>640 members</span>
+                  <span class="dot"></span>
+                  <span>5 active now</span>
+                </div>
+              </div>
+            </div>
+            <p class="group-card__desc">
+              For independent designers, developers, and writers. Share client
+              leads, contract templates, pricing strategies, and the occasional
+              rant about scope creep.
+            </p>
+            <div class="group-card__tags">
+              <span class="group-card__tag">#freelancing</span>
+              <span class="group-card__tag">#clients</span>
+              <span class="group-card__tag">#business</span>
+            </div>
+            <div class="group-card__footer">
+              <div class="group-card__stats">
+                <span><i class="fa-solid fa-comment"></i> 92 discussions</span>
+                <span><i class="fa-solid fa-folder"></i> 4 projects</span>
+              </div>
+              <a href="#" class="btn btn--secondary btn--sm">Open</a>
+            </div>
+          </article>
+
+          <article class="group-card">
+            <div class="group-card__head">
+              <span class="group-card__icon group-card__icon--green">AI</span>
+              <div class="group-card__title-block">
+                <h2 class="group-card__name">AI &amp; Automation</h2>
+                <div class="group-card__meta">
+                  <span class="status-dot status-dot--success"></span>
+                  <span>1,120 members</span>
+                  <span class="dot"></span>
+                  <span>18 active now</span>
+                </div>
+              </div>
+            </div>
+            <p class="group-card__desc">
+              Practical exploration of AI tooling, prompt patterns, and workflow
+              automation. Weekly newsletter with curated links and hands-on
+              experiments.
+            </p>
+            <div class="group-card__tags">
+              <span class="group-card__tag">#ai</span>
+              <span class="group-card__tag">#automation</span>
+              <span class="group-card__tag">#productivity</span>
+            </div>
+            <div class="group-card__footer">
+              <div class="group-card__stats">
+                <span><i class="fa-solid fa-comment"></i> 156 discussions</span>
+                <span><i class="fa-solid fa-folder"></i> 3 projects</span>
+              </div>
+              <a href="#" class="btn btn--secondary btn--sm">Open</a>
+            </div>
+          </article>
+
+          <article class="group-card">
+            <div class="group-card__head">
+              <span
+                class="group-card__icon"
+                style="
+                  background: var(--color-surface-tertiary);
+                  color: var(--color-text-secondary);
+                "
+                >NU</span
+              >
+              <div class="group-card__title-block">
+                <h2 class="group-card__name">North Studio Team</h2>
+                <div class="group-card__meta">
+                  <span class="status-dot status-dot--success"></span>
+                  <span>12 members</span>
+                  <span class="dot"></span>
+                  <span>Private</span>
+                </div>
+              </div>
+            </div>
+            <p class="group-card__desc">
+              Internal group for North Studio teammates. Weekly status, shared
+              docs, and coordination across projects.
+            </p>
+            <div class="group-card__footer">
+              <div class="group-card__stats">
+                <span><i class="fa-solid fa-comment"></i> 32 discussions</span>
+                <span><i class="fa-solid fa-folder"></i> 6 projects</span>
+              </div>
+              <a href="#" class="btn btn--secondary btn--sm">Open</a>
+            </div>
+          </article>
+
+          <article class="group-card">
+            <div class="group-card__head">
+              <span
+                class="group-card__icon"
+                style="
+                  background: var(--color-surface-tertiary);
+                  color: var(--color-text-secondary);
+                "
+                >CS</span
+              >
+              <div class="group-card__title-block">
+                <h2 class="group-card__name">CSS Workshop</h2>
+                <div class="group-card__meta">
+                  <span class="status-dot status-dot--success"></span>
+                  <span>460 members</span>
+                  <span class="dot"></span>
+                  <span>3 active now</span>
+                </div>
+              </div>
+            </div>
+            <p class="group-card__desc">
+              Deep dives into modern CSS — container queries, cascade layers,
+              scroll-driven animations, and layout patterns that hold up in
+              production.
+            </p>
+            <div class="group-card__tags">
+              <span class="group-card__tag">#css</span>
+              <span class="group-card__tag">#layout</span>
+              <span class="group-card__tag">#animation</span>
+            </div>
+            <div class="group-card__footer">
+              <div class="group-card__stats">
+                <span><i class="fa-solid fa-comment"></i> 38 discussions</span>
+                <span><i class="fa-solid fa-folder"></i> 2 projects</span>
+              </div>
+              <a href="#" class="btn btn--secondary btn--sm">Open</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Groups context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Groups</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">Categories</h3>
+          <div class="rp-actions" style="grid-template-columns: 1fr">
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-code"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                Development</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >42</span
+              >
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-pen-ruler"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                Design</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >28</span
+              >
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-briefcase"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                Freelancing</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >22</span
+              >
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-wand-magic-sparkles"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                AI &amp; Automation</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >17</span
+              >
+            </button>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Suggested for you</h3>
+          </div>
+          <div class="rp-participant">
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-secondary-soft);
+                color: var(--color-secondary-hover);
+                border-radius: var(--radius-md);
+              "
+              >CS</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">CSS Workshop</span>
+              <span class="rp-participant__role">460 members</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm">
+              Join
+            </button>
+          </div>
+          <div class="rp-participant">
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-accent-soft);
+                color: var(--color-accent-hover);
+                border-radius: var(--radius-md);
+              "
+              >RS</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">React Systems</span>
+              <span class="rp-participant__role">890 members</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm">
+              Join
+            </button>
+          </div>
+          <div class="rp-participant">
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-primary-soft);
+                color: var(--color-primary-700);
+                border-radius: var(--radius-md);
+              "
+              >TW</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Tech Writing</span>
+              <span class="rp-participant__role">320 members</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm">
+              Join
+            </button>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Group guidelines</h3>
+          <ul
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--space-2);
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+              line-height: 1.55;
+            "
+          >
+            <li>Respect others' time — search before posting.</li>
+            <li>Keep discussions on topic for the group.</li>
+            <li>Invite thoughtfully — most groups allow open joins.</li>
+          </ul>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

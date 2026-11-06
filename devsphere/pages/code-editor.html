@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard.tsx — Code Editor — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/code-editor.css" />
+  </head>
+  <body class="app is-sidebar-collapsed">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ============ TOPBAR ============ -->
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Expand sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a
+          href="../index.html"
+          class="topbar__brand"
+          aria-label="DevSphere home"
+        >
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-symbol.svg"
+            alt=""
+            width="26"
+            height="26"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-symbol-dark.svg"
+            alt=""
+            width="26"
+            height="26"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search files, symbols, commands…"
+            aria-label="Search code"
+          />
+          <kbd>Ctrl P</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a
+            href="code-editor.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+            ><i class="fa-solid fa-code"></i
+            ><span class="sidebar__link-label">Code Editor</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pri" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN — CODE EDITOR ============ -->
+    <main class="app-main app-main--flush" id="main">
+      <div class="code-editor">
+        <!-- Header -->
+        <header class="code-editor__header">
+          <div class="code-editor__title-block">
+            <span class="code-editor__title">
+              <i class="fa-solid fa-code"></i>
+              Campus Learning Portal
+            </span>
+            <div class="code-editor__meta">
+              <span>src / components / Dashboard.tsx</span>
+              <span class="dot"></span>
+              <span>TypeScript React</span>
+            </div>
+          </div>
+
+          <div class="code-editor__actions">
+            <span class="ce-save">
+              <i class="fa-solid fa-check-circle"></i> All changes saved
+            </span>
+            <button
+              type="button"
+              class="ce-branch"
+              aria-label="Branch: main, 3 changes"
+            >
+              <i class="fa-solid fa-code-branch"></i>
+              main
+              <span class="ce-branch__changes">3 changes</span>
+            </button>
+            <button type="button" class="btn btn--secondary btn--sm">
+              <i class="fa-solid fa-share-nodes"></i> Share
+            </button>
+            <button type="button" class="btn btn--primary btn--sm">
+              <i class="fa-solid fa-play"></i> Run
+            </button>
+            <button type="button" class="icon-btn" aria-label="Editor options">
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Body -->
+        <div class="code-editor__body">
+          <!-- File tree -->
+          <aside class="code-editor__tree" aria-label="Project files">
+            <div class="ce-tree__header">
+              <span>Explorer</span>
+              <button
+                type="button"
+                class="icon-btn"
+                aria-label="New file"
+                style="width: 22px; height: 22px; font-size: 10px"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+
+            <div class="ce-tree__body">
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-0 ce-tree__item--folder"
+              >
+                <i class="fa-solid fa-chevron-down ce-tree__chevron"></i>
+                <i
+                  class="fa-solid fa-folder-open ce-tree__icon ce-tree__icon--folder"
+                ></i>
+                <span class="ce-tree__name">campus-portal</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-1 ce-tree__item--folder"
+              >
+                <i class="fa-solid fa-chevron-down ce-tree__chevron"></i>
+                <i
+                  class="fa-solid fa-folder-open ce-tree__icon ce-tree__icon--folder"
+                ></i>
+                <span class="ce-tree__name">src</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-2 ce-tree__item--folder"
+              >
+                <i class="fa-solid fa-chevron-down ce-tree__chevron"></i>
+                <i
+                  class="fa-solid fa-folder-open ce-tree__icon ce-tree__icon--folder"
+                ></i>
+                <span class="ce-tree__name">components</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-3 ce-tree__item--active"
+              >
+                <i
+                  class="fa-solid fa-chevron-right ce-tree__chevron"
+                  style="opacity: 0"
+                ></i>
+                <i
+                  class="fa-solid fa-file-code ce-tree__icon ce-tree__icon--tsx"
+                ></i>
+                <span class="ce-tree__name">Dashboard.tsx</span>
+                <span class="ce-tree__badge ce-tree__badge--M" title="Modified"
+                  >M</span
+                >
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-3"
+              >
+                <i
+                  class="fa-solid fa-chevron-right ce-tree__chevron"
+                  style="opacity: 0"
+                ></i>
+                <i
+                  class="fa-solid fa-file-code ce-tree__icon ce-tree__icon--tsx"
+                ></i>
+                <span class="ce-tree__name">DashboardHeader.tsx</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-3"
+              >
+                <i
+                  class="fa-solid fa-chevron-right ce-tree__chevron"
+                  style="opacity: 0"
+                ></i>
+                <i
+                  class="fa-solid fa-file-code ce-tree__icon ce-tree__icon--tsx"
+                ></i>
+                <span class="ce-tree__name">ProjectCard.tsx</span>
+                <span class="ce-tree__badge ce-tree__badge--A" title="Added"
+                  >A</span
+                >
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-2 ce-tree__item--folder"
+              >
+                <i class="fa-solid fa-chevron-right ce-tree__chevron"></i>
+                <i
+                  class="fa-solid fa-folder ce-tree__icon ce-tree__icon--folder"
+                ></i>
+                <span class="ce-tree__name">ui</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-2 ce-tree__item--folder"
+              >
+                <i class="fa-solid fa-chevron-right ce-tree__chevron"></i>
+                <i
+                  class="fa-solid fa-folder ce-tree__icon ce-tree__icon--folder"
+                ></i>
+                <span class="ce-tree__name">api</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-2 ce-tree__item--folder"
+              >
+                <i class="fa-solid fa-chevron-right ce-tree__chevron"></i>
+                <i
+                  class="fa-solid fa-folder ce-tree__icon ce-tree__icon--folder"
+                ></i>
+                <span class="ce-tree__name">types</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-1"
+              >
+                <i
+                  class="fa-solid fa-chevron-right ce-tree__chevron"
+                  style="opacity: 0"
+                ></i>
+                <i
+                  class="fa-solid fa-file-code ce-tree__icon ce-tree__icon--ts"
+                ></i>
+                <span class="ce-tree__name">package.json</span>
+              </button>
+
+              <button
+                type="button"
+                class="ce-tree__item ce-tree__item--depth-1"
+              >
+                <i
+                  class="fa-solid fa-chevron-right ce-tree__chevron"
+                  style="opacity: 0"
+                ></i>
+                <i
+                  class="fa-solid fa-file-lines ce-tree__icon ce-tree__icon--md"
+                ></i>
+                <span class="ce-tree__name">README.md</span>
+              </button>
+            </div>
+          </aside>
+
+          <!-- Main editor column -->
+          <div class="code-editor__main">
+            <!-- Tabs -->
+            <div class="ce-tabs" role="tablist" aria-label="Open files">
+              <button
+                type="button"
+                class="ce-tab ce-tab--active"
+                role="tab"
+                aria-selected="true"
+              >
+                <i
+                  class="fa-solid fa-file-code ce-tab__icon ce-tab__icon--tsx"
+                ></i>
+                Dashboard.tsx
+                <span class="ce-tab__dirty" aria-label="Unsaved changes"></span>
+                <button
+                  type="button"
+                  class="ce-tab__close"
+                  aria-label="Close Dashboard.tsx"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </button>
+              <button
+                type="button"
+                class="ce-tab"
+                role="tab"
+                aria-selected="false"
+              >
+                <i
+                  class="fa-solid fa-file-code ce-tab__icon ce-tab__icon--tsx"
+                ></i>
+                ProjectCard.tsx
+                <button
+                  type="button"
+                  class="ce-tab__close"
+                  aria-label="Close ProjectCard.tsx"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </button>
+              <button
+                type="button"
+                class="ce-tab"
+                role="tab"
+                aria-selected="false"
+              >
+                <i
+                  class="fa-solid fa-file-code ce-tab__icon ce-tab__icon--ts"
+                ></i>
+                projects.ts
+                <button
+                  type="button"
+                  class="ce-tab__close"
+                  aria-label="Close projects.ts"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </button>
+              <button
+                type="button"
+                class="ce-tab"
+                role="tab"
+                aria-selected="false"
+              >
+                <i
+                  class="fa-solid fa-file-code ce-tab__icon ce-tab__icon--ts"
+                ></i>
+                types.ts
+                <button
+                  type="button"
+                  class="ce-tab__close"
+                  aria-label="Close types.ts"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </button>
+            </div>
+
+            <!-- Editor + terminal split -->
+            <div class="ce-editor-split">
+              <!-- Code area -->
+              <div class="ce-code">
+                <div class="ce-code__scroll">
+                  <div class="ce-code__content">
+                    <!-- Line numbers -->
+                    <div class="ce-code__gutter" aria-hidden="true">
+                      <span>1</span><span>2</span><span>3</span><span>4</span
+                      ><span>5</span> <span>6</span><span>7</span
+                      ><span class="is-active">8</span><span>9</span
+                      ><span>10</span> <span>11</span><span>12</span
+                      ><span>13</span><span>14</span><span>15</span>
+                      <span>16</span><span>17</span><span>18</span
+                      ><span>19</span><span>20</span> <span>21</span
+                      ><span>22</span><span>23</span><span>24</span
+                      ><span>25</span> <span>26</span><span>27</span
+                      ><span>28</span><span>29</span><span>30</span>
+                      <span>31</span><span>32</span>
+                    </div>
+
+                    <!-- Code -->
+                    <div
+                      class="ce-code__lines"
+                      role="code"
+                      aria-label="Dashboard.tsx source"
+                    >
+                      <span class="ce-code__line"
+                        ><span class="tok-keyword">import</span>
+                        <span class="tok-punct">{</span>
+                        <span class="tok-const">useState</span
+                        ><span class="tok-punct">,</span>
+                        <span class="tok-const">useEffect</span>
+                        <span class="tok-punct">}</span>
+                        <span class="tok-keyword">from</span>
+                        <span class="tok-string">'react'</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line"
+                        ><span class="tok-keyword">import</span>
+                        <span class="tok-punct">{</span>
+                        <span class="tok-type">DashboardHeader</span>
+                        <span class="tok-punct">}</span>
+                        <span class="tok-keyword">from</span>
+                        <span class="tok-string">'./DashboardHeader'</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line"
+                        ><span class="tok-keyword">import</span>
+                        <span class="tok-punct">{</span>
+                        <span class="tok-type">ProjectCard</span>
+                        <span class="tok-punct">}</span>
+                        <span class="tok-keyword">from</span>
+                        <span class="tok-string">'../ui/ProjectCard'</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line"
+                        ><span class="tok-keyword">import</span>
+                        <span class="tok-punct">{</span>
+                        <span class="tok-fn">fetchProjects</span>
+                        <span class="tok-punct">}</span>
+                        <span class="tok-keyword">from</span>
+                        <span class="tok-string">'@/api/projects'</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line"
+                        ><span class="tok-keyword">import</span>
+                        <span class="tok-keyword">type</span>
+                        <span class="tok-punct">{</span>
+                        <span class="tok-type">Project</span>
+                        <span class="tok-punct">}</span>
+                        <span class="tok-keyword">from</span>
+                        <span class="tok-string">'@/types'</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line"></span>
+
+                      <span class="ce-code__line"
+                        ><span class="tok-keyword">export</span>
+                        <span class="tok-keyword">function</span>
+                        <span class="tok-fn">Dashboard</span
+                        ><span class="tok-punct">() {</span></span
+                      >
+
+                      <span class="ce-code__line is-active">
+                        <span class="tok-keyword">const</span>
+                        <span class="tok-punct">[</span
+                        ><span class="tok-var">projects</span
+                        ><span class="tok-punct">, </span
+                        ><span class="tok-var">setProjects</span
+                        ><span class="tok-punct">] = </span
+                        ><span class="tok-const">useState</span
+                        ><span class="tok-punct">&lt;</span
+                        ><span class="tok-type">Project</span
+                        ><span class="tok-punct">[]&gt;([])</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-keyword">const</span>
+                        <span class="tok-punct">[</span
+                        ><span class="tok-var">isLoading</span
+                        ><span class="tok-punct">, </span
+                        ><span class="tok-var">setIsLoading</span
+                        ><span class="tok-punct">] = </span
+                        ><span class="tok-const">useState</span
+                        ><span class="tok-punct">(</span
+                        ><span class="tok-keyword">true</span
+                        ><span class="tok-punct">)</span
+                        ><span class="tok-punct">;</span></span
+                      >
+
+                      <span class="ce-code__line"></span>
+
+                      <span class="ce-code__line">
+                        <span class="tok-const">useEffect</span
+                        ><span class="tok-punct">(() =&gt; {</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-fn">fetchProjects</span
+                        ><span class="tok-punct">().then((</span
+                        ><span class="tok-var">data</span
+                        ><span class="tok-punct">) =&gt; {</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-var">setProjects</span
+                        ><span class="tok-punct">(</span
+                        ><span class="tok-var">data</span
+                        ><span class="tok-punct">);</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-var">setIsLoading</span
+                        ><span class="tok-punct">(</span
+                        ><span class="tok-keyword">false</span
+                        ><span class="tok-punct">);</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">});</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">}, []);</span></span
+                      >
+
+                      <span class="ce-code__line"></span>
+
+                      <span class="ce-code__line">
+                        <span class="tok-keyword">if</span>
+                        <span class="tok-punct">(</span
+                        ><span class="tok-var">isLoading</span
+                        ><span class="tok-punct">) {</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-keyword">return</span>
+                        <span class="tok-punct">&lt;</span
+                        ><span class="tok-tag">DashboardSkeleton</span>
+                        <span class="tok-punct">/&gt;;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">}</span></span
+                      >
+
+                      <span class="ce-code__line"></span>
+
+                      <span class="ce-code__line">
+                        <span class="tok-keyword">return</span>
+                        <span class="tok-punct">(</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">&lt;</span
+                        ><span class="tok-tag">div</span>
+                        <span class="tok-attr">className</span
+                        ><span class="tok-punct">=</span
+                        ><span class="tok-string">"dashboard"</span
+                        ><span class="tok-punct">&gt;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">&lt;</span
+                        ><span class="tok-tag">DashboardHeader</span>
+                        <span class="tok-punct">/&gt;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">&lt;</span
+                        ><span class="tok-tag">div</span>
+                        <span class="tok-attr">className</span
+                        ><span class="tok-punct">=</span
+                        ><span class="tok-string">"dashboard__stats"</span
+                        ><span class="tok-punct">&gt;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">{</span
+                        ><span class="tok-var">projects</span
+                        ><span class="tok-punct">.</span
+                        ><span class="tok-fn">map</span
+                        ><span class="tok-punct">((</span
+                        ><span class="tok-var">project</span
+                        ><span class="tok-punct">) =&gt; (</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">&lt;</span
+                        ><span class="tok-tag">ProjectCard</span>
+                        <span class="tok-attr">key</span
+                        ><span class="tok-punct">={</span
+                        ><span class="tok-var">project</span
+                        ><span class="tok-punct">.</span
+                        ><span class="tok-prop">id</span
+                        ><span class="tok-punct">}</span>
+                        <span class="tok-attr">project</span
+                        ><span class="tok-punct">={</span
+                        ><span class="tok-var">project</span
+                        ><span class="tok-punct">} /&gt;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">))}</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">&lt;/</span
+                        ><span class="tok-tag">div</span
+                        ><span class="tok-punct">&gt;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">&lt;/</span
+                        ><span class="tok-tag">div</span
+                        ><span class="tok-punct">&gt;</span></span
+                      >
+
+                      <span class="ce-code__line">
+                        <span class="tok-punct">);</span></span
+                      >
+
+                      <span class="ce-code__line"
+                        ><span class="tok-punct">}</span></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terminal -->
+              <div class="ce-terminal">
+                <div
+                  class="ce-terminal__tabs"
+                  role="tablist"
+                  aria-label="Panel tabs"
+                >
+                  <button
+                    type="button"
+                    class="ce-terminal__tab ce-terminal__tab--active"
+                    role="tab"
+                    aria-selected="true"
+                  >
+                    Terminal
+                  </button>
+                  <button
+                    type="button"
+                    class="ce-terminal__tab"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Problems
+                  </button>
+                  <button
+                    type="button"
+                    class="ce-terminal__tab"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Output
+                  </button>
+                  <span class="ce-terminal__spacer"></span>
+                  <button
+                    type="button"
+                    class="icon-btn"
+                    aria-label="Terminal options"
+                    style="width: 24px; height: 24px; font-size: 10px"
+                  >
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="icon-btn"
+                    aria-label="Close terminal"
+                    style="width: 24px; height: 24px; font-size: 10px"
+                  >
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+                <div class="ce-terminal__body">
+                  <span class="term-prompt">$</span>
+                  <span class="term-cmd">npm run dev</span>
+
+                  <span class="term-muted"
+                    >&gt; campus-learning-portal@0.3.0 dev</span
+                  >
+                  <span class="term-muted">&gt; vite</span>
+
+                  <span class="term-success">VITE v5.0.10</span>
+                  <span class="term-success">ready in 412 ms</span>
+
+                  <span class="term-success">➜</span>
+                  <span class="term-muted">Local:</span>
+                  <span class="term-info">http://localhost:5173/</span>
+                  <span class="term-success">➜</span>
+                  <span class="term-muted">Network:</span> use
+                  <span class="term-info">--host</span> to expose
+
+                  <span class="term-prompt">$</span> ▍
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status bar -->
+        <footer class="ce-statusbar">
+          <span><i class="fa-solid fa-code-branch"></i> main</span>
+          <span
+            ><i
+              class="fa-solid fa-circle"
+              style="font-size: 6px; color: #86efac"
+            ></i>
+            0 problems</span
+          >
+          <span class="ce-statusbar__right">
+            <span>Ln 8, Col 14</span>
+            <span>Spaces: 2</span>
+            <span>UTF-8</span>
+            <span>TypeScript React</span>
+            <span><i class="fa-regular fa-bell"></i></span>
+          </span>
+        </footer>
+      </div>
+    </main>
+
+    <!-- ============ RIGHT PANEL ============ -->
+    <aside class="right-panel" aria-label="Editor context">
+      <header class="right-panel__header" style="padding: var(--space-3)">
+        <div class="rp-tabs" data-rp-tabs>
+          <button
+            type="button"
+            class="rp-tab is-active"
+            data-rp-tab="outline"
+            aria-selected="true"
+          >
+            Outline
+          </button>
+          <button
+            type="button"
+            class="rp-tab"
+            data-rp-tab="changes"
+            aria-selected="false"
+          >
+            Changes
+          </button>
+          <button
+            type="button"
+            class="rp-tab"
+            data-rp-tab="problems"
+            aria-selected="false"
+          >
+            Problems
+          </button>
+        </div>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <!-- Outline -->
+        <div data-rp-panel="outline">
+          <h3 class="rp-section__title" style="margin-bottom: var(--space-2)">
+            Dashboard.tsx
+          </h3>
+          <div class="ce-outline">
+            <button type="button" class="ce-outline__item">
+              <i class="fa-solid fa-file-import"></i>
+              <span>imports (5)</span>
+            </button>
+            <button type="button" class="ce-outline__item">
+              <i class="fa-solid fa-cube"></i>
+              <span>Dashboard</span>
+            </button>
+            <button
+              type="button"
+              class="ce-outline__item ce-outline__item--sub"
+            >
+              <i class="fa-solid fa-circle" style="font-size: 6px"></i>
+              <span>projects</span>
+            </button>
+            <button
+              type="button"
+              class="ce-outline__item ce-outline__item--sub"
+            >
+              <i class="fa-solid fa-circle" style="font-size: 6px"></i>
+              <span>isLoading</span>
+            </button>
+            <button
+              type="button"
+              class="ce-outline__item ce-outline__item--sub"
+            >
+              <i class="fa-solid fa-bolt"></i>
+              <span>useEffect</span>
+            </button>
+            <button
+              type="button"
+              class="ce-outline__item ce-outline__item--sub"
+            >
+              <i class="fa-solid fa-code"></i>
+              <span>return</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Changes -->
+        <div data-rp-panel="changes" hidden>
+          <h3 class="rp-section__title" style="margin-bottom: var(--space-2)">
+            Working tree · 3 changes
+          </h3>
+          <div class="ce-git">
+            <div class="ce-git__file">
+              <i
+                class="fa-solid fa-pen"
+                style="color: var(--color-warning)"
+              ></i>
+              <span>Dashboard.tsx</span>
+              <span class="ce-git__stat">
+                <span class="add">+3</span>
+                <span class="del">−1</span>
+              </span>
+            </div>
+            <div class="ce-git__file">
+              <i
+                class="fa-solid fa-plus"
+                style="color: var(--color-success)"
+              ></i>
+              <span>ProjectCard.tsx</span>
+              <span class="ce-git__stat"><span class="add">+42</span></span>
+            </div>
+            <div class="ce-git__file">
+              <i
+                class="fa-solid fa-pen"
+                style="color: var(--color-warning)"
+              ></i>
+              <span>projects.ts</span>
+              <span class="ce-git__stat">
+                <span class="add">+2</span>
+                <span class="del">−2</span>
+              </span>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn--primary btn--sm btn--block"
+            style="margin-top: var(--space-3)"
+          >
+            <i class="fa-solid fa-arrow-up-from-bracket"></i> Commit &amp; push
+          </button>
+        </div>
+
+        <!-- Problems -->
+        <div data-rp-panel="problems" hidden>
+          <div class="rp-empty" style="padding: var(--space-10) var(--space-3)">
+            <i
+              class="fa-solid fa-circle-check"
+              style="color: var(--color-success)"
+            ></i>
+            <span
+              style="
+                font-size: var(--text-sm);
+                color: var(--color-text-primary);
+                font-weight: var(--font-medium);
+              "
+              >No problems detected</span
+            >
+            <span>TypeScript and linting checks are clean.</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Mobile nav -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <!-- Page-specific interactions -->
+    <script>
+      (function () {
+        "use strict";
+
+        const editor = document.querySelector(".code-editor");
+        if (!editor) return;
+
+        /* File tab switching (visual only — content is fixed demo) */
+        editor.querySelectorAll(".ce-tab").forEach((tab) => {
+          tab.addEventListener("click", (e) => {
+            if (e.target.closest(".ce-tab__close")) return;
+            editor.querySelectorAll(".ce-tab").forEach((t) => {
+              t.classList.remove("ce-tab--active");
+              t.setAttribute("aria-selected", "false");
+            });
+            tab.classList.add("ce-tab--active");
+            tab.setAttribute("aria-selected", "true");
+          });
+        });
+
+        /* File tree selection */
+        editor
+          .querySelectorAll(".ce-tree__item:not(.ce-tree__item--folder)")
+          .forEach((item) => {
+            item.addEventListener("click", () => {
+              editor
+                .querySelectorAll(".ce-tree__item")
+                .forEach((i) => i.classList.remove("ce-tree__item--active"));
+              item.classList.add("ce-tree__item--active");
+            });
+          });
+
+        /* Terminal tab switching */
+        editor.querySelectorAll(".ce-terminal__tab").forEach((tab) => {
+          tab.addEventListener("click", () => {
+            editor.querySelectorAll(".ce-terminal__tab").forEach((t) => {
+              t.classList.remove("ce-terminal__tab--active");
+              t.setAttribute("aria-selected", "false");
+            });
+            tab.classList.add("ce-terminal__tab--active");
+            tab.setAttribute("aria-selected", "true");
+          });
+        });
+      })();
+    </script>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

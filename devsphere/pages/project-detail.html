@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Learning Portal — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/projects.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search projects, people, files, and more…"
+            aria-label="Global search"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <details class="dropdown">
+          <summary
+            class="btn btn--primary btn--sm topbar__create"
+            aria-haspopup="menu"
+          >
+            <i class="fa-solid fa-plus"></i><span>Create</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Create new</strong><span>In this project</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-list-check"></i> Task
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-flag"></i> Milestone
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-file-lines"></i> Document
+            </button>
+          </div>
+        </details>
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="icon-btn icon-btn--badge"
+            aria-label="Notifications, 3 unread"
+            aria-haspopup="menu"
+          >
+            <i class="fa-regular fa-bell"></i
+            ><span class="icon-btn__badge">3</span>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu">
+            <div class="dropdown__header">
+              <strong>Notifications</strong><span>You have 3 unread</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--blue">MC</span
+              ><span
+                ><strong>Maya Chen</strong> completed "Fix login redirect
+                bug"</span
+              >
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a
+            href="projects.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="true"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extentions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main app-main--flush" id="main">
+      <div class="project">
+        <!-- ===== Slimmed contextual project header ===== -->
+        <header class="project__header">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="dashboard.html">North Studio</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="projects.html">Projects</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span aria-current="page">Campus Learning Portal</span>
+          </nav>
+
+          <div class="project__top">
+            <span class="project__icon"
+              ><i class="fa-solid fa-graduation-cap"></i
+            ></span>
+            <div class="project__title-block">
+              <h1 class="project__title">
+                Campus Learning Portal
+                <span class="badge badge--success">On track</span>
+              </h1>
+              <p class="project__subtitle">
+                Learning platform for Ashford University
+              </p>
+            </div>
+            <div class="project__actions">
+              <div class="avatar-group avatar-group--xs" aria-label="5 members">
+                <span class="avatar avatar--xs avatar--blue">MC</span>
+                <span class="avatar avatar--xs">AK</span>
+                <span class="avatar avatar--xs avatar--teal">JR</span>
+                <span class="avatar avatar--xs avatar--amber">DP</span>
+                <span class="avatar avatar--xs avatar--gold">AO</span>
+              </div>
+              <button type="button" class="btn btn--secondary btn--sm">
+                <i class="fa-solid fa-user-plus"></i> <span>Invite</span>
+              </button>
+              <a
+                href="ai-project-workspace.html"
+                class="btn btn--secondary btn--sm"
+              >
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+              </a>
+              <button type="button" class="btn btn--primary btn--sm">
+                <i class="fa-solid fa-plus"></i> <span>New task</span>
+              </button>
+              <button
+                type="button"
+                class="icon-btn"
+                aria-label="Project options"
+              >
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Sub-navigation -->
+        <nav class="project__tabs" aria-label="Project sections">
+          <button
+            type="button"
+            class="project__tab project__tab--active"
+            aria-current="page"
+          >
+            <i class="fa-solid fa-chart-pie"></i> Overview
+          </button>
+          <button type="button" class="project__tab">
+            <i class="fa-solid fa-list-check"></i> Tasks
+            <span class="count">24</span>
+          </button>
+          <button type="button" class="project__tab">
+            <i class="fa-solid fa-timeline"></i> Timeline
+          </button>
+          <button type="button" class="project__tab">
+            <i class="fa-solid fa-folder"></i> Files
+            <span class="count">18</span>
+          </button>
+          <button type="button" class="project__tab">
+            <i class="fa-solid fa-comments"></i> Discussions
+            <span class="count">6</span>
+          </button>
+          <button type="button" class="project__tab">
+            <i class="fa-solid fa-wave-square"></i> Activity
+          </button>
+        </nav>
+
+        <!-- Body: Overview tab -->
+        <div class="project__body">
+          <div class="project__grid">
+            <!-- Left column -->
+            <div class="project__col">
+              <!-- Summary -->
+              <section class="project-summary">
+                <p class="project-summary__desc">
+                  A learning platform for Ashford University — course modules,
+                  assignments, discussion boards, and an AI tutor. Currently in
+                  beta scope definition. The beta release is the key milestone
+                  this cycle; public launch follows in December.
+                </p>
+                <div class="project-summary__metrics">
+                  <div class="project-summary__metric">
+                    <span class="project-summary__metric-label">Progress</span>
+                    <span class="project-summary__metric-value"
+                      >72<small>%</small></span
+                    >
+                  </div>
+                  <div class="project-summary__metric">
+                    <span class="project-summary__metric-label">Tasks</span>
+                    <span class="project-summary__metric-value">24</span>
+                  </div>
+                  <div class="project-summary__metric">
+                    <span class="project-summary__metric-label">Completed</span>
+                    <span class="project-summary__metric-value">17</span>
+                  </div>
+                  <div class="project-summary__metric">
+                    <span class="project-summary__metric-label">Days left</span>
+                    <span class="project-summary__metric-value">41</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Milestones -->
+              <section class="panel">
+                <header class="panel__header">
+                  <h2 class="panel__title">
+                    <i class="fa-solid fa-flag"></i> Milestones
+                  </h2>
+                  <a href="#" class="panel__action"
+                    >Manage <i class="fa-solid fa-arrow-right"></i
+                  ></a>
+                </header>
+                <div class="panel__body panel__body--flush">
+                  <div class="milestone milestone--done">
+                    <span class="milestone__marker"
+                      ><i class="fa-solid fa-check"></i
+                    ></span>
+                    <div class="milestone__body">
+                      <span class="milestone__name">Alpha Release</span>
+                      <div class="milestone__meta">
+                        <span>Completed Oct 20</span>
+                        <span class="dot"></span>
+                        <span>8 tasks</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="milestone milestone--active">
+                    <span class="milestone__marker"
+                      ><i class="fa-solid fa-circle"></i
+                    ></span>
+                    <div class="milestone__body">
+                      <span class="milestone__name">Beta Release</span>
+                      <div class="milestone__meta">
+                        <span>Due Nov 15</span>
+                        <span class="dot"></span>
+                        <span>7 tasks</span>
+                        <span class="dot"></span>
+                        <span
+                          class="badge badge--warning"
+                          style="font-size: 10px"
+                          >2 at risk</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="milestone">
+                    <span class="milestone__marker"
+                      ><i class="fa-regular fa-circle"></i
+                    ></span>
+                    <div class="milestone__body">
+                      <span class="milestone__name">Public Launch</span>
+                      <div class="milestone__meta">
+                        <span>Due Dec 15</span>
+                        <span class="dot"></span>
+                        <span>9 tasks</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Recent tasks -->
+              <section class="panel">
+                <header class="panel__header">
+                  <h2 class="panel__title">
+                    <i class="fa-solid fa-list-check"></i> Recent tasks
+                  </h2>
+                  <a href="#" class="panel__action"
+                    >All tasks <i class="fa-solid fa-arrow-right"></i
+                  ></a>
+                </header>
+                <div class="panel__body panel__body--flush">
+                  <button type="button" class="project-task">
+                    <span class="project-task__check"
+                      ><i class="fa-solid fa-check"></i
+                    ></span>
+                    <div class="project-task__body">
+                      <span class="project-task__title"
+                        >Finalize beta milestone scope</span
+                      >
+                      <div class="project-task__meta">
+                        <span class="priority priority--urgent">Urgent</span>
+                        <span>Due today</span>
+                      </div>
+                    </div>
+                    <div class="project-task__end">
+                      <span class="avatar avatar--xs">AK</span>
+                    </div>
+                  </button>
+
+                  <button type="button" class="project-task">
+                    <span class="project-task__check"
+                      ><i class="fa-solid fa-check"></i
+                    ></span>
+                    <div class="project-task__body">
+                      <span class="project-task__title"
+                        >Review dashboard accessibility</span
+                      >
+                      <div class="project-task__meta">
+                        <span class="priority priority--high">High</span>
+                        <span>Due today</span>
+                      </div>
+                    </div>
+                    <div class="project-task__end">
+                      <span class="avatar avatar--xs">AK</span>
+                    </div>
+                  </button>
+
+                  <button type="button" class="project-task">
+                    <span class="project-task__check"
+                      ><i class="fa-solid fa-check"></i
+                    ></span>
+                    <div class="project-task__body">
+                      <span class="project-task__title"
+                        >Write onboarding docs for instructors</span
+                      >
+                      <div class="project-task__meta">
+                        <span class="priority priority--low">Low</span>
+                        <span>Due Fri, Nov 8</span>
+                      </div>
+                    </div>
+                    <div class="project-task__end">
+                      <span class="avatar avatar--xs avatar--blue">MC</span>
+                    </div>
+                  </button>
+
+                  <button type="button" class="project-task">
+                    <span class="project-task__check"
+                      ><i class="fa-solid fa-check"></i
+                    ></span>
+                    <div class="project-task__body">
+                      <span class="project-task__title"
+                        >Load test the dashboard with 500 users</span
+                      >
+                      <div class="project-task__meta">
+                        <span class="priority priority--medium">Medium</span>
+                        <span>Due Fri, Nov 8</span>
+                      </div>
+                    </div>
+                    <div class="project-task__end">
+                      <span class="avatar avatar--xs avatar--amber">DP</span>
+                    </div>
+                  </button>
+
+                  <button type="button" class="project-task project-task--done">
+                    <span class="project-task__check"
+                      ><i class="fa-solid fa-check"></i
+                    ></span>
+                    <div class="project-task__body">
+                      <span class="project-task__title"
+                        >Fix login redirect bug</span
+                      >
+                      <div class="project-task__meta">
+                        <span>Completed Oct 28</span>
+                      </div>
+                    </div>
+                    <div class="project-task__end">
+                      <span class="avatar avatar--xs avatar--blue">MC</span>
+                    </div>
+                  </button>
+                </div>
+              </section>
+            </div>
+
+            <!-- Right column -->
+            <div class="project__col">
+              <!-- Team -->
+              <section class="panel">
+                <header class="panel__header">
+                  <h2 class="panel__title">
+                    <i class="fa-solid fa-users"></i> Team
+                  </h2>
+                  <a href="#" class="panel__action">Manage</a>
+                </header>
+                <div class="panel__body panel__body--tight">
+                  <div class="project-members">
+                    <div class="project-member">
+                      <span
+                        class="avatar avatar--sm avatar--blue avatar--status"
+                        >MC</span
+                      >
+                      <div class="project-member__body">
+                        <span class="project-member__name">Maya Chen</span>
+                        <span class="project-member__role">Project Lead</span>
+                      </div>
+                      <span class="badge badge--primary" style="font-size: 10px"
+                        >Owner</span
+                      >
+                    </div>
+                    <div class="project-member">
+                      <span class="avatar avatar--sm avatar--status">AK</span>
+                      <div class="project-member__body">
+                        <span class="project-member__name">Alex Kim</span>
+                        <span class="project-member__role">Product Lead</span>
+                      </div>
+                    </div>
+                    <div class="project-member">
+                      <span
+                        class="avatar avatar--sm avatar--teal avatar--status"
+                        >JR</span
+                      >
+                      <div class="project-member__body">
+                        <span class="project-member__name">James Rivera</span>
+                        <span class="project-member__role">Developer</span>
+                      </div>
+                    </div>
+                    <div class="project-member">
+                      <span
+                        class="avatar avatar--sm avatar--amber avatar--status"
+                        >DP</span
+                      >
+                      <div class="project-member__body">
+                        <span class="project-member__name">David Park</span>
+                        <span class="project-member__role">Developer</span>
+                      </div>
+                    </div>
+                    <div class="project-member">
+                      <span class="avatar avatar--sm avatar--gold">AO</span>
+                      <div class="project-member__body">
+                        <span class="project-member__name">Amara Okafor</span>
+                        <span class="project-member__role">Researcher</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Recent activity -->
+              <section class="panel">
+                <header class="panel__header">
+                  <h2 class="panel__title">
+                    <i class="fa-solid fa-wave-square"></i> Activity
+                  </h2>
+                  <a href="#" class="panel__action">View all</a>
+                </header>
+                <div class="panel__body panel__body--tight">
+                  <div class="rp-activity">
+                    <span class="avatar avatar--xs avatar--blue">MC</span>
+                    <div class="rp-activity__body">
+                      <strong>Maya</strong> completed "Fix login redirect bug"
+                      <span class="rp-activity__time">12 min ago</span>
+                    </div>
+                  </div>
+                  <div class="rp-activity">
+                    <span class="avatar avatar--xs avatar--teal">JR</span>
+                    <div class="rp-activity__body">
+                      <strong>James</strong> commented on "Design system audit"
+                      <span class="rp-activity__time">32 min ago</span>
+                    </div>
+                  </div>
+                  <div class="rp-activity">
+                    <span class="avatar avatar--xs avatar--gold">AO</span>
+                    <div class="rp-activity__body">
+                      <strong>Amara</strong> uploaded "Q4-roadmap.pdf"
+                      <span class="rp-activity__time">1 hr ago</span>
+                    </div>
+                  </div>
+                  <div class="rp-activity">
+                    <span class="avatar avatar--xs">AK</span>
+                    <div class="rp-activity__body">
+                      <strong>You</strong> updated the Beta milestone scope
+                      <span class="rp-activity__time">2 hrs ago</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Upcoming -->
+              <section class="panel">
+                <header class="panel__header">
+                  <h2 class="panel__title">
+                    <i class="fa-regular fa-calendar"></i> Upcoming
+                  </h2>
+                </header>
+                <div class="panel__body panel__body--tight">
+                  <div class="rp-event rp-event--warning">
+                    <div class="rp-event__time">
+                      <strong>Nov 6</strong><span>2d</span>
+                    </div>
+                    <div class="rp-event__body">
+                      <span class="rp-event__title">Accessibility pass</span>
+                      <div class="rp-event__meta">Design System Audit</div>
+                    </div>
+                  </div>
+                  <div class="rp-event rp-event--primary">
+                    <div class="rp-event__time">
+                      <strong>Nov 15</strong><span>11d</span>
+                    </div>
+                    <div class="rp-event__body">
+                      <span class="rp-event__title">Beta Release</span>
+                      <div class="rp-event__meta">Milestone</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== Enriched right panel — details moved out of header ===== -->
+    <aside class="right-panel" aria-label="Project details">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Project details</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <!-- Overview with progress bar -->
+        <section class="rp-section">
+          <h3 class="rp-section__title">Overview</h3>
+
+          <div class="project-progress-card">
+            <div class="project-progress-card__top">
+              <span>Progress</span>
+              <strong>72%</strong>
+            </div>
+            <div class="progress"><span style="width: 72%"></span></div>
+            <small>17 of 24 tasks completed</small>
+          </div>
+
+          <dl class="task-detail__grid" style="grid-template-columns: 78px 1fr">
+            <dt>Status</dt>
+            <dd>
+              <span
+                class="status-dot status-dot--success"
+                style="display: inline-block; margin-right: 6px"
+              ></span
+              >On track
+            </dd>
+            <dt>Owner</dt>
+            <dd>Maya Chen</dd>
+            <dt>Timeline</dt>
+            <dd>Nov 4 – Dec 15</dd>
+            <dt>Milestone</dt>
+            <dd>Beta · Nov 15</dd>
+            <dt>Created</dt>
+            <dd>Oct 20, 2024</dd>
+          </dl>
+        </section>
+
+        <!-- Members -->
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Members · 5</h3>
+            <a href="#" class="rp-section__action">Manage</a>
+          </div>
+          <div class="rp-members">
+            <div class="avatar-group">
+              <span class="avatar avatar--blue">MC</span>
+              <span class="avatar">AK</span>
+              <span class="avatar avatar--teal">JR</span>
+              <span class="avatar avatar--amber">DP</span>
+              <span class="avatar avatar--gold">AO</span>
+            </div>
+            <span class="rp-members__names"
+              >Maya, Alex, James, David, Amara</span
+            >
+          </div>
+        </section>
+
+        <!-- Milestones -->
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Milestones</h3>
+            <a href="#" class="rp-section__action">All</a>
+          </div>
+          <div class="rp-event rp-event--success">
+            <div class="rp-event__time">
+              <strong>Done</strong><span>Oct 20</span>
+            </div>
+            <div class="rp-event__body">
+              <span class="rp-event__title">Alpha Release</span>
+              <div class="rp-event__meta">8 tasks completed</div>
+            </div>
+          </div>
+          <div class="rp-event rp-event--primary">
+            <div class="rp-event__time">
+              <strong>Nov 15</strong><span>11d</span>
+            </div>
+            <div class="rp-event__body">
+              <span class="rp-event__title">Beta Release</span>
+              <div class="rp-event__meta">7 tasks · 2 at risk</div>
+            </div>
+          </div>
+          <div class="rp-event">
+            <div class="rp-event__time">
+              <strong>Dec 15</strong><span>41d</span>
+            </div>
+            <div class="rp-event__body">
+              <span class="rp-event__title">Public Launch</span>
+              <div class="rp-event__meta">9 tasks planned</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent changes -->
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Recent changes</h3>
+          </div>
+          <div class="rp-activity">
+            <span class="avatar avatar--xs">AK</span>
+            <div class="rp-activity__body">
+              You updated the milestone scope
+              <span class="rp-activity__time">2 hrs ago</span>
+            </div>
+          </div>
+          <div class="rp-activity">
+            <span class="avatar avatar--xs avatar--blue">MC</span>
+            <div class="rp-activity__body">
+              Maya moved 3 tasks to "In review"
+              <span class="rp-activity__time">4 hrs ago</span>
+            </div>
+          </div>
+          <div class="rp-activity">
+            <span class="avatar avatar--xs avatar--gold">AO</span>
+            <div class="rp-activity__body">
+              Amara shared "Q4-roadmap.pdf"
+              <span class="rp-activity__time">1 day ago</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a
+        href="projects.html"
+        class="mobile-nav__item mobile-nav__item--active"
+        aria-current="true"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+meta {
+  name: Add student assignment
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{baseUrl}}/student/assignments
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "courseId": {{studentCourseId}},
+    "title": "Bruno test assignment",
+    "description": "Submit a short response.",
+    "dueDate": "2026-12-01",
+    "pointsPossible": 100
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("studentAssignmentId", res.body.assignment.id.toString());
+}
+
+assert {
+  res.status: 201
+}

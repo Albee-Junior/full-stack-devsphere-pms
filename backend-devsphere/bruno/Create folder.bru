@@ -1,0 +1,28 @@
+meta {
+  name: Create folder
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{baseUrl}}/files/folders
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno test folder"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("folderId", res.body.file.id.toString());
+}
+
+assert {
+  res.status: 201
+}

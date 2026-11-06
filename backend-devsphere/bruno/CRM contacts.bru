@@ -1,0 +1,17 @@
+meta {
+  name: CRM contacts (Business plan)
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseUrl}}/crm
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: 200
+}

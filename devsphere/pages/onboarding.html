@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set up your workspace — DevSphere</title>
+    <meta
+      name="description"
+      content="Configure your DevSphere workspace in a few steps."
+    />
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/pages/onboarding.css" />
+  </head>
+  <body class="onboarding">
+    <div class="ob-layout">
+      <main class="ob-main">
+        <div class="ob-main__inner ob-wizard">
+          <a href="../index.html" class="ob-brand" aria-label="DevSphere home">
+            <img
+              class="logo-light"
+              src="../assets/logo/devsphere-logo.svg"
+              alt="DevSphere"
+              width="160"
+              height="36"
+            />
+            <img
+              class="logo-dark"
+              src="../assets/logo/devsphere-logo-dark.svg"
+              alt="DevSphere"
+              width="160"
+              height="36"
+            />
+          </a>
+
+          <!-- Progress -->
+          <nav class="ob-progress" aria-label="Onboarding progress">
+            <div class="ob-step ob-step--done">
+              <span class="ob-step__num"
+                ><i class="fa-solid fa-check" style="font-size: 9px"></i
+              ></span>
+              <span class="ob-step__label">Account</span>
+            </div>
+            <div class="ob-step ob-step--active" aria-current="step">
+              <span class="ob-step__num">2</span>
+              <span class="ob-step__label">Role</span>
+            </div>
+            <div class="ob-step">
+              <span class="ob-step__num">3</span>
+              <span class="ob-step__label">Details</span>
+            </div>
+            <div class="ob-step">
+              <span class="ob-step__num">4</span>
+              <span class="ob-step__label">Workspace</span>
+            </div>
+            <div class="ob-step">
+              <span class="ob-step__num">5</span>
+              <span class="ob-step__label">Tools</span>
+            </div>
+            <div class="ob-step">
+              <span class="ob-step__num">6</span>
+              <span class="ob-step__label">Finish</span>
+            </div>
+          </nav>
+
+          <!-- ============ STEP: ROLE ============ -->
+          <section class="ob-step-panel" data-step="role">
+            <header class="ob-head">
+              <span class="ob-head__eyebrow">Step 2 of 6</span>
+              <h1>What brings you to DevSphere?</h1>
+              <p>
+                We'll configure your dashboard, tool set, and AI context around
+                how you work. You can adjust this later.
+              </p>
+            </header>
+
+            <div
+              class="ob-roles"
+              role="radiogroup"
+              aria-label="Choose your primary role"
+            >
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-graduation-cap"></i
+                ></span>
+                <span class="ob-role__name">Student</span>
+                <span class="ob-role__desc"
+                  >Courses, assignments, study groups</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-code"></i
+                ></span>
+                <span class="ob-role__name">Software developer</span>
+                <span class="ob-role__desc"
+                  >Repos, tasks, code editor, docs</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-briefcase"></i
+                ></span>
+                <span class="ob-role__name">Freelancer</span>
+                <span class="ob-role__desc">Clients, invoices, deadlines</span>
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-pen-ruler"></i
+                ></span>
+                <span class="ob-role__name">Designer</span>
+                <span class="ob-role__desc"
+                  >Design system, handoff, feedback</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-users"></i
+                ></span>
+                <span class="ob-role__name">Team member</span>
+                <span class="ob-role__desc"
+                  >Collaborate on shared projects</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role ob-role--active"
+                role="radio"
+                aria-checked="true"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-user-tie"></i
+                ></span>
+                <span class="ob-role__name">Team leader</span>
+                <span class="ob-role__desc"
+                  >Manage team workload and delivery</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-building"></i
+                ></span>
+                <span class="ob-role__name">Business owner</span>
+                <span class="ob-role__desc"
+                  >CRM, revenue, team performance</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-chalkboard-user"></i
+                ></span>
+                <span class="ob-role__name">Educator</span>
+                <span class="ob-role__desc"
+                  >Classes, assignments, materials</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-flask"></i
+                ></span>
+                <span class="ob-role__name">Researcher</span>
+                <span class="ob-role__desc">Notes, papers, references</span>
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-podcast"></i
+                ></span>
+                <span class="ob-role__name">Content creator</span>
+                <span class="ob-role__desc"
+                  >Projects, deliverables, calendars</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-sitemap"></i
+                ></span>
+                <span class="ob-role__name">Organization</span>
+                <span class="ob-role__desc"
+                  >Multi-team workspace and admin</span
+                >
+              </button>
+              <button
+                type="button"
+                class="ob-role"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-role__icon"
+                  ><i class="fa-solid fa-ellipsis"></i
+                ></span>
+                <span class="ob-role__name">Something else</span>
+                <span class="ob-role__desc">Tell us in the next step</span>
+              </button>
+            </div>
+
+            <div class="ob-selected" role="status" aria-live="polite">
+              <span class="ob-selected__icon"
+                ><i class="fa-solid fa-user-tie"></i
+              ></span>
+              <div class="ob-selected__body">
+                <strong>Team leader</strong>
+                <span
+                  >You'll get team workload, capacity, and delivery tools by
+                  default.</span
+                >
+              </div>
+            </div>
+
+            <div class="ob-actions">
+              <a href="signup.html" class="ob-actions__back">
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </a>
+              <span class="ob-actions__meta"
+                >You can switch roles at any time from Settings.</span
+              >
+              <button
+                type="button"
+                class="btn btn--primary btn--lg"
+                data-wizard-next
+              >
+                Continue <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- ============ STEP: DETAILS ============ -->
+          <section class="ob-step-panel" data-step="details" hidden>
+            <header class="ob-head">
+              <span class="ob-head__eyebrow">Step 3 of 6 · Team leader</span>
+              <h1>Tell us about your team</h1>
+              <p>
+                These details help DevSphere shape your default dashboards,
+                permissions, and workload views.
+              </p>
+            </header>
+
+            <div class="ob-details-form">
+              <div class="form-group">
+                <label for="ob-team-name" class="form-label">Team name</label>
+                <input
+                  id="ob-team-name"
+                  type="text"
+                  class="form-input"
+                  placeholder="e.g. Product Team"
+                  value="North Studio Product"
+                />
+              </div>
+
+              <div class="ob-details-row">
+                <div class="form-group">
+                  <label for="ob-team-size" class="form-label">Team size</label>
+                  <select id="ob-team-size" class="form-select">
+                    <option>Just me</option>
+                    <option>2–5 people</option>
+                    <option selected>6–15 people</option>
+                    <option>16–50 people</option>
+                    <option>50+ people</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="ob-industry" class="form-label">Industry</label>
+                  <select id="ob-industry" class="form-select">
+                    <option selected>Software &amp; technology</option>
+                    <option>Design &amp; creative</option>
+                    <option>Education</option>
+                    <option>Consulting</option>
+                    <option>Healthcare</option>
+                    <option>Finance</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span class="form-label">What does your team mainly need?</span>
+                <p
+                  class="form-help"
+                  style="margin-top: -4px; margin-bottom: var(--space-2)"
+                >
+                  Choose all that apply.
+                </p>
+                <div class="ob-collab-options">
+                  <label class="checkbox">
+                    <input type="checkbox" checked />
+                    <span>Plan and track projects</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" checked />
+                    <span>Assign and review tasks</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" checked />
+                    <span>Team messaging and updates</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" checked />
+                    <span>Meetings and video calls</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" checked />
+                    <span>Visual planning (whiteboards)</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    <span>Client and customer management</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    <span>Shared file and document storage</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    <span>Learning or training materials</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span class="form-label"
+                  >Would you like DevSphere to enable these by default?</span
+                >
+                <div class="ob-toggle-list">
+                  <label class="ob-toggle-row">
+                    <div>
+                      <strong>Team workload view</strong>
+                      <span>See how work is distributed across members.</span>
+                    </div>
+                    <label class="toggle"
+                      ><input type="checkbox" checked /><span
+                        class="toggle__track"
+                      ></span
+                    ></label>
+                  </label>
+                  <label class="ob-toggle-row">
+                    <div>
+                      <strong>Shared project spaces</strong>
+                      <span
+                        >Give the team a common place for projects and
+                        files.</span
+                      >
+                    </div>
+                    <label class="toggle"
+                      ><input type="checkbox" checked /><span
+                        class="toggle__track"
+                      ></span
+                    ></label>
+                  </label>
+                  <label class="ob-toggle-row">
+                    <div>
+                      <strong>Meeting and whiteboard defaults</strong>
+                      <span
+                        >Enable recurring meeting templates and blank
+                        boards.</span
+                      >
+                    </div>
+                    <label class="toggle"
+                      ><input type="checkbox" checked /><span
+                        class="toggle__track"
+                      ></span
+                    ></label>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="ob-actions">
+              <button type="button" class="ob-actions__back" data-wizard-back>
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              <span class="ob-actions__meta"
+                >You can edit all of this later in Settings.</span
+              >
+              <button
+                type="button"
+                class="btn btn--primary btn--lg"
+                data-wizard-next
+              >
+                Continue <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- ============ STEP: WORKSPACE ============ -->
+          <section class="ob-step-panel" data-step="workspace" hidden>
+            <header class="ob-head">
+              <span class="ob-head__eyebrow">Step 4 of 6</span>
+              <h1>How do you want to start?</h1>
+              <p>
+                You can create additional workspaces any time, or accept an
+                invitation from a teammate.
+              </p>
+            </header>
+
+            <div
+              class="ob-workspace-options"
+              role="radiogroup"
+              aria-label="Workspace type"
+            >
+              <button
+                type="button"
+                class="ob-workspace"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-workspace__icon"
+                  ><i class="fa-solid fa-user"></i
+                ></span>
+                <div class="ob-workspace__body">
+                  <span class="ob-workspace__name">Personal workspace</span>
+                  <span class="ob-workspace__desc"
+                    >Just for you — tasks, notes, and private projects.</span
+                  >
+                </div>
+              </button>
+              <button
+                type="button"
+                class="ob-workspace ob-workspace--active"
+                role="radio"
+                aria-checked="true"
+              >
+                <span class="ob-workspace__icon"
+                  ><i class="fa-solid fa-users"></i
+                ></span>
+                <div class="ob-workspace__body">
+                  <span class="ob-workspace__name">Team workspace</span>
+                  <span class="ob-workspace__desc"
+                    >For teams building together — shared projects, meetings,
+                    and files.</span
+                  >
+                </div>
+              </button>
+              <button
+                type="button"
+                class="ob-workspace"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-workspace__icon"
+                  ><i class="fa-solid fa-graduation-cap"></i
+                ></span>
+                <div class="ob-workspace__body">
+                  <span class="ob-workspace__name">Educational workspace</span>
+                  <span class="ob-workspace__desc"
+                    >For students, educators, and study groups — courses,
+                    assignments, materials.</span
+                  >
+                </div>
+              </button>
+              <button
+                type="button"
+                class="ob-workspace"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-workspace__icon"
+                  ><i class="fa-solid fa-building"></i
+                ></span>
+                <div class="ob-workspace__body">
+                  <span class="ob-workspace__name">Business workspace</span>
+                  <span class="ob-workspace__desc"
+                    >For organizations with CRM, sales, and admin needs.</span
+                  >
+                </div>
+              </button>
+              <button
+                type="button"
+                class="ob-workspace"
+                role="radio"
+                aria-checked="false"
+              >
+                <span class="ob-workspace__icon"
+                  ><i class="fa-solid fa-envelope-open-text"></i
+                ></span>
+                <div class="ob-workspace__body">
+                  <span class="ob-workspace__name"
+                    >Join an existing workspace</span
+                  >
+                  <span class="ob-workspace__desc"
+                    >If you've received an invitation, accept it here.</span
+                  >
+                </div>
+              </button>
+            </div>
+
+            <div class="ob-workspace-name">
+              <label for="ob-ws-name" class="form-label"
+                >Name your workspace</label
+              >
+              <input
+                id="ob-ws-name"
+                type="text"
+                class="form-input"
+                value="North Studio"
+                placeholder="e.g. North Studio"
+              />
+              <p class="form-help">This can be changed later from Settings.</p>
+            </div>
+
+            <div class="ob-actions">
+              <button type="button" class="ob-actions__back" data-wizard-back>
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              <button
+                type="button"
+                class="btn btn--primary btn--lg"
+                data-wizard-next
+              >
+                Continue <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- ============ STEP: TOOLS ============ -->
+          <section class="ob-step-panel" data-step="tools" hidden>
+            <header class="ob-head">
+              <span class="ob-head__eyebrow">Step 5 of 6</span>
+              <h1>Which tools will you use?</h1>
+              <p>
+                We've pre-selected tools based on your role. Toggle any you
+                don't need — you can always enable more later.
+              </p>
+            </header>
+
+            <div class="ob-tools-grid">
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Task management</strong>
+                  <span>Track work, assign owners, set priorities.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Project planning</strong>
+                  <span>Milestones, timelines, project workspace.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Messaging</strong>
+                  <span>Direct messages, groups, threads.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Video calls</strong>
+                  <span>Meetings connected to projects and messenger.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Whiteboard</strong>
+                  <span>Visual planning and collaboration canvas.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>AI assistant</strong>
+                  <span
+                    >Project planning, drafting, and workspace Q&amp;A.</span
+                  >
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Calendar</strong>
+                  <span>Meetings, deadlines, and personal events.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>File management</strong>
+                  <span>Workspace storage, sharing, and versions.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool ob-tool--on">
+                <input type="checkbox" checked />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Analytics</strong>
+                  <span>Project progress, workload, and health.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool">
+                <input type="checkbox" />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Code editor</strong>
+                  <span>Integrated development workspace.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool">
+                <input type="checkbox" />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>CRM</strong>
+                  <span>Contacts, deals, and pipeline.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool">
+                <input type="checkbox" />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Learning dashboard</strong>
+                  <span>Courses, assignments, and study tools.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool">
+                <input type="checkbox" />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Time tracking</strong>
+                  <span>Log hours against projects and tasks.</span>
+                </div>
+              </label>
+
+              <label class="ob-tool">
+                <input type="checkbox" />
+                <span class="ob-tool__check"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div class="ob-tool__body">
+                  <strong>Resource library</strong>
+                  <span>Curated articles, templates, and references.</span>
+                </div>
+              </label>
+            </div>
+
+            <div class="ob-actions">
+              <button type="button" class="ob-actions__back" data-wizard-back>
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              <span class="ob-actions__meta">9 of 14 tools selected</span>
+              <button
+                type="button"
+                class="btn btn--primary btn--lg"
+                data-wizard-next
+              >
+                Continue <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- ============ STEP: FINISH ============ -->
+          <section class="ob-step-panel" data-step="finish" hidden>
+            <header class="ob-head ob-head--center">
+              <span class="ob-finish__icon"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span class="ob-head__eyebrow">Step 6 of 6</span>
+              <h1>You're all set, Alex</h1>
+              <p>
+                DevSphere has been configured for how you work. Here's a summary
+                of your setup.
+              </p>
+            </header>
+
+            <div class="ob-finish">
+              <div class="ob-finish__row">
+                <span class="ob-finish__row-icon"
+                  ><i class="fa-solid fa-user-tie"></i
+                ></span>
+                <div class="ob-finish__row-body">
+                  <span class="ob-finish__row-label">Role</span>
+                  <strong class="ob-finish__row-value">Team leader</strong>
+                </div>
+                <a
+                  href="#"
+                  class="ob-finish__row-edit"
+                  data-wizard-back
+                  data-target-step="role"
+                  >Change</a
+                >
+              </div>
+
+              <div class="ob-finish__row">
+                <span class="ob-finish__row-icon"
+                  ><i class="fa-solid fa-users"></i
+                ></span>
+                <div class="ob-finish__row-body">
+                  <span class="ob-finish__row-label">Workspace</span>
+                  <strong class="ob-finish__row-value"
+                    >North Studio · Team</strong
+                  >
+                </div>
+                <a
+                  href="#"
+                  class="ob-finish__row-edit"
+                  data-wizard-back
+                  data-target-step="workspace"
+                  >Change</a
+                >
+              </div>
+
+              <div class="ob-finish__row">
+                <span class="ob-finish__row-icon"
+                  ><i class="fa-solid fa-sliders"></i
+                ></span>
+                <div class="ob-finish__row-body">
+                  <span class="ob-finish__row-label">Tools enabled</span>
+                  <strong class="ob-finish__row-value"
+                    >9 tools · Task, Project, Messenger, Calls, Board, AI,
+                    Calendar, Files, Analytics</strong
+                  >
+                </div>
+                <a
+                  href="#"
+                  class="ob-finish__row-edit"
+                  data-wizard-back
+                  data-target-step="tools"
+                  >Change</a
+                >
+              </div>
+
+              <div class="ob-finish__row">
+                <span class="ob-finish__row-icon ob-finish__row-icon--gold"
+                  ><i class="fa-solid fa-rocket"></i
+                ></span>
+                <div class="ob-finish__row-body">
+                  <span class="ob-finish__row-label"
+                    >Suggested first action</span
+                  >
+                  <strong class="ob-finish__row-value"
+                    >Invite your first two teammates</strong
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="ob-actions ob-actions--center">
+              <a href="dashboard.html" class="btn btn--primary btn--xl">
+                Enter your workspace <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <p
+              style="
+                text-align: center;
+                font-size: var(--text-xs);
+                color: var(--color-text-tertiary);
+                margin: 0;
+              "
+            >
+              You can revisit or change any of these settings from
+              <a href="settings.html" style="color: var(--color-primary)"
+                >Settings</a
+              >.
+            </p>
+          </section>
+        </div>
+      </main>
+
+      <!-- Side visual (unchanged) -->
+      <aside class="ob-visual" aria-hidden="true">
+        <div class="ob-visual__bg"></div>
+        <div class="ob-visual__content">
+          <span class="ob-visual__eyebrow">Set up in 2 minutes</span>
+          <h2>Your workspace, shaped around how you actually work.</h2>
+          <p>
+            DevSphere isn't one-size-fits-all. Tell us what you do, and we'll
+            configure your dashboard, recommended tools, and AI context from day
+            one — no manual setup required.
+          </p>
+          <ul class="ob-visual__list">
+            <li>
+              <i class="fa-solid fa-check"></i> Dashboard tailored to your role
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Suggested tools and templates
+              for your workflow
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> AI assistant primed with your
+              workspace context
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Everything is changeable later,
+              in settings
+            </li>
+          </ul>
+        </div>
+        <div class="ob-visual__footer">
+          <i class="fa-solid fa-lock"></i>
+          Your answers are only used to configure your workspace.
+        </div>
+      </aside>
+    </div>
+
+    <script src="../scripts/onboarding.js"></script>
+  </body>
+</html>

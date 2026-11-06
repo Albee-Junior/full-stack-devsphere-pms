@@ -1,0 +1,25 @@
+meta {
+  name: Record student grade
+  type: http
+  seq: 24
+}
+
+post {
+  url: {{baseUrl}}/student/assignments/{{studentAssignmentId}}/grades
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "score": 88,
+    "feedback": "Add a note about the feedback you received."
+  }
+}
+
+assert {
+  res.status: 200
+}

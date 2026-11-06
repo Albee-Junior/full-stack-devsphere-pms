@@ -1,0 +1,31 @@
+meta {
+  name: Create CRM contact (Business plan)
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{baseUrl}}/crm
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno Test Contact",
+    "company": "Example Studio",
+    "email": "bruno-contact@example.com",
+    "stage": "Lead"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("contactId", res.body.contact.id.toString());
+}
+
+assert {
+  res.status: 201
+}

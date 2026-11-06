@@ -1,0 +1,24 @@
+meta {
+  name: Update task
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{baseUrl}}/tasks/{{taskId}}
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "status": "In progress"
+  }
+}
+
+assert {
+  res.status: 200
+}

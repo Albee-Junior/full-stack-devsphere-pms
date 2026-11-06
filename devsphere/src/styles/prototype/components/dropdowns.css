@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Dropdowns (used by topbar profile, notifications, workspace switcher)
+   ========================================================================== */
+
+.dropdown {
+  position: relative;
+  display: inline-flex;
+}
+.dropdown[open] > summary {
+  list-style: none;
+}
+.dropdown > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.dropdown__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  z-index: var(--z-dropdown);
+}
+
+.dropdown__panel--left {
+  left: 0;
+  right: auto;
+}
+.dropdown__panel--wide {
+  min-width: 320px;
+}
+
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  text-align: left;
+}
+.dropdown__item:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+.dropdown__item i {
+  width: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+.dropdown__item--danger {
+  color: var(--color-danger);
+}
+.dropdown__item--danger i {
+  color: var(--color-danger);
+}
+
+.dropdown__divider {
+  height: 1px;
+  background: var(--color-border-subtle);
+  margin: var(--space-1) 0;
+  border: 0;
+}
+
+.dropdown__header {
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: var(--space-1);
+}
+.dropdown__header strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+}
+.dropdown__header span {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}

@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      DevSphere — Everything You Need to Build, Learn, and Work Together
+    </title>
+    <meta
+      name="description"
+      content="DevSphere brings projects, communication, learning, and productivity into one connected workspace designed around the way you work."
+    />
+    <link
+      rel="icon"
+      href="assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/typography.css" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/pages/landing.css" />
+  </head>
+  <body>
+    <!-- ================= NAVIGATION ================= -->
+    <header class="nav" role="banner">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="DevSphere home">
+          <img
+            src="/prototype/assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="180"
+            height="40"
+            class="nav__logo"
+          />
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#product">Product</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#" data-app-view="Resources">Resources</a>
+        </nav>
+
+        <div class="nav__actions">
+          <a href="pages/login.html" class="btn btn--ghost nav__signin"
+            >Sign in</a
+          >
+          <a href="pages/signup.html" class="btn btn--primary">Get started</a>
+        </div>
+
+        <details class="nav__mobile">
+          <summary aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </summary>
+          <nav class="nav__mobile-panel" aria-label="Mobile primary">
+            <a href="#product">Product</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#" data-app-view="Resources">Resources</a>
+            <hr />
+            <a href="pages/login.html">Sign in</a>
+            <a href="#" data-app-view="Pricing" class="btn btn--primary btn--block"
+              >Get started</a
+            >
+          </nav>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      <!-- ================= HERO ================= -->
+      <section class="hero" aria-labelledby="hero-headline">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <span class="hero__badge">
+            <i class="fa-solid fa-sparkles"></i>
+            One platform. Multiple workflows.
+          </span>
+          <h1 id="hero-headline" class="hero__headline">
+            Everything you need to<br />
+            <span class="hero__headline-accent"
+              >build, learn, and work together.</span
+            >
+          </h1>
+          <p class="hero__subhead">
+            DevSphere brings projects, communication, learning, and productivity
+            into one connected workspace designed around the way you work.
+          </p>
+          <div class="hero__ctas">
+            <a href="pages/signup.html" class="btn btn--gradient btn--lg">
+              Get started free
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#product" class="btn btn--secondary btn--lg">
+              <i class="fa-solid fa-play"></i>
+              Explore the platform
+            </a>
+          </div>
+          <p class="hero__meta">
+            <i class="fa-solid fa-check"></i> No credit card required
+            <span class="hero__meta-sep">·</span>
+            <i class="fa-solid fa-check"></i> Free forever plan
+          </p>
+
+          <!-- Product Preview Mockup -->
+          <div class="preview" id="product">
+            <div class="preview__chrome">
+              <span class="preview__dot"></span>
+              <span class="preview__dot"></span>
+              <span class="preview__dot"></span>
+              <span class="preview__url"
+                ><i class="fa-solid fa-lock"></i>
+                app.devsphere.io/overview</span
+              >
+            </div>
+
+            <div class="preview__app">
+              <!-- Mini Sidebar -->
+              <aside class="preview__side" aria-hidden="true">
+                <div class="preview__side-brand">
+                  <img
+                    src="/prototype/assets/logo/devsphere-symbol.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                  <span>DevSphere</span>
+                </div>
+                <nav class="preview__side-nav">
+                  <span class="preview__side-link preview__side-link--active">
+                    <i class="fa-solid fa-grid-2"></i> Overview
+                  </span>
+                  <span class="preview__side-link"
+                    ><i class="fa-solid fa-list-check"></i> My Tasks</span
+                  >
+                  <span class="preview__side-link"
+                    ><i class="fa-solid fa-folder"></i> Projects</span
+                  >
+                  <span class="preview__side-link"
+                    ><i class="fa-solid fa-calendar"></i> Calendar</span
+                  >
+                  <span class="preview__side-link"
+                    ><i class="fa-solid fa-comment"></i> Messenger
+                    <em>3</em></span
+                  >
+                  <span class="preview__side-link"
+                    ><i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                    Assistant</span
+                  >
+                </nav>
+                <div class="preview__side-footer">
+                  <span class="preview__side-link"
+                    ><i class="fa-solid fa-gear"></i> Settings</span
+                  >
+                </div>
+              </aside>
+
+              <!-- Mini Main -->
+              <div class="preview__main">
+                <div class="preview__topbar">
+                  <div class="preview__search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search projects, tasks, people…</span>
+                    <kbd>⌘K</kbd>
+                  </div>
+                  <div class="preview__topbar-actions">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="preview__avatar">AK</span>
+                  </div>
+                </div>
+
+                <div class="preview__content">
+                  <div class="preview__greeting">
+                    <div>
+                      <h2>Good morning, Alex</h2>
+                      <p>
+                        You have 4 tasks due today and 2 meetings scheduled.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="preview__metrics">
+                    <div class="preview__metric">
+                      <span class="preview__metric-label">Active projects</span>
+                      <strong class="preview__metric-value">12</strong>
+                      <span
+                        class="preview__metric-trend preview__metric-trend--up"
+                      >
+                        <i class="fa-solid fa-arrow-trend-up"></i> 2 this week
+                      </span>
+                    </div>
+                    <div class="preview__metric">
+                      <span class="preview__metric-label">Tasks due</span>
+                      <strong class="preview__metric-value">8</strong>
+                      <span
+                        class="preview__metric-trend preview__metric-trend--warn"
+                      >
+                        <i class="fa-solid fa-clock"></i> 3 today
+                      </span>
+                    </div>
+                    <div class="preview__metric">
+                      <span class="preview__metric-label">Team online</span>
+                      <strong class="preview__metric-value">24</strong>
+                      <span
+                        class="preview__metric-trend preview__metric-trend--up"
+                      >
+                        <i
+                          class="fa-solid fa-circle"
+                          style="font-size: 8px"
+                        ></i>
+                        Live
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="preview__projects">
+                    <div class="preview__projects-head">
+                      <h3>Recent projects</h3>
+                      <span>View all</span>
+                    </div>
+                    <div class="preview__project-list">
+                      <div class="preview__project">
+                        <div
+                          class="preview__project-icon"
+                          style="
+                            background: var(--color-primary-soft);
+                            color: var(--color-primary-700);
+                          "
+                        >
+                          <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="preview__project-info">
+                          <strong>Campus Learning Portal</strong>
+                          <span>Milestone: Beta Release</span>
+                        </div>
+                        <div class="preview__project-progress">
+                          <div class="preview__bar">
+                            <span style="width: 72%"></span>
+                          </div>
+                          <span>72%</span>
+                        </div>
+                      </div>
+                      <div class="preview__project">
+                        <div
+                          class="preview__project-icon"
+                          style="
+                            background: var(--color-secondary-soft);
+                            color: var(--color-secondary-hover);
+                          "
+                        >
+                          <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="preview__project-info">
+                          <strong>Client Onboarding System</strong>
+                          <span>Owner: Maya Chen</span>
+                        </div>
+                        <div class="preview__project-progress">
+                          <div class="preview__bar">
+                            <span style="width: 46%"></span>
+                          </div>
+                          <span>46%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROBLEM STRIP ================= -->
+      <section class="strip">
+        <div class="container strip__inner">
+          <p class="strip__label">
+            Built for the way modern teams actually work
+          </p>
+          <div class="strip__logos" aria-hidden="true">
+            <span><i class="fa-solid fa-graduation-cap"></i> Students</span>
+            <span><i class="fa-solid fa-code"></i> Developers</span>
+            <span><i class="fa-solid fa-briefcase"></i> Freelancers</span>
+            <span><i class="fa-solid fa-users"></i> Teams</span>
+            <span><i class="fa-solid fa-building"></i> Businesses</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FEATURES ================= -->
+      <section
+        class="features"
+        id="features"
+        aria-labelledby="features-heading"
+      >
+        <div class="container">
+          <header class="section-head">
+            <span class="section-head__eyebrow">The platform</span>
+            <h2 id="features-heading">
+              One workspace for every part of your work
+            </h2>
+            <p>
+              Stop switching between disconnected tools. DevSphere connects
+              planning, communication, learning, and delivery in a single
+              coherent system.
+            </p>
+          </header>
+
+          <div class="features__grid">
+            <article class="feature-card">
+              <div class="feature-card__icon feature-card__icon--purple">
+                <i class="fa-solid fa-folder-tree"></i>
+              </div>
+              <h3>Project management</h3>
+              <p>
+                Plan milestones, organize tasks, track progress, and keep teams
+                aligned with visual timelines and boards.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__icon feature-card__icon--blue">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <h3>Collaboration & messaging</h3>
+              <p>
+                Direct messages, group conversations, and integrated video calls
+                — connected to the work they're about.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__icon feature-card__icon--gold">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <h3>AI productivity</h3>
+              <p>
+                Summarize meetings, plan projects, draft proposals, and get
+                contextual answers grounded in your workspace.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__icon feature-card__icon--purple">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3>Developer workspace</h3>
+              <p>
+                Organize repositories, collaborate on code, manage tasks and
+                bugs, and monitor project health in one view.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__icon feature-card__icon--blue">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <h3>Learning hub</h3>
+              <p>
+                Courses, study groups, notes, and assignments — designed for
+                students and educators without a second app.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__icon feature-card__icon--gold">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h3>Business tools</h3>
+              <p>
+                CRM, invoicing, client management, and analytics built for
+                freelancers, agencies, and growing businesses.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ROLE SOLUTIONS ================= -->
+      <section
+        class="solutions"
+        id="solutions"
+        aria-labelledby="solutions-heading"
+      >
+        <div class="container">
+          <header class="section-head">
+            <span class="section-head__eyebrow">Adapts to you</span>
+            <h2 id="solutions-heading">
+              A workspace that shapes itself around your role
+            </h2>
+            <p>
+              The same DevSphere platform, tuned for the work you actually do —
+              from coursework to client pipelines to production systems.
+            </p>
+          </header>
+
+          <div class="solutions__roles">
+            <article class="role-card">
+              <div class="role-card__icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <h3>Students</h3>
+              <p>
+                Organize study plans, assignments, groups, notes, and project
+                work — with a code editor when your field needs it.
+              </p>
+            </article>
+            <article class="role-card">
+              <div class="role-card__icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3>Developers</h3>
+              <p>
+                Projects, tasks, files, and code in one workspace, with project
+                progress at a glance.
+              </p>
+            </article>
+            <article class="role-card">
+              <div class="role-card__icon">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <h3>Freelancers</h3>
+              <p>
+                Client relationships, project deliverables, shared files, and
+                contract drafts together in one workspace.
+              </p>
+            </article>
+            <article class="role-card">
+              <div class="role-card__icon">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <h3>Teams</h3>
+              <p>
+                Shared workspaces, assignments, meetings, whiteboards, and
+                cross-team visibility.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= AI SPOTLIGHT ================= -->
+      <section class="ai" aria-labelledby="ai-heading">
+        <div class="container ai__inner">
+          <div class="ai__content">
+            <span class="section-head__eyebrow"
+              >AI, grounded in your workspace</span
+            >
+            <h2 id="ai-heading">
+              An assistant that helps you see what needs attention
+            </h2>
+            <p>
+              DevSphere AI summarizes workspace activity and helps you spot
+              priorities using the context available in your workspace.
+            </p>
+            <ul class="ai__list">
+              <li>
+                <i class="fa-solid fa-check"></i> Summarize current projects and
+                tasks
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Highlight overdue and
+                in-progress work
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Get a concise view of what
+                needs attention
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Keep work grounded in
+                workspace data
+              </li>
+            </ul>
+            <a href="pages/signup.html" class="btn btn--primary"
+              >Try the AI assistant <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+
+          <div class="ai__preview" aria-hidden="true">
+            <div class="ai-chat">
+              <div class="ai-chat__header">
+                <span class="ai-chat__mode"
+                  ><i class="fa-solid fa-wand-magic-sparkles"></i> Workspace
+                  Assistant</span
+                >
+                <span class="ai-chat__context"
+                  >Context: Campus Learning Portal</span
+                >
+              </div>
+              <div class="ai-chat__msg ai-chat__msg--user">
+                What needs attention in this workspace?
+              </div>
+              <div class="ai-chat__msg ai-chat__msg--ai">
+                <strong>Workspace summary</strong>
+                <ul>
+                  <li>Review tasks that are still in progress</li>
+                  <li>Check upcoming project deadlines</li>
+                  <li>Follow up on work awaiting review</li>
+                  <li>Open your task board to update progress</li>
+                </ul>
+              </div>
+              <div class="ai-chat__composer">
+                <span>Ask DevSphere AI…</span>
+                <span class="ai-chat__send"
+                  ><i class="fa-solid fa-arrow-up"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PRICING PREVIEW ================= -->
+      <section
+        class="pricing-preview"
+        id="pricing"
+        aria-labelledby="pricing-heading"
+      >
+        <div class="container">
+          <header class="section-head">
+            <span class="section-head__eyebrow">Pricing</span>
+            <h2 id="pricing-heading">Start free. Scale as you grow.</h2>
+            <p>
+              Choose the plan that fits your workspace. USD prices match the
+              current monthly billing options.
+            </p>
+          </header>
+
+          <div class="pricing-preview__grid">
+            <article class="price-card">
+              <h3>Free</h3>
+              <p class="price-card__price">$0<span>/month</span></p>
+              <p class="price-card__desc">
+                For individuals exploring DevSphere.
+              </p>
+              <ul class="price-card__features">
+                <li><i class="fa-solid fa-check"></i> Personal workspace</li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Essential task management
+                </li>
+                <li><i class="fa-solid fa-check"></i> Basic messaging</li>
+                <li><i class="fa-solid fa-check"></i> 5 GB storage</li>
+                <li><i class="fa-solid fa-check"></i> Up to 5 projects</li>
+              </ul>
+              <a href="pages/signup.html" class="btn btn--secondary btn--block"
+                >Get started</a
+              >
+            </article>
+
+            <article class="price-card price-card--featured">
+              <span class="price-card__badge">Most popular</span>
+              <h3>Pro</h3>
+              <p class="price-card__price">$8<span>/month</span></p>
+              <p class="price-card__desc">
+                For individual professionals who need more.
+              </p>
+              <ul class="price-card__features">
+                <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+                <li><i class="fa-solid fa-check"></i> 100 GB storage</li>
+                <li><i class="fa-solid fa-check"></i> AI assistant</li>
+                <li><i class="fa-solid fa-check"></i> Whiteboard and huddles</li>
+                <li><i class="fa-solid fa-check"></i> Contract drafts</li>
+              </ul>
+              <a href="#" data-app-view="Pricing" class="btn btn--primary btn--block"
+                >Explore Pro</a
+              >
+            </article>
+
+            <article class="price-card">
+              <h3>Business</h3>
+              <p class="price-card__price">$16<span>/month</span></p>
+              <p class="price-card__desc">For teams that build together.</p>
+              <ul class="price-card__features">
+                <li><i class="fa-solid fa-check"></i> Everything in Pro</li>
+                <li><i class="fa-solid fa-check"></i> 1 TB storage</li>
+                <li><i class="fa-solid fa-check"></i> Up to 50 members</li>
+                <li><i class="fa-solid fa-check"></i> Analytics and CRM</li>
+                <li><i class="fa-solid fa-check"></i> All Pro features</li>
+              </ul>
+              <a href="#" data-app-view="Pricing" class="btn btn--secondary btn--block"
+                >Explore Business</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TESTIMONIALS ================= -->
+      <section class="testimonials" aria-labelledby="testimonials-heading">
+        <div class="container">
+          <header class="section-head">
+            <span class="section-head__eyebrow">Sample testimonials</span>
+            <h2 id="testimonials-heading">What early users are saying</h2>
+            <p>Illustrative feedback to demonstrate the experience.</p>
+          </header>
+
+          <div class="testimonials__grid">
+            <blockquote class="testimonial">
+              <p>
+                "DevSphere replaced four tools for our team in the first week.
+                The AI project planner alone is worth it."
+              </p>
+              <footer>
+                <span class="testimonial__avatar">MC</span>
+                <div>
+                  <strong>Maya Chen</strong
+                  ><span>Product Lead, North Studio</span>
+                </div>
+              </footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p>
+                "As a freelancer, having client work, project tasks, and shared
+                files in one place has genuinely changed how I work."
+              </p>
+              <footer>
+                <span class="testimonial__avatar">JR</span>
+                <div>
+                  <strong>James Rivera</strong><span>Freelance Designer</span>
+                </div>
+              </footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p>
+                "The study hub helped me organize assignments and project work
+                without drowning in tabs."
+              </p>
+              <footer>
+                <span class="testimonial__avatar">AO</span>
+                <div>
+                  <strong>Amara Okafor</strong
+                  ><span>CS Student, Ashford University</span>
+                </div>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FAQ ================= -->
+      <section class="faq" id="resources" aria-labelledby="faq-heading">
+        <div class="container faq__inner">
+          <header class="section-head section-head--left">
+            <span class="section-head__eyebrow">FAQ</span>
+            <h2 id="faq-heading">Questions, answered</h2>
+            <p>Everything you need to know about getting started.</p>
+          </header>
+
+          <div class="faq__list">
+            <details class="faq-item">
+              <summary>Is DevSphere really free to start?</summary>
+              <p>
+                Yes. The Free plan gives you a personal workspace, essential
+                task management, basic messaging, and 5 GB of storage —
+                permanently, with no credit card required.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I use DevSphere for my team or business?</summary>
+              <p>
+                Pro and Business plans add storage, workspace limits, and paid
+                collaboration features. Business also includes CRM and
+                analytics.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Does DevSphere replace the tools I already use?</summary>
+              <p>
+                DevSphere brings project management, communication, learning,
+                code editing, and productivity into one workspace.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How does the AI assistant use my data?</summary>
+              <p>
+                The current assistant summarizes workspace information.
+                Responses are suggestions and should be checked against your
+                source data.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I switch my primary role later?</summary>
+              <p>
+                Yes. Your workspace adapts over time, and you can enable
+                additional tools or change your primary role from workspace
+                settings at any point.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FINAL CTA ================= -->
+      <section class="final-cta">
+        <div class="container">
+          <div class="final-cta__card">
+            <div class="final-cta__content">
+              <h2>Ready to work in one connected place?</h2>
+              <p>
+                Set up your workspace in under two minutes. Free forever — upgrade
+                only when you need more.
+              </p>
+              <div class="final-cta__actions">
+                <a href="pages/signup.html" class="btn btn--gradient btn--lg"
+                  >Get started free <i class="fa-solid fa-arrow-right"></i
+                ></a>
+                <a href="pages/login.html" class="btn btn--secondary btn--lg"
+                  >Sign in</a
+                >
+              </div>
+            </div>
+            <img class="final-cta__illustration" src="/prototype/assets/logo/devsphere-symbol-dark.svg" alt="" width="168" height="168" loading="lazy" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <img
+            src="/prototype/assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <p>
+            One platform. Multiple workflows.<br />One consistent experience.
+          </p>
+        </div>
+        <div class="footer__cols">
+          <div>
+            <h4>Product</h4>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#solutions">Solutions</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="#" data-app-view="Help center">About</a>
+            <a href="#" data-app-view="Blog &amp; news">Blog</a>
+            <a href="#" data-app-view="Help center">Careers</a>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <a href="#" data-app-view="Help center">Help center</a>
+            <a href="#" data-app-view="Community">Community</a>
+            <a href="#" data-app-view="Blog &amp; news">Changelog</a>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <a href="#" data-app-view="Help center">Privacy</a>
+            <a href="#" data-app-view="Help center">Terms</a>
+            <a href="#" data-app-view="Help center">Security</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <p>© 2026 DevSphere. All rights reserved.</p>
+        <p>
+          Made with
+          <i class="fa-solid fa-heart" style="color: var(--color-primary)"></i>
+          for builders, learners, and teams.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

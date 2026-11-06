@@ -1,0 +1,37 @@
+{
+  "name": "devsphere-backend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/check-env.js",
+    "dev": "node --watch src/server.js",
+    "prestart": "node scripts/check-env.js",
+    "start": "node src/server.js",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose stop",
+    "migrate:sqlite": "node src/db/migrate-sqlite.js",
+    "lint": "eslint src tests scripts",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2",
+    "pg": "^8.16.3",
+    "socket.io": "^4.8.4",
+    "stripe": "^18.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "better-sqlite3": "^13.0.3",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "pg-mem": "^3.0.14"
+  }
+}

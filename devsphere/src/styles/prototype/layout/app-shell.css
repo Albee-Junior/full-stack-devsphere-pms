@@ -1,0 +1,273 @@
+/* ==========================================================================
+   DevSphere — Application Shell
+   Body is the grid. Topbar spans all columns. Sidebar / main / right panel
+   each scroll independently so the shell never scrolls as a whole.
+   ========================================================================== */
+
+body.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(
+      --right-panel-width
+    );
+  grid-template-rows: var(--topbar-height) 1fr;
+  grid-template-areas:
+    "topbar topbar topbar"
+    "sidebar main   right";
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--color-background);
+  transition: grid-template-columns var(--transition-normal);
+}
+
+/* Sidebar collapsed (desktop) */
+body.is-sidebar-collapsed {
+  grid-template-columns: var(--sidebar-collapsed-width) minmax(0, 1fr) var(
+      --right-panel-width
+    );
+}
+body.is-sidebar-collapsed.is-right-closed {
+  grid-template-columns: var(--sidebar-collapsed-width) minmax(0, 1fr) 0;
+}
+
+/* Right panel closed (desktop) */
+body.is-right-closed {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 0;
+}
+
+/* ---------- Regions ---------- */
+.topbar {
+  grid-area: topbar;
+}
+.sidebar {
+  grid-area: sidebar;
+  overflow: hidden auto;
+}
+.app-main {
+  grid-area: main;
+  overflow: hidden auto;
+  min-width: 0;
+  scrollbar-gutter: stable;
+}
+.right-panel {
+  grid-area: right;
+  overflow: hidden auto;
+  scrollbar-gutter: stable;
+}
+
+/* Fill-height pages (messenger, ai, calendar, explorer) */
+.app-main--flush {
+  overflow: hidden;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  z-index: var(--z-toast);
+  transition: top var(--transition-fast);
+}
+.skip-link:focus-visible {
+  top: var(--space-4);
+}
+
+/* ---------- Backdrop (mobile drawers) ---------- */
+.app-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(23 21 42 / 45%);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: calc(var(--z-overlay) - 1);
+  transition: opacity var(--transition-normal);
+}
+.app-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- Page content wrapper ---------- */
+.page {
+  padding: var(--space-6) var(--space-6) var(--space-10);
+  max-width: 1600px;
+  margin-inline: auto;
+  min-width: 0;
+}
+@media (min-width: 1440px) {
+  .page {
+    padding: var(--space-8) var(--space-10) var(--space-12);
+  }
+}
+
+/* ---------- Page header (shared) ---------- */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.page-header__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+.breadcrumbs a {
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-fast);
+}
+.breadcrumbs a:hover {
+  color: var(--color-text-secondary);
+}
+.breadcrumbs i {
+  font-size: 8px;
+  opacity: 0.6;
+}
+
+.page-title {
+  font-size: clamp(1.25rem, 1.5vw + 1rem, 1.75rem);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1.15;
+}
+.page-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ---------- Icon button (topbar + panels) ---------- */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+.icon-btn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+.icon-btn[aria-expanded="true"] {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-700);
+}
+
+/* ==========================================================================
+   Responsive Shell
+   ========================================================================== */
+
+/* Laptop — allow right panel to hide on narrow screens */
+@media (max-width: 1200px) {
+  body.app {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 0;
+    grid-template-areas:
+      "topbar topbar topbar"
+      "sidebar main main";
+  }
+  body.is-sidebar-collapsed {
+    grid-template-columns: var(--sidebar-collapsed-width) minmax(0, 1fr) 0;
+  }
+  .right-panel {
+    position: fixed;
+    top: var(--topbar-height);
+    right: 0;
+    bottom: 0;
+    width: min(340px, 88vw);
+    z-index: var(--z-overlay);
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+    background: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+  }
+  body.is-right-open .right-panel {
+    transform: translateX(0);
+  }
+}
+
+/* Tablet — collapsed sidebar becomes fixed drawer */
+@media (max-width: 1023px) {
+  body.app {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "topbar"
+      "main";
+  }
+  .sidebar {
+    position: fixed;
+    top: var(--topbar-height);
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 88vw;
+    z-index: var(--z-overlay);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    box-shadow: var(--shadow-xl);
+  }
+  body.is-sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+}
+
+/* Phone */
+@media (max-width: 767px) {
+  .page {
+    padding: var(--space-4) var(--space-4)
+      calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+  .page-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Short landscape (phones rotated) */
+@media (orientation: landscape) and (max-height: 500px) {
+  body.app {
+    --topbar-height: 56px;
+  }
+  .page {
+    padding-block: var(--space-3);
+  }
+}

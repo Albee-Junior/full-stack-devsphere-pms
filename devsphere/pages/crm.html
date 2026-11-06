@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRM — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/crm.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search contacts, deals…"
+            aria-label="Search CRM"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a
+            href="crm.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page crm">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">CRM</span>
+            </nav>
+            <h1 class="page-title">CRM</h1>
+            <p class="page-subtitle">
+              Contacts, deals, and pipeline for your clients — sample data.
+            </p>
+          </div>
+          <div class="page-actions">
+            <button type="button" class="btn btn--secondary btn--sm">
+              <i class="fa-solid fa-filter"></i> Filter
+            </button>
+            <button type="button" class="btn btn--primary btn--sm">
+              <i class="fa-solid fa-plus"></i> New deal
+            </button>
+          </div>
+        </header>
+
+        <div class="crm-toolbar">
+          <div class="crm-toolbar__filters">
+            <div class="segmented" role="group" aria-label="CRM view">
+              <button
+                type="button"
+                class="segmented__item segmented__item--active"
+              >
+                <i class="fa-solid fa-table-columns"></i> Pipeline
+              </button>
+              <button type="button" class="segmented__item">
+                <i class="fa-solid fa-list"></i> Contacts
+              </button>
+            </div>
+          </div>
+          <div class="crm-toolbar__right">
+            <span
+              style="
+                font-size: var(--text-xs);
+                color: var(--color-text-tertiary);
+              "
+            >
+              12 deals ·
+              <strong
+                style="
+                  color: var(--color-text-primary);
+                  font-weight: var(--font-semibold);
+                "
+                >$284,500</strong
+              >
+              pipeline value
+            </span>
+          </div>
+        </div>
+
+        <!-- Pipeline -->
+        <div class="crm-pipeline">
+          <!-- LEAD -->
+          <section class="crm-col">
+            <header class="crm-col__head">
+              <div>
+                <div class="crm-col__title">
+                  <span class="status-dot"></span> Lead
+                </div>
+                <div class="crm-col__sum"><strong>3</strong> deals · $84k</div>
+              </div>
+              <button type="button" class="crm-col__add" aria-label="Add lead">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </header>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Apex Group — Website Redesign</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Apex Group</span
+              >
+              <span class="deal-card__amount">$24,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Contacted 3d ago</span
+                >
+                <span class="avatar avatar--xs avatar--amber">DP</span>
+              </div>
+            </button>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Meridian University — Learning Portal</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Meridian University</span
+              >
+              <span class="deal-card__amount">$48,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Contacted 1w ago</span
+                >
+                <span class="avatar avatar--xs avatar--blue">MC</span>
+              </div>
+            </button>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Northline Partners — Brand Refresh</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Northline Partners</span
+              >
+              <span class="deal-card__amount">$12,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Contacted 2w ago</span
+                >
+                <span class="avatar avatar--xs">AK</span>
+              </div>
+            </button>
+          </section>
+
+          <!-- QUALIFIED -->
+          <section class="crm-col">
+            <header class="crm-col__head">
+              <div>
+                <div class="crm-col__title">
+                  <span class="status-dot status-dot--info"></span> Qualified
+                </div>
+                <div class="crm-col__sum"><strong>2</strong> deals · $63k</div>
+              </div>
+              <button
+                type="button"
+                class="crm-col__add"
+                aria-label="Add qualified"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </header>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title">Bluewave — Onboarding System</span>
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Bluewave Inc.</span
+              >
+              <span class="deal-card__amount">$38,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Qualified 4d ago</span
+                >
+                <span class="avatar avatar--xs avatar--teal">JR</span>
+              </div>
+            </button>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Coastal Health — Internal Portal</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Coastal Health</span
+              >
+              <span class="deal-card__amount">$25,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Qualified 1w ago</span
+                >
+                <span class="avatar avatar--xs avatar--pink">SA</span>
+              </div>
+            </button>
+          </section>
+
+          <!-- PROPOSAL -->
+          <section class="crm-col">
+            <header class="crm-col__head">
+              <div>
+                <div class="crm-col__title">
+                  <span class="status-dot status-dot--warning"></span> Proposal
+                </div>
+                <div class="crm-col__sum"><strong>2</strong> deals · $52k</div>
+              </div>
+              <button
+                type="button"
+                class="crm-col__add"
+                aria-label="Add proposal"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </header>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Ridgeline Films — Design System</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Ridgeline Films</span
+              >
+              <span class="deal-card__amount">$32,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-solid fa-file-lines"></i> Proposal sent</span
+                >
+                <span class="avatar avatar--xs avatar--pink">SA</span>
+              </div>
+            </button>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title">Lattice Studio — Mobile App</span>
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Lattice Studio</span
+              >
+              <span class="deal-card__amount">$20,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-solid fa-file-lines"></i> Proposal sent</span
+                >
+                <span class="avatar avatar--xs">AK</span>
+              </div>
+            </button>
+          </section>
+
+          <!-- NEGOTIATION -->
+          <section class="crm-col">
+            <header class="crm-col__head">
+              <div>
+                <div class="crm-col__title">
+                  <span class="status-dot status-dot--primary"></span>
+                  Negotiation
+                </div>
+                <div class="crm-col__sum"><strong>2</strong> deals · $86k</div>
+              </div>
+              <button
+                type="button"
+                class="crm-col__add"
+                aria-label="Add negotiation"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </header>
+
+            <button type="button" class="deal-card deal-card--selected">
+              <span class="deal-card__title"
+                >Apex Group — Platform Migration</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Apex Group</span
+              >
+              <span class="deal-card__amount">$56,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Close expected Nov
+                  15</span
+                >
+                <span class="avatar avatar--xs avatar--blue">MC</span>
+              </div>
+            </button>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Tidewater — Analytics Dashboard</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Tidewater Logistics</span
+              >
+              <span class="deal-card__amount">$30,000</span>
+              <div class="deal-card__foot">
+                <span
+                  ><i class="fa-regular fa-clock"></i> Close expected Nov
+                  22</span
+                >
+                <span class="avatar avatar--xs avatar--amber">DP</span>
+              </div>
+            </button>
+          </section>
+
+          <!-- WON -->
+          <section class="crm-col">
+            <header class="crm-col__head">
+              <div>
+                <div class="crm-col__title">
+                  <span class="status-dot status-dot--success"></span> Won
+                </div>
+                <div class="crm-col__sum"><strong>2</strong> deals · $47k</div>
+              </div>
+              <button type="button" class="crm-col__add" aria-label="Add won">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </header>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title"
+                >Vantage Consulting — Intranet</span
+              >
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Vantage Consulting</span
+              >
+              <span class="deal-card__amount deal-card__amount--won"
+                >$29,000</span
+              >
+              <div class="deal-card__foot">
+                <span><i class="fa-solid fa-check-circle"></i> Won Oct 28</span>
+                <span class="avatar avatar--xs avatar--teal">JR</span>
+              </div>
+            </button>
+
+            <button type="button" class="deal-card">
+              <span class="deal-card__title">Ember Café — Brand Site</span>
+              <span class="deal-card__org"
+                ><i class="fa-solid fa-building"></i> Ember Café</span
+              >
+              <span class="deal-card__amount deal-card__amount--won"
+                >$18,000</span
+              >
+              <div class="deal-card__foot">
+                <span><i class="fa-solid fa-check-circle"></i> Won Oct 20</span>
+                <span class="avatar avatar--xs avatar--gold">AO</span>
+              </div>
+            </button>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Deal details">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Deal details</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <div class="crm-detail">
+          <div class="crm-detail__head">
+            <span class="crm-detail__icon"
+              ><i class="fa-solid fa-building"></i
+            ></span>
+            <div class="crm-detail__head-body">
+              <div class="crm-detail__title">
+                Apex Group — Platform Migration
+              </div>
+              <div class="crm-detail__org">Apex Group</div>
+              <span class="crm-detail__stage"
+                ><i class="fa-solid fa-circle" style="font-size: 6px"></i>
+                Negotiation</span
+              >
+            </div>
+          </div>
+
+          <div class="crm-detail__amount">
+            <span class="crm-detail__amount-label">Deal value</span>
+            <span class="crm-detail__amount-value">$56,000</span>
+          </div>
+
+          <dl class="crm-detail__grid">
+            <dt>Owner</dt>
+            <dd>Maya Chen</dd>
+            <dt>Created</dt>
+            <dd>Oct 12, 2024</dd>
+            <dt>Close date</dt>
+            <dd>Nov 15, 2024</dd>
+            <dt>Probability</dt>
+            <dd>75%</dd>
+            <dt>Source</dt>
+            <dd>Referral — Vantage</dd>
+            <dt>Contact</dt>
+            <dd>Priya Nair · CTO</dd>
+          </dl>
+
+          <div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: var(--space-2);
+              "
+            >
+              <h3 class="rp-section__title" style="margin: 0">
+                Recent activity
+              </h3>
+              <button type="button" class="rp-section__action">Add note</button>
+            </div>
+
+            <div class="crm-activity">
+              <span class="crm-activity__icon crm-activity__icon--meeting"
+                ><i class="fa-solid fa-video"></i
+              ></span>
+              <div class="crm-activity__body">
+                <strong>Call</strong> with Priya Nair and Maya — discussed
+                timeline, pricing locked
+                <span class="crm-activity__time">2 hours ago</span>
+              </div>
+            </div>
+
+            <div class="crm-activity">
+              <span class="crm-activity__icon crm-activity__icon--email"
+                ><i class="fa-regular fa-envelope"></i
+              ></span>
+              <div class="crm-activity__body">
+                Sent updated proposal (v3) with revised scope
+                <span class="crm-activity__time">Yesterday</span>
+              </div>
+            </div>
+
+            <div class="crm-activity">
+              <span class="crm-activity__icon crm-activity__icon--note"
+                ><i class="fa-solid fa-note-sticky"></i
+              ></span>
+              <div class="crm-activity__body">
+                <strong>Note:</strong> Legal team reviewing contract language.
+                Expect signature by Nov 15.
+                <span class="crm-activity__time">3 days ago</span>
+              </div>
+            </div>
+
+            <div class="crm-activity">
+              <span class="crm-activity__icon crm-activity__icon--call"
+                ><i class="fa-solid fa-phone"></i
+              ></span>
+              <div class="crm-activity__body">
+                Discovery call — initial scope discussion with Priya
+                <span class="crm-activity__time">Oct 12</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              gap: var(--space-2);
+              padding-top: var(--space-2);
+            "
+          >
+            <button type="button" class="btn btn--primary btn--sm btn--block">
+              Move to Won
+            </button>
+            <button
+              type="button"
+              class="btn btn--secondary btn--sm"
+              aria-label="More"
+            >
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

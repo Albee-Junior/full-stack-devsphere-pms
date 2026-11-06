@@ -1,0 +1,266 @@
+/* ==========================================================================
+   DevSphere — Command Center (overlay page demonstration)
+   ========================================================================== */
+
+/* We show the palette centred over the workspace — visually demonstrates how
+   the overlay opens on top of any page. Since this is a standalone page, we
+   dim a placeholder workspace behind it. */
+
+.command-page {
+  position: relative;
+  min-height: 100%;
+}
+
+.command-page__backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top, rgb(124 58 237 / 6%) 0%, transparent 60%),
+    var(--color-background);
+  min-height: calc(100vh - var(--topbar-height));
+  padding: var(--space-8) var(--space-6);
+}
+
+/* Cmd palette overlay */
+.cmd-palette {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh var(--space-4) var(--space-4);
+  background: rgb(23 21 42 / 45%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.cmd-palette__panel {
+  width: 100%;
+  max-width: 640px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+  overflow: hidden;
+}
+
+/* Search row */
+.cmd-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.cmd-search i {
+  color: var(--color-text-tertiary);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.cmd-search input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-2) 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+}
+.cmd-search input::placeholder {
+  color: var(--color-text-tertiary);
+}
+.cmd-search kbd {
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+
+/* Body — scrollable */
+.cmd-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-2) var(--space-2) var(--space-3);
+}
+
+/* Group */
+.cmd-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: var(--space-2) 0;
+}
+.cmd-group + .cmd-group {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.cmd-group__title {
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Item */
+.cmd-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  text-align: left;
+  width: 100%;
+  min-height: 36px;
+}
+.cmd-item:hover,
+.cmd-item--active {
+  background: var(--color-primary-subtle);
+}
+.cmd-item__icon {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.cmd-item--active .cmd-item__icon,
+.cmd-item:hover .cmd-item__icon {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-700);
+}
+.cmd-item__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.cmd-item__title {
+  font-weight: var(--font-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cmd-item__hint {
+  font-size: var(--text-2xs);
+  color: var(--color-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cmd-item__kbd {
+  display: inline-flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.cmd-item__kbd kbd {
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Footer */
+.cmd-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface-secondary);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-2xs);
+  color: var(--color-text-tertiary);
+  flex-wrap: wrap;
+}
+.cmd-footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.cmd-footer kbd {
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Hint panel (background context) */
+.command-page__info {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: var(--space-16);
+}
+.command-page__info h1 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+.command-page__info p {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 500px;
+  margin: 0 auto var(--space-6);
+}
+.command-page__info kbd {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
+  margin-inline: 2px;
+}
+
+@media (max-width: 767px) {
+  .cmd-palette {
+    padding: 4vh var(--space-2) var(--space-4);
+  }
+  .cmd-palette__panel {
+    max-height: 88vh;
+  }
+  .cmd-item__kbd {
+    display: none;
+  }
+  .command-page__info h1 {
+    font-size: var(--text-2xl);
+  }
+  .command-page__info {
+    padding-top: var(--space-8);
+  }
+}

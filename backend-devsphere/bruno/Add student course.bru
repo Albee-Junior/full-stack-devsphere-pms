@@ -1,0 +1,30 @@
+meta {
+  name: Add student course
+  type: http
+  seq: 21
+}
+
+post {
+  url: {{baseUrl}}/student/courses
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno test course",
+    "instructor": "Course instructor",
+    "term": "Fall 2026"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("studentCourseId", res.body.course.id.toString());
+}
+
+assert {
+  res.status: 201
+}

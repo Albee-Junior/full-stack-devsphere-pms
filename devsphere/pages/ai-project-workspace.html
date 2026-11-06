@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Project Workspace — Campus Learning Portal</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/ai-project-workspace.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" placeholder="Search…" aria-label="Search" />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="code-editor.html" class="sidebar__link"
+            ><i class="fa-solid fa-code"></i
+            ><span class="sidebar__link-label">Code Editor</span></a
+          >
+          <a
+            href="ai-assistant.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="true"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="#" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="projects.html">Projects</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <a href="project-detail.html">Campus Learning Portal</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">AI Project Workspace</span>
+            </nav>
+            <h1 class="page-title">AI Project Workspace</h1>
+            <p class="page-subtitle">
+              Review a proposed plan for
+              <strong
+                style="
+                  color: var(--color-text-primary);
+                  font-weight: var(--font-semibold);
+                "
+                >Campus Learning Portal</strong
+              >. Nothing is created until you confirm.
+            </p>
+          </div>
+        </header>
+
+        <div class="ai-ws">
+          <!-- Main content -->
+          <div class="ai-ws__main">
+            <!-- Summary -->
+            <div class="ai-summary">
+              <div class="ai-summary__metric">
+                <span class="ai-summary__value">7</span>
+                <span class="ai-summary__label">Suggested tasks</span>
+              </div>
+              <div class="ai-summary__metric">
+                <span class="ai-summary__value">3</span>
+                <span class="ai-summary__label">Milestones</span>
+              </div>
+              <div class="ai-summary__metric">
+                <span class="ai-summary__value">6</span>
+                <span class="ai-summary__label">Weeks est.</span>
+              </div>
+              <div class="ai-summary__metric">
+                <span class="ai-summary__value">2</span>
+                <span class="ai-summary__label">Risks flagged</span>
+              </div>
+            </div>
+
+            <!-- Context / requirements -->
+            <section class="ai-context-card">
+              <header class="ai-context-card__head">
+                <h2 class="ai-context-card__title">
+                  <i class="fa-solid fa-file-lines"></i>
+                  Requirements
+                </h2>
+                <button type="button" class="btn btn--ghost btn--sm">
+                  <i class="fa-solid fa-pen"></i> Edit
+                </button>
+              </header>
+              <div class="ai-context-card__body">
+                Ship the beta of the Campus Learning Portal by Nov 15. Scope
+                includes: — Accessibility pass on the dashboard (WCAG 2.1 AA) —
+                Migration of the legacy API to v2 endpoints — Instructor
+                onboarding documentation — Load test the dashboard for 500
+                concurrent users Team: Maya (lead), David (backend), James
+                (frontend), Sofia (design), Amara (research). Budget for
+                external vendors: none. Stakeholder demo on Nov 14.
+              </div>
+            </section>
+
+            <!-- Suggested tasks -->
+            <section class="ai-context-card">
+              <header class="ai-context-card__head">
+                <h2 class="ai-context-card__title">
+                  <i class="fa-solid fa-list-check"></i>
+                  Suggested tasks
+                  <span class="badge badge--primary" style="font-size: 10px"
+                    >Proposed</span
+                  >
+                </h2>
+                <span
+                  style="
+                    font-size: var(--text-2xs);
+                    color: var(--color-text-tertiary);
+                  "
+                  >Editable after acceptance</span
+                >
+              </header>
+
+              <div class="ai-suggestion-list">
+                <div class="ai-sugg ai-sugg--accepted">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-universal-access"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Complete dashboard accessibility audit</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--high">High</span>
+                      <span>· Suggest: Maya</span>
+                      <span>· Est. 4d</span>
+                      <span>· Due Nov 8</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Un-accept"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--reject"
+                      aria-label="Reject"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ai-sugg ai-sugg--accepted">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-code-branch"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Migrate legacy API to v2 endpoints</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--high">High</span>
+                      <span>· Suggest: David</span>
+                      <span>· Est. 3d</span>
+                      <span>· Due Nov 7</span>
+                      <span>· Blocks load test</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Un-accept"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--reject"
+                      aria-label="Reject"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ai-sugg">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-book"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Write instructor onboarding documentation</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--medium">Medium</span>
+                      <span>· Suggest: Sofia</span>
+                      <span>· Est. 2d</span>
+                      <span>· Due Nov 12</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Accept"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--reject"
+                      aria-label="Reject"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ai-sugg">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-gauge-high"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Load test the dashboard with 500 concurrent users</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--medium">Medium</span>
+                      <span>· Suggest: David</span>
+                      <span>· Est. 1d</span>
+                      <span>· Due Nov 12</span>
+                      <span>· Depends on API migration</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Accept"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--reject"
+                      aria-label="Reject"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ai-sugg">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-video"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Prepare stakeholder demo script</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--high">High</span>
+                      <span>· Suggest: Maya</span>
+                      <span>· Est. 1d</span>
+                      <span>· Due Nov 13</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Accept"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--reject"
+                      aria-label="Reject"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ai-sugg ai-sugg--rejected">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-file-signature"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Draft press release for public launch</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--low">Low</span>
+                      <span>· Out of beta scope</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Restore"
+                    >
+                      <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ai-sugg">
+                  <span class="ai-sugg__icon"
+                    ><i class="fa-solid fa-chart-line"></i
+                  ></span>
+                  <div class="ai-sugg__body">
+                    <span class="ai-sugg__title"
+                      >Set up beta usage analytics</span
+                    >
+                    <div class="ai-sugg__meta">
+                      <span class="priority priority--medium">Medium</span>
+                      <span>· Suggest: James</span>
+                      <span>· Est. 2d</span>
+                      <span>· Due Nov 10</span>
+                    </div>
+                  </div>
+                  <div class="ai-sugg__actions">
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--accept"
+                      aria-label="Accept"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ai-sugg__btn ai-sugg__btn--reject"
+                      aria-label="Reject"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Milestones & timeline -->
+            <section class="ai-context-card">
+              <header class="ai-context-card__head">
+                <h2 class="ai-context-card__title">
+                  <i class="fa-solid fa-timeline"></i>
+                  Proposed timeline
+                </h2>
+                <span
+                  style="
+                    font-size: var(--text-2xs);
+                    color: var(--color-text-tertiary);
+                  "
+                  >Dates editable after acceptance</span
+                >
+              </header>
+
+              <div class="ai-timeline">
+                <div class="ai-timeline__item">
+                  <div class="ai-timeline__rail">
+                    <span
+                      class="ai-timeline__dot ai-timeline__dot--done"
+                    ></span>
+                  </div>
+                  <div class="ai-timeline__body">
+                    <span class="ai-timeline__title"
+                      >Kickoff — existing work carries over</span
+                    >
+                    <div class="ai-timeline__meta">
+                      <span
+                        ><i class="fa-solid fa-check"></i> Already in
+                        progress</span
+                      >
+                      <span>· Alpha complete Oct 20</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="ai-timeline__item">
+                  <div class="ai-timeline__rail">
+                    <span class="ai-timeline__dot"></span>
+                  </div>
+                  <div class="ai-timeline__body">
+                    <span class="ai-timeline__title"
+                      >Accessibility audit + API migration</span
+                    >
+                    <div class="ai-timeline__meta">
+                      <span
+                        ><i class="fa-regular fa-calendar"></i> Nov 4 – Nov
+                        8</span
+                      >
+                      <span>· Critical path</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="ai-timeline__item">
+                  <div class="ai-timeline__rail">
+                    <span class="ai-timeline__dot"></span>
+                  </div>
+                  <div class="ai-timeline__body">
+                    <span class="ai-timeline__title"
+                      >Load testing + analytics setup</span
+                    >
+                    <div class="ai-timeline__meta">
+                      <span
+                        ><i class="fa-regular fa-calendar"></i> Nov 11 – Nov
+                        12</span
+                      >
+                      <span>· Blocked on API migration</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="ai-timeline__item">
+                  <div class="ai-timeline__rail">
+                    <span class="ai-timeline__dot"></span>
+                  </div>
+                  <div class="ai-timeline__body">
+                    <span class="ai-timeline__title"
+                      >Stakeholder demo prep</span
+                    >
+                    <div class="ai-timeline__meta">
+                      <span><i class="fa-regular fa-calendar"></i> Nov 13</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="ai-timeline__item">
+                  <div class="ai-timeline__rail">
+                    <span
+                      class="ai-timeline__dot ai-timeline__dot--future"
+                    ></span>
+                  </div>
+                  <div class="ai-timeline__body">
+                    <span class="ai-timeline__title"
+                      >Stakeholder demo &amp; beta release gate</span
+                    >
+                    <div class="ai-timeline__meta">
+                      <span
+                        ><i class="fa-solid fa-flag"></i> Nov 14 – Nov 15</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Risks -->
+            <div class="ai-risk" role="status">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <p>
+                <strong>2 risks flagged:</strong> Load testing depends on the
+                API migration, which is on the critical path. If the migration
+                slips by more than one day, the Nov 15 beta date is at risk.
+                Consider adding a buffer day or starting the migration earlier.
+              </p>
+            </div>
+
+            <!-- Confirm bar -->
+            <div class="ai-ws__bar">
+              <span class="ai-ws__bar-count">
+                <strong>2</strong> tasks accepted · <strong>1</strong> rejected
+                · <strong>4</strong> pending
+              </span>
+              <div class="ai-ws__bar-actions">
+                <button type="button" class="btn btn--secondary btn--sm">
+                  Reject all
+                </button>
+                <button type="button" class="btn btn--primary btn--sm">
+                  Accept plan &amp; create tasks
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <p class="ai-ws__disclaimer">
+              <i class="fa-solid fa-info-circle"></i>
+              AI-generated plans are suggestions, not authoritative. Review
+              every task and date before confirming. Nothing is created in your
+              project until you press "Accept plan".
+            </p>
+          </div>
+
+          <!-- Side -->
+          <aside class="ai-ws__side" aria-label="Context">
+            <div class="ai-side-card">
+              <h3 class="ai-side-card__title">Context</h3>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: var(--space-2);
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                  "
+                >
+                  <span class="avatar avatar--xs avatar--blue">MC</span>
+                  <span
+                    style="
+                      font-size: var(--text-xs);
+                      color: var(--color-text-primary);
+                      font-weight: var(--font-medium);
+                    "
+                    >Campus Learning Portal</span
+                  >
+                </div>
+                <div class="ai-side-row">
+                  <span>Milestone</span>
+                  <strong>Beta · Nov 15</strong>
+                </div>
+                <div class="ai-side-row">
+                  <span>Team</span>
+                  <strong>5 members</strong>
+                </div>
+                <div class="ai-side-row">
+                  <span>Existing tasks</span>
+                  <strong>24</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-side-card">
+              <h3 class="ai-side-card__title">Sources used</h3>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: var(--space-2);
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    font-size: var(--text-xs);
+                  "
+                >
+                  <i
+                    class="fa-solid fa-file-pdf"
+                    style="color: var(--color-danger)"
+                  ></i>
+                  <span
+                    style="
+                      color: var(--color-text-primary);
+                      flex: 1;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    "
+                    >beta-scope.pdf</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    font-size: var(--text-xs);
+                  "
+                >
+                  <i
+                    class="fa-solid fa-file-lines"
+                    style="color: var(--color-secondary)"
+                  ></i>
+                  <span
+                    style="
+                      color: var(--color-text-primary);
+                      flex: 1;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    "
+                    >Q4-roadmap.pdf</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    font-size: var(--text-xs);
+                  "
+                >
+                  <i
+                    class="fa-solid fa-comment"
+                    style="color: var(--color-text-tertiary)"
+                  ></i>
+                  <span
+                    style="
+                      color: var(--color-text-primary);
+                      flex: 1;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    "
+                    >Weekly review notes (Oct 28)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-side-card">
+              <h3 class="ai-side-card__title">Revision history</h3>
+              <div class="ai-revision ai-revision--current">
+                <span class="ai-revision__dot"></span>
+                <div class="ai-revision__body">
+                  <strong>v3 · current</strong>
+                  <span>2 accepted, 1 rejected, 4 pending</span>
+                </div>
+              </div>
+              <div class="ai-revision">
+                <span class="ai-revision__dot"></span>
+                <div class="ai-revision__body">
+                  <strong>v2</strong>
+                  <span>Added load test + analytics tasks</span>
+                </div>
+              </div>
+              <div class="ai-revision">
+                <span class="ai-revision__dot"></span>
+                <div class="ai-revision__body">
+                  <strong>v1 · initial</strong>
+                  <span>First generation from requirements</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-side-card">
+              <h3 class="ai-side-card__title">Actions</h3>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: var(--space-2);
+                "
+              >
+                <button
+                  type="button"
+                  class="btn btn--secondary btn--sm btn--block"
+                  style="justify-content: flex-start"
+                >
+                  <i class="fa-solid fa-rotate-right"></i> Regenerate plan
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--secondary btn--sm btn--block"
+                  style="justify-content: flex-start"
+                >
+                  <i class="fa-solid fa-sliders"></i> Adjust parameters
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--ghost btn--sm btn--block"
+                  style="
+                    justify-content: flex-start;
+                    color: var(--color-danger);
+                  "
+                >
+                  <i class="fa-solid fa-trash"></i> Discard plan
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/community.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search discussions…"
+            aria-label="Search discussions"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="icon-btn icon-btn--badge"
+            aria-label="Notifications, 3 unread"
+            aria-haspopup="menu"
+          >
+            <i class="fa-regular fa-bell"></i
+            ><span class="icon-btn__badge">3</span>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu">
+            <div class="dropdown__header">
+              <strong>Notifications</strong><span>You have 3 unread</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--blue">MC</span
+              ><span><strong>Maya Chen</strong> replied to your question</span>
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a
+            href="community.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">Community</span>
+            </nav>
+            <h1 class="page-title">Community</h1>
+            <p class="page-subtitle">
+              Ask questions, share what you're building, and learn from other
+              DevSphere users.
+            </p>
+          </div>
+        </header>
+
+        <div class="community-compose">
+          <span class="avatar avatar--blue">MC</span>
+          <button type="button" class="community-compose__input">
+            Ask the community, share an update, or start a discussion…
+          </button>
+          <button type="button" class="btn btn--primary btn--sm">
+            <i class="fa-solid fa-pen"></i> Post
+          </button>
+        </div>
+
+        <nav class="community-tabs" aria-label="Community sections">
+          <button
+            type="button"
+            class="community-tab community-tab--active"
+            aria-current="page"
+          >
+            Feed
+          </button>
+          <button type="button" class="community-tab">Questions</button>
+          <button type="button" class="community-tab">Discussions</button>
+          <button type="button" class="community-tab">Bookmarks</button>
+        </nav>
+
+        <div class="post-feed">
+          <article class="post post--question">
+            <div class="post__head">
+              <span class="avatar avatar--sm avatar--pink">SA</span>
+              <div class="post__author">
+                <strong>Sofia Alvarez</strong>
+                <span>Design · North Studio</span>
+              </div>
+              <span class="post__answered"
+                ><i class="fa-solid fa-check"></i> Answered</span
+              >
+              <time class="post__time">2h ago</time>
+            </div>
+            <h2 class="post__title">
+              <a href="#"
+                >How do you structure design tokens for multi-brand products?</a
+              >
+            </h2>
+            <p class="post__excerpt">
+              We're building a design system that needs to support three brand
+              variants, each with different color palettes and typography.
+              Curious how others have approached the token hierarchy — do you
+              keep one token set with brand overrides at the top, or separate
+              token sets per brand with shared primitives underneath?
+            </p>
+            <div class="post__tags">
+              <a href="#" class="post__tag">#design-systems</a>
+              <a href="#" class="post__tag">#tokens</a>
+              <a href="#" class="post__tag">#css</a>
+            </div>
+            <div class="post__footer">
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-thumbs-up"></i> 24
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-comment"></i> 12 replies
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-solid fa-share-nodes"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post__head">
+              <span class="avatar avatar--sm avatar--teal">JR</span>
+              <div class="post__author">
+                <strong>James Rivera</strong>
+                <span>Engineering · North Studio</span>
+              </div>
+              <time class="post__time">4h ago</time>
+            </div>
+            <h2 class="post__title">
+              <a href="#"
+                >Cut our workspace load time from 3.2s to 1.1s — here's the
+                breakdown</a
+              >
+            </h2>
+            <p class="post__excerpt">
+              Sharing a write-up of the work we did over the last month to
+              reduce initial load time. Highlights: switching to a split bundle
+              per route, eliminating a heavy charting dependency from the shell,
+              deferring the AI panel until interaction, and using streaming
+              rendering for the sidebar. Happy to answer questions if anyone is
+              working on similar problems.
+            </p>
+            <div class="post__tags">
+              <a href="#" class="post__tag">#performance</a>
+              <a href="#" class="post__tag">#react</a>
+              <a href="#" class="post__tag">#bundling</a>
+            </div>
+            <div class="post__footer">
+              <button type="button" class="post__action post__action--active">
+                <i class="fa-solid fa-thumbs-up"></i> 87
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-comment"></i> 31 replies
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-solid fa-bookmark"></i> Saved
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-solid fa-share-nodes"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="post post--question">
+            <div class="post__head">
+              <span class="avatar avatar--sm avatar--amber">DP</span>
+              <div class="post__author">
+                <strong>David Park</strong>
+                <span>Engineering · North Studio</span>
+              </div>
+              <time class="post__time">7h ago</time>
+            </div>
+            <h2 class="post__title">
+              <a href="#"
+                >Best practices for AI assistants grounded in project
+                context?</a
+              >
+            </h2>
+            <p class="post__excerpt">
+              We're experimenting with giving our internal AI assistant access
+              to project data so it can answer questions like "what did we
+              decide about the API migration?" I'm curious how other teams
+              handle context windows, source attribution, and preventing
+              hallucinated references to projects that don't exist.
+            </p>
+            <div class="post__tags">
+              <a href="#" class="post__tag">#ai</a>
+              <a href="#" class="post__tag">#context</a>
+              <a href="#" class="post__tag">#architecture</a>
+            </div>
+            <div class="post__footer">
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-thumbs-up"></i> 18
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-comment"></i> 6 replies
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-solid fa-share-nodes"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post__head">
+              <span class="avatar avatar--sm avatar--gold">AO</span>
+              <div class="post__author">
+                <strong>Amara Okafor</strong>
+                <span>Research · North Studio</span>
+              </div>
+              <time class="post__time">1d ago</time>
+            </div>
+            <h2 class="post__title">
+              <a href="#"
+                >Looking for study group — front-end systems and
+                accessibility</a
+              >
+            </h2>
+            <p class="post__excerpt">
+              I'm working through the deeper layers of front-end accessibility
+              (ARIA edge cases, focus management, keyboard traps) and I'd love
+              to find a small group that meets weekly to review code and share
+              findings. If you're interested, reply or DM — planning to start
+              something in December.
+            </p>
+            <div class="post__tags">
+              <a href="#" class="post__tag">#accessibility</a>
+              <a href="#" class="post__tag">#study-group</a>
+              <a href="#" class="post__tag">#frontend</a>
+            </div>
+            <div class="post__footer">
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-thumbs-up"></i> 42
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-comment"></i> 9 replies
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-solid fa-share-nodes"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="post post--question">
+            <div class="post__head">
+              <span class="avatar avatar--sm">AK</span>
+              <div class="post__author">
+                <strong>Alex Kim</strong>
+                <span>Product · North Studio</span>
+              </div>
+              <time class="post__time">2d ago</time>
+            </div>
+            <h2 class="post__title">
+              <a href="#"
+                >How are freelancers tracking billable time inside DevSphere?</a
+              >
+            </h2>
+            <p class="post__excerpt">
+              Trying to decide between using the built-in task time tracking and
+              a separate timer. I've seen a few threads mention it but nothing
+              recent. Curious whether anyone has a workflow that actually holds
+              up across multiple clients and overlapping projects.
+            </p>
+            <div class="post__tags">
+              <a href="#" class="post__tag">#freelancing</a>
+              <a href="#" class="post__tag">#time-tracking</a>
+              <a href="#" class="post__tag">#workflow</a>
+            </div>
+            <div class="post__footer">
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-thumbs-up"></i> 9
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-comment"></i> 4 replies
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+              <button type="button" class="post__action">
+                <i class="fa-solid fa-share-nodes"></i>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Community context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Community</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">Trending topics</h3>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >#design-systems</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >48 posts this week</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >#performance</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >36 posts this week</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >#ai</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >31 posts this week</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >#freelancing</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >22 posts this week</span
+            >
+          </a>
+        </section>
+
+        <section class="rp-section">
+          <div class="rp-section__head">
+            <h3 class="rp-section__title">Suggested groups</h3>
+            <a href="groups.html" class="rp-section__action">All</a>
+          </div>
+          <div class="rp-participant">
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-primary-soft);
+                color: var(--color-primary-700);
+                border-radius: var(--radius-md);
+              "
+              >FD</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Frontend Development</span>
+              <span class="rp-participant__role">1,240 members</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm">
+              Join
+            </button>
+          </div>
+          <div class="rp-participant">
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-secondary-soft);
+                color: var(--color-secondary-hover);
+                border-radius: var(--radius-md);
+              "
+              >PD</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Product Design Study</span>
+              <span class="rp-participant__role">820 members</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm">
+              Join
+            </button>
+          </div>
+          <div class="rp-participant">
+            <span
+              class="avatar avatar--sm"
+              style="
+                background: var(--color-accent-soft);
+                color: var(--color-accent-hover);
+                border-radius: var(--radius-md);
+              "
+              >FC</span
+            >
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Freelance Collective</span>
+              <span class="rp-participant__role">640 members</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm">
+              Join
+            </button>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Community guidelines</h3>
+          <ul
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--space-2);
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+              line-height: 1.55;
+            "
+          >
+            <li>
+              <strong style="color: var(--color-text-primary)"
+                >Be specific.</strong
+              >
+              Share context and what you've already tried.
+            </li>
+            <li>
+              <strong style="color: var(--color-text-primary)"
+                >Credit sources.</strong
+              >
+              Link to docs, articles, or other people's work.
+            </li>
+            <li>
+              <strong style="color: var(--color-text-primary)"
+                >No promotions.</strong
+              >
+              Self-promotion is limited to the showcase channel.
+            </li>
+            <li>
+              <strong style="color: var(--color-text-primary)"
+                >Report concerns.</strong
+              >
+              Contact moderators rather than engaging in public.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

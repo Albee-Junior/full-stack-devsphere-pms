@@ -1,0 +1,13 @@
+meta {
+  name: Public content
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/blog
+}
+
+assert {
+  res.status: 200
+}

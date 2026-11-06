@@ -1,0 +1,204 @@
+/* ==========================================================================
+   DevSphere — Collaboration Hub
+   ========================================================================== */
+
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.collab-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  min-width: 0;
+}
+.collab-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.collab-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.collab-card__icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.collab-card__icon--live {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  position: relative;
+}
+.collab-card__icon--live::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 2px solid var(--color-danger);
+  animation: live-pulse 1.6s infinite;
+  opacity: 0;
+}
+@keyframes live-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+.collab-card__icon--upcoming {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-700);
+}
+.collab-card__icon--doc {
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary-hover);
+}
+.collab-card__icon--board {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+}
+
+.collab-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.collab-card__name {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.collab-card__meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+.collab-card__live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+.collab-card__live-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--color-danger);
+  border-radius: 50%;
+  animation: rec-pulse 1.4s infinite;
+}
+
+.collab-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.collab-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.collab-card__people {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Sidebar list rows */
+.collab-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.collab-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+.collab-row:hover {
+  border-color: var(--color-border-strong);
+}
+.collab-row__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.collab-row__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.collab-row__meta {
+  font-size: var(--text-2xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Section title */
+.collab-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+.collab-section-title .badge {
+  margin-left: auto;
+  font-size: 10px;
+}
+
+@media (max-width: 767px) {
+  .collab-grid {
+    grid-template-columns: 1fr;
+  }
+}

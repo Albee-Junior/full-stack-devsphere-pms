@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Tasks — DevSphere</title>
+    <meta
+      name="description"
+      content="Manage your individual work across projects."
+    />
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/tasks.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ================= TOPBAR (identical structure to dashboard) ================= -->
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-plus"></i> Create workspace
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search projects, people, files, and more…"
+            aria-label="Global search"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <details class="dropdown">
+          <summary
+            class="btn btn--primary btn--sm topbar__create"
+            aria-haspopup="menu"
+          >
+            <i class="fa-solid fa-plus"></i><span>Create</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Create new</strong><span>In North Studio</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-folder-plus"></i> Project
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-list-check"></i> Task
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-file-lines"></i> Document
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-folder"></i> Folder
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-video"></i> Meeting
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-chalkboard"></i> Whiteboard
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-user-plus"></i> Invite teammate
+            </button>
+          </div>
+        </details>
+
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+
+        <details class="dropdown">
+          <summary
+            class="icon-btn icon-btn--badge"
+            aria-label="Notifications, 3 unread"
+            aria-haspopup="menu"
+          >
+            <i class="fa-regular fa-bell"></i
+            ><span class="icon-btn__badge">3</span>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu">
+            <div class="dropdown__header">
+              <strong>Notifications</strong><span>You have 3 unread</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--blue">MC</span
+              ><span
+                ><strong>Maya Chen</strong> completed "Fix login redirect
+                bug"</span
+              >
+            </button>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--teal">JR</span
+              ><span
+                ><strong>James Rivera</strong> mentioned you in a comment</span
+              >
+            </button>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--gold">AO</span
+              ><span
+                ><strong>Amara Okafor</strong> shared "Q4 roadmap.pdf"</span
+              >
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-check-double"></i> Mark all as read
+            </button>
+          </div>
+        </details>
+
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-palette"></i> Preferences
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= SIDEBAR (same structure) ================= -->
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link">
+            <i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span>
+          </a>
+          <a
+            href="tasks.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+          >
+            <i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span>
+            <span class="sidebar__badge sidebar__badge--muted">12</span>
+          </a>
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extentions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="#" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="app-main" id="main">
+      <div class="page tasks-page">
+        <!-- Header -->
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">My Tasks</span>
+            </nav>
+            <h1 class="page-title">My Tasks</h1>
+            <p class="page-subtitle">
+              12 active tasks across 4 projects. 4 due today.
+            </p>
+          </div>
+          <div class="page-actions">
+            <button type="button" class="btn btn--secondary btn--sm">
+              <i class="fa-solid fa-filter"></i> Filters
+            </button>
+            <button type="button" class="btn btn--primary btn--sm">
+              <i class="fa-solid fa-plus"></i> New task
+            </button>
+          </div>
+        </header>
+
+        <!-- Toolbar -->
+        <div class="tasks-toolbar">
+          <div class="tasks-filters">
+            <button type="button" class="filter-btn">
+              Status <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button type="button" class="filter-btn">
+              Priority <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button type="button" class="filter-btn">
+              Project <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button type="button" class="filter-btn" aria-expanded="true">
+              Due: This week <i class="fa-solid fa-xmark"></i>
+            </button>
+            <button type="button" class="filter-btn">
+              <i class="fa-solid fa-plus"></i> Add filter
+            </button>
+          </div>
+          <div class="tasks-view-switch">
+            <div class="segmented" role="group" aria-label="Task view">
+              <button
+                type="button"
+                class="segmented__item segmented__item--active"
+              >
+                <i class="fa-solid fa-list"></i> List
+              </button>
+              <button type="button" class="segmented__item">
+                <i class="fa-solid fa-table-columns"></i> Board
+              </button>
+              <button type="button" class="segmented__item">
+                <i class="fa-regular fa-calendar"></i> Calendar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task groups (List view) -->
+        <div class="task-groups">
+          <!-- Due today -->
+          <section class="task-group" aria-labelledby="group-today">
+            <header class="task-group__head">
+              <h2 class="task-group__title" id="group-today">
+                <i
+                  class="fa-regular fa-sun"
+                  style="color: var(--color-warning)"
+                ></i>
+                Due today
+                <span class="count">4</span>
+              </h2>
+              <button type="button" class="task-group__add">
+                <i class="fa-solid fa-plus"></i> Add task
+              </button>
+            </header>
+            <div class="task-list" role="list">
+              <button
+                type="button"
+                class="task-row"
+                data-task="1"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Finalize beta milestone scope</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--urgent">Urgent</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project"
+                      >Campus Learning Portal</span
+                    >
+                    <span class="task-row__tag">milestone</span>
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due task-row__due--today"
+                    ><i class="fa-regular fa-clock"></i> Today</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row task-row--selected"
+                data-task="2"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Review dashboard accessibility</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--high">High</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project"
+                      >Campus Learning Portal</span
+                    >
+                    <span class="task-row__tag">a11y</span>
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due task-row__due--today"
+                    ><i class="fa-regular fa-clock"></i> Today</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row"
+                data-task="3"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title">Prepare client demo</span>
+                  <span class="task-row__meta">
+                    <span class="priority priority--high">High</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--gold"
+                      >Client Onboarding System</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due task-row__due--today"
+                    ><i class="fa-regular fa-clock"></i> Today</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row"
+                data-task="4"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title">Update API documentation</span>
+                  <span class="task-row__meta">
+                    <span class="priority priority--medium">Medium</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--blue"
+                      >Mobile App v2.0</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due task-row__due--today"
+                    ><i class="fa-regular fa-clock"></i> Today</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+            </div>
+          </section>
+
+          <!-- This week -->
+          <section class="task-group" aria-labelledby="group-week">
+            <header class="task-group__head">
+              <h2 class="task-group__title" id="group-week">
+                <i
+                  class="fa-regular fa-calendar"
+                  style="color: var(--color-primary)"
+                ></i>
+                This week
+                <span class="count">5</span>
+              </h2>
+              <button type="button" class="task-group__add">
+                <i class="fa-solid fa-plus"></i> Add task
+              </button>
+            </header>
+            <div class="task-list" role="list">
+              <button
+                type="button"
+                class="task-row"
+                data-task="5"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Design audit — contrast &amp; typography</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--medium">Medium</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--blue"
+                      >Marketing Website Redesign</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due"
+                    ><i class="fa-regular fa-calendar"></i> Wed, Nov 6</span
+                  >
+                  <span
+                    class="avatar avatar--xs task-row__assignee avatar--pink"
+                    title="Sofia Alvarez"
+                    >SA</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row"
+                data-task="6"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Migrate legacy API to v2 endpoints</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--high">High</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--blue"
+                      >Mobile App v2.0</span
+                    >
+                    <span class="task-row__tag">backend</span>
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due task-row__due--warn"
+                    ><i class="fa-regular fa-calendar"></i> Thu, Nov 7</span
+                  >
+                  <span
+                    class="avatar avatar--xs task-row__assignee avatar--amber"
+                    title="David Park"
+                    >DP</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row"
+                data-task="7"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Write onboarding docs for instructors</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--low">Low</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project"
+                      >Campus Learning Portal</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due"
+                    ><i class="fa-regular fa-calendar"></i> Fri, Nov 8</span
+                  >
+                  <span
+                    class="avatar avatar--xs task-row__assignee avatar--blue"
+                    title="Maya Chen"
+                    >MC</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row"
+                data-task="8"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Load test dashboard with 500 users</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--medium">Medium</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--blue"
+                      >Mobile App v2.0</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due"
+                    ><i class="fa-regular fa-calendar"></i> Fri, Nov 8</span
+                  >
+                  <span
+                    class="avatar avatar--xs task-row__assignee avatar--amber"
+                    title="David Park"
+                    >DP</span
+                  >
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="task-row"
+                data-task="9"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Reply to Apex Group proposal feedback</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--high">High</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--gold"
+                      >Client Onboarding System</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due task-row__due--danger"
+                    ><i class="fa-regular fa-calendar"></i> Overdue 1d</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Later -->
+          <section class="task-group" aria-labelledby="group-later">
+            <header class="task-group__head">
+              <h2 class="task-group__title" id="group-later">
+                <i
+                  class="fa-regular fa-clock"
+                  style="color: var(--color-text-tertiary)"
+                ></i>
+                Later
+                <span class="count">3</span>
+              </h2>
+              <button type="button" class="task-group__add">
+                <i class="fa-solid fa-plus"></i> Add task
+              </button>
+            </header>
+            <div class="task-list" role="list">
+              <button
+                type="button"
+                class="task-row"
+                data-task="10"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Prepare Q4 retrospective deck</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--low">Low</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project">North Studio</span>
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due"
+                    ><i class="fa-regular fa-calendar"></i> Nov 22</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+              <button
+                type="button"
+                class="task-row"
+                data-task="11"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Research analytics dashboards</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--low">Low</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project task-row__project--blue"
+                      >Marketing Website Redesign</span
+                    >
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due"
+                    ><i class="fa-regular fa-calendar"></i> Nov 25</span
+                  >
+                  <span
+                    class="avatar avatar--xs task-row__assignee avatar--pink"
+                    title="Sofia Alvarez"
+                    >SA</span
+                  >
+                </span>
+              </button>
+              <button
+                type="button"
+                class="task-row"
+                data-task="12"
+                role="listitem"
+              >
+                <span
+                  class="task-row__check"
+                  role="checkbox"
+                  aria-checked="false"
+                  tabindex="0"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <span class="task-row__body">
+                  <span class="task-row__title"
+                    >Plan 2025 roadmap workshop</span
+                  >
+                  <span class="task-row__meta">
+                    <span class="priority priority--medium">Medium</span>
+                    <span class="dot"></span>
+                    <span class="task-row__project">North Studio</span>
+                  </span>
+                </span>
+                <span class="task-row__end">
+                  <span class="task-row__due"
+                    ><i class="fa-regular fa-calendar"></i> Nov 29</span
+                  >
+                  <span class="avatar avatar--xs task-row__assignee" title="You"
+                    >AK</span
+                  >
+                </span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= RIGHT PANEL: selected task detail ================= -->
+    <aside class="right-panel" aria-label="Task details">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Task details</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <div class="task-detail">
+          <div>
+            <h3 class="task-detail__title">Review dashboard accessibility</h3>
+            <div class="task-detail__chips">
+              <span class="badge badge--primary"
+                ><i class="fa-solid fa-list-check"></i> In progress</span
+              >
+              <span class="badge badge--warning">High</span>
+            </div>
+          </div>
+
+          <p class="task-detail__desc">
+            Audit the dashboard and workspace shell for keyboard navigation,
+            focus visibility, color contrast, and screen reader semantics. File
+            issues for anything below WCAG 2.1 AA.
+          </p>
+
+          <dl class="task-detail__grid">
+            <dt>Project</dt>
+            <dd>Campus Learning Portal</dd>
+            <dt>Assignee</dt>
+            <dd>You (Alex Kim)</dd>
+            <dt>Due</dt>
+            <dd>Today · 6:00 PM</dd>
+            <dt>Priority</dt>
+            <dd>High</dd>
+            <dt>Created</dt>
+            <dd>Oct 28</dd>
+          </dl>
+
+          <div class="task-detail__section">
+            <h4 class="task-detail__section-title">Subtasks · 2 of 5</h4>
+            <div class="subtask-row subtask-row--done">
+              <span class="subtask-row__check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Tab order audit</span>
+            </div>
+            <div class="subtask-row subtask-row--done">
+              <span class="subtask-row__check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Focus ring visibility check</span>
+            </div>
+            <div class="subtask-row">
+              <span class="subtask-row__check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Contrast on badges &amp; chips</span>
+            </div>
+            <div class="subtask-row">
+              <span class="subtask-row__check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Screen reader label audit</span>
+            </div>
+            <div class="subtask-row">
+              <span class="subtask-row__check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Reduced motion behaviour</span>
+            </div>
+          </div>
+
+          <div class="task-detail__section">
+            <h4 class="task-detail__section-title">Attachments</h4>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: var(--space-3);
+                font-size: var(--text-xs);
+                color: var(--color-text-secondary);
+              "
+            >
+              <i
+                class="fa-solid fa-file-pdf"
+                style="color: var(--color-danger)"
+              ></i>
+              <span
+                style="
+                  flex: 1;
+                  min-width: 0;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+                >wcag-checklist.pdf</span
+              >
+              <button type="button" class="icon-btn" aria-label="Download">
+                <i class="fa-solid fa-download"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="task-detail__section">
+            <h4 class="task-detail__section-title">Recent activity</h4>
+            <div class="rp-activity">
+              <span class="avatar avatar--xs avatar--blue">MC</span>
+              <div class="rp-activity__body">
+                <strong>Maya</strong> added a subtask "Reduced motion behaviour"
+                <span class="rp-activity__time">2 hrs ago</span>
+              </div>
+            </div>
+            <div class="rp-activity">
+              <span class="avatar avatar--xs">AK</span>
+              <div class="rp-activity__body">
+                <strong>You</strong> marked "Focus ring visibility check"
+                complete
+                <span class="rp-activity__time">4 hrs ago</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: var(--space-2)">
+            <button type="button" class="btn btn--primary btn--sm btn--block">
+              Mark complete
+            </button>
+            <button
+              type="button"
+              class="btn btn--secondary btn--sm"
+              aria-label="More actions"
+            >
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Mobile bottom nav -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a
+        href="tasks.html"
+        class="mobile-nav__item mobile-nav__item--active"
+        aria-current="page"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="#" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="#" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

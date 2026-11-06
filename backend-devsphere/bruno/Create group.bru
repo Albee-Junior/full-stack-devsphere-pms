@@ -1,0 +1,30 @@
+meta {
+  name: Create group
+  type: http
+  seq: 18
+}
+
+post {
+  url: {{baseUrl}}/groups
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno test group",
+    "description": "Created from the DevSphere Bruno collection",
+    "topic": "Testing"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("groupId", res.body.group.id.toString());
+}
+
+assert {
+  res.status: 201
+}

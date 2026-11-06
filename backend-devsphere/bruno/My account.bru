@@ -1,0 +1,17 @@
+meta {
+  name: My account
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/auth/me
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: 200
+}

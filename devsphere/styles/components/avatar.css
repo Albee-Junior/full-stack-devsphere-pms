@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Avatars
+   ========================================================================== */
+
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: #fff;
+  background: var(--gradient-brand);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.avatar--xs {
+  width: 20px;
+  height: 20px;
+  font-size: 9px;
+}
+.avatar--sm {
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+.avatar--lg {
+  width: 40px;
+  height: 40px;
+  font-size: var(--text-sm);
+}
+.avatar--xl {
+  width: 56px;
+  height: 56px;
+  font-size: var(--text-lg);
+}
+
+/* Tint variants — coherent with semantic palette */
+.avatar--blue {
+  background: var(--color-secondary);
+}
+.avatar--gold {
+  background: var(--color-accent);
+  color: #231a05;
+}
+.avatar--green {
+  background: var(--color-success);
+}
+.avatar--amber {
+  background: var(--color-warning);
+}
+.avatar--pink {
+  background: #db2777;
+}
+.avatar--teal {
+  background: #0d9488;
+}
+
+/* Status indicator (e.g. online dot) */
+.avatar--status {
+  position: relative;
+}
+.avatar--status::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-success);
+  border: 2px solid var(--color-surface);
+}
+.avatar--offline::after {
+  background: var(--color-text-tertiary);
+}
+.avatar--busy::after {
+  background: var(--color-danger);
+}
+
+/* Group */
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+.avatar-group > .avatar {
+  border: 2px solid var(--color-surface);
+  margin-left: -8px;
+}
+.avatar-group > .avatar:first-child {
+  margin-left: 0;
+}
+.avatar-group--xs > .avatar {
+  margin-left: -6px;
+}
+
+.avatar-group__more {
+  margin-left: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-surface-tertiary);
+  color: var(--color-text-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  display: inline-grid;
+  place-items: center;
+  border: 2px solid var(--color-surface);
+}

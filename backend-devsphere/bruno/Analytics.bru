@@ -1,0 +1,17 @@
+meta {
+  name: Business analytics (Business plan)
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseUrl}}/analytics
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: 200
+}

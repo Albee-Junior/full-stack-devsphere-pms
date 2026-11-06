@@ -1,0 +1,29 @@
+meta {
+  name: Create project
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/projects
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno test project",
+    "description": "Created from the DevSphere Bruno collection"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("projectId", res.body.project.id.toString());
+}
+
+assert {
+  res.status: 201
+}

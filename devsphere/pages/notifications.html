@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/notifications.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search notifications…"
+            aria-label="Search"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="icon-btn icon-btn--badge"
+            aria-label="Notifications, 3 unread"
+            aria-haspopup="menu"
+          >
+            <i class="fa-regular fa-bell"></i
+            ><span class="icon-btn__badge">3</span>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu">
+            <div class="dropdown__header">
+              <strong>Notifications</strong><span>You have 3 unread</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="avatar avatar--sm avatar--blue">MC</span
+              ><span
+                ><strong>Maya Chen</strong> completed "Fix login redirect
+                bug"</span
+              >
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">Notifications</span>
+            </nav>
+            <h1 class="page-title">Notifications</h1>
+            <p class="page-subtitle">
+              Updates from your projects, tasks, conversations, and meetings.
+            </p>
+          </div>
+        </header>
+
+        <div class="notif-header-row">
+          <div style="display: flex; gap: var(--space-2)">
+            <button type="button" class="btn btn--secondary btn--sm">
+              <i class="fa-solid fa-check-double"></i> Mark all as read
+            </button>
+            <a href="settings.html" class="btn btn--ghost btn--sm">
+              <i class="fa-solid fa-sliders"></i> Preferences
+            </a>
+          </div>
+        </div>
+
+        <nav class="notif-tabs" aria-label="Notification categories">
+          <button
+            type="button"
+            class="notif-tab notif-tab--active"
+            aria-current="page"
+          >
+            All <span class="count">12</span>
+          </button>
+          <button type="button" class="notif-tab">
+            Unread <span class="count">3</span>
+          </button>
+          <button type="button" class="notif-tab">Mentions</button>
+          <button type="button" class="notif-tab">Messages</button>
+          <button type="button" class="notif-tab">Tasks</button>
+          <button type="button" class="notif-tab">Projects</button>
+          <button type="button" class="notif-tab">Meetings</button>
+          <button type="button" class="notif-tab">System</button>
+        </nav>
+
+        <div class="notif-group-label">Today</div>
+
+        <div class="notif-list">
+          <div class="notif-item notif-item--unread">
+            <span class="notif-item__icon notif-item__icon--task"
+              ><i class="fa-solid fa-check"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><strong>Maya Chen</strong> completed
+                <em>Fix login redirect bug</em> in Campus Learning Portal</span
+              >
+              <div class="notif-item__meta">
+                <span>Task update</span>
+                <span class="dot"></span>
+                <span>12 minutes ago</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+            <span class="notif-unread-dot" aria-label="Unread"></span>
+          </div>
+
+          <div class="notif-item notif-item--unread">
+            <span class="notif-item__icon notif-item__icon--message"
+              ><i class="fa-solid fa-at"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><strong>James Rivera</strong> mentioned you in a comment on
+                <em>Design system audit</em></span
+              >
+              <div class="notif-item__meta">
+                <span>Mention</span>
+                <span class="dot"></span>
+                <span>32 minutes ago</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+            <span class="notif-unread-dot" aria-label="Unread"></span>
+          </div>
+
+          <div class="notif-item notif-item--unread">
+            <span class="notif-item__icon notif-item__icon--meeting"
+              ><i class="fa-regular fa-clock"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><em>Weekly Project Review</em> starts in 10 minutes</span
+              >
+              <div class="notif-item__meta">
+                <span>Meeting reminder</span>
+                <span class="dot"></span>
+                <span>45 minutes ago</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <a
+                href="video-call.html"
+                class="btn btn--primary btn--sm"
+                style="padding: 4px 10px; font-size: 11px"
+                >Join</a
+              >
+            </div>
+            <span class="notif-unread-dot" aria-label="Unread"></span>
+          </div>
+        </div>
+
+        <div class="notif-group-label">Earlier today</div>
+
+        <div class="notif-list">
+          <div class="notif-item">
+            <span class="avatar avatar--sm avatar--gold">AO</span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><strong>Amara Okafor</strong> shared <em>Q4-roadmap.pdf</em> in
+                Campus Learning Portal</span
+              >
+              <div class="notif-item__meta">
+                <span>File shared</span>
+                <span class="dot"></span>
+                <span>1 hour ago</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <span class="notif-item__icon notif-item__icon--warning"
+              ><i class="fa-solid fa-triangle-exclamation"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><em>Review dashboard accessibility</em> is due today</span
+              >
+              <div class="notif-item__meta">
+                <span>Task due</span>
+                <span class="dot"></span>
+                <span>2 hours ago</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <span class="notif-item__icon notif-item__icon--success"
+              ><i class="fa-solid fa-flag"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                >Milestone <em>Alpha Release</em> was marked complete in Campus
+                Learning Portal</span
+              >
+              <div class="notif-item__meta">
+                <span>Milestone</span>
+                <span class="dot"></span>
+                <span>3 hours ago</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-group-label">Yesterday</div>
+
+        <div class="notif-list">
+          <div class="notif-item">
+            <span class="avatar avatar--sm avatar--pink">SA</span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><strong>Sofia Alvarez</strong> invited you to
+                <em>Marketing Website Redesign</em></span
+              >
+              <div class="notif-item__meta">
+                <span>Project invitation</span>
+                <span class="dot"></span>
+                <span>Yesterday</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <span class="notif-item__icon notif-item__icon--system"
+              ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                >DevSphere AI generated a suggested task breakdown for
+                <em>Beta milestone</em></span
+              >
+              <div class="notif-item__meta">
+                <span>AI suggestion</span>
+                <span class="dot"></span>
+                <span>Yesterday</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="notif-item">
+            <span class="notif-item__icon notif-item__icon--message"
+              ><i class="fa-solid fa-comment"></i
+            ></span>
+            <div class="notif-item__body">
+              <span class="notif-item__title"
+                ><strong>David Park</strong> replied in
+                <em>Client Team — Apex Group</em></span
+              >
+              <div class="notif-item__meta">
+                <span>Message</span>
+                <span class="dot"></span>
+                <span>Yesterday</span>
+              </div>
+            </div>
+            <div class="notif-item__actions">
+              <button type="button" class="icon-btn" aria-label="Mark as read">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button type="button" class="icon-btn" aria-label="More">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Notification context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Overview</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">This week</h3>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: var(--space-2);
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+            "
+          >
+            <div style="display: flex; justify-content: space-between">
+              <span>Total notifications</span>
+              <strong style="color: var(--color-text-primary)">47</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <span>Task updates</span>
+              <strong style="color: var(--color-text-primary)">18</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <span>Messages &amp; mentions</span>
+              <strong style="color: var(--color-text-primary)">15</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <span>Meetings</span>
+              <strong style="color: var(--color-text-primary)">8</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Manage notifications</h3>
+          <p
+            style="
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+              line-height: 1.55;
+            "
+          >
+            Choose which updates reach you and how.
+          </p>
+          <a
+            href="settings.html"
+            class="btn btn--secondary btn--sm btn--block"
+            style="margin-top: var(--space-2)"
+          >
+            <i class="fa-solid fa-sliders"></i> Notification settings
+          </a>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

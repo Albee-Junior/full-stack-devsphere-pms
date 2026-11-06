@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Center — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/help-center.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search help articles…"
+            aria-label="Search help"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a
+          href="help-center.html"
+          class="sidebar__link sidebar__link--active"
+          aria-current="page"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">Help Center</span>
+            </nav>
+          </div>
+        </header>
+
+        <section class="help-hero">
+          <h1>How can we help?</h1>
+          <p>
+            Search the docs, browse common topics, or reach our team — whatever
+            you need to get unblocked.
+          </p>
+          <label class="help-hero__search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="search"
+              placeholder="Search help articles, guides, and troubleshooting…"
+              aria-label="Search help articles"
+            />
+            <kbd>Ctrl K</kbd>
+          </label>
+        </section>
+
+        <h2
+          style="
+            font-size: var(--text-base);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+            color: var(--color-text-primary);
+          "
+        >
+          Browse by category
+        </h2>
+
+        <div class="help-categories">
+          <a href="#" class="help-category">
+            <span class="help-category__icon"
+              ><i class="fa-solid fa-rocket"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">Getting started</span>
+              <span class="help-category__desc"
+                >Setup, onboarding, and first steps</span
+              >
+              <span class="help-category__count">12 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon help-category__icon--blue"
+              ><i class="fa-solid fa-shield-halved"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">Account &amp; security</span>
+              <span class="help-category__desc"
+                >Passwords, 2FA, and sessions</span
+              >
+              <span class="help-category__count">8 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon help-category__icon--green"
+              ><i class="fa-solid fa-folder-tree"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">Projects &amp; tasks</span>
+              <span class="help-category__desc"
+                >Planning, tracking, and organization</span
+              >
+              <span class="help-category__count">24 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon help-category__icon--info"
+              ><i class="fa-solid fa-comment"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">Messaging</span>
+              <span class="help-category__desc"
+                >Conversations, threads, and calls</span
+              >
+              <span class="help-category__count">14 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon help-category__icon--gold"
+              ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">AI tools</span>
+              <span class="help-category__desc"
+                >Assistant, planner, and context</span
+              >
+              <span class="help-category__count">10 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon help-category__icon--amber"
+              ><i class="fa-solid fa-folder-open"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">File management</span>
+              <span class="help-category__desc"
+                >Uploads, storage, and sharing</span
+              >
+              <span class="help-category__count">16 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon"
+              ><i class="fa-solid fa-credit-card"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">Billing</span>
+              <span class="help-category__desc"
+                >Plans, invoices, and payments</span
+              >
+              <span class="help-category__count">7 articles</span>
+            </div>
+          </a>
+
+          <a href="#" class="help-category">
+            <span class="help-category__icon help-category__icon--blue"
+              ><i class="fa-solid fa-tools"></i
+            ></span>
+            <div class="help-category__body">
+              <span class="help-category__name">Troubleshooting</span>
+              <span class="help-category__desc">Common issues and fixes</span>
+              <span class="help-category__count">18 articles</span>
+            </div>
+          </a>
+        </div>
+
+        <h2
+          style="
+            font-size: var(--text-base);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+            color: var(--color-text-primary);
+          "
+        >
+          Popular articles
+        </h2>
+
+        <div class="help-articles">
+          <a href="#" class="help-article">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="help-article__body">
+              <div class="help-article__title">
+                How to invite team members to your workspace
+              </div>
+              <div class="help-article__meta">Getting started · 3 min read</div>
+            </div>
+            <i class="fa-solid fa-chevron-right help-article__chevron"></i>
+          </a>
+
+          <a href="#" class="help-article">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="help-article__body">
+              <div class="help-article__title">
+                Understanding workspace roles and permissions
+              </div>
+              <div class="help-article__meta">
+                Account &amp; security · 5 min read
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right help-article__chevron"></i>
+          </a>
+
+          <a href="#" class="help-article">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="help-article__body">
+              <div class="help-article__title">
+                How the AI Assistant uses your project context
+              </div>
+              <div class="help-article__meta">AI tools · 4 min read</div>
+            </div>
+            <i class="fa-solid fa-chevron-right help-article__chevron"></i>
+          </a>
+
+          <a href="#" class="help-article">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="help-article__body">
+              <div class="help-article__title">
+                Managing storage usage and file cleanup
+              </div>
+              <div class="help-article__meta">File management · 4 min read</div>
+            </div>
+            <i class="fa-solid fa-chevron-right help-article__chevron"></i>
+          </a>
+
+          <a href="#" class="help-article">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="help-article__body">
+              <div class="help-article__title">
+                Setting up two-factor authentication
+              </div>
+              <div class="help-article__meta">
+                Account &amp; security · 3 min read
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right help-article__chevron"></i>
+          </a>
+
+          <a href="#" class="help-article">
+            <i class="fa-solid fa-file-lines"></i>
+            <div class="help-article__body">
+              <div class="help-article__title">
+                Troubleshooting message delivery issues
+              </div>
+              <div class="help-article__meta">Troubleshooting · 6 min read</div>
+            </div>
+            <i class="fa-solid fa-chevron-right help-article__chevron"></i>
+          </a>
+        </div>
+
+        <div class="help-contact">
+          <span class="help-contact__icon"
+            ><i class="fa-solid fa-headset"></i
+          ></span>
+          <div class="help-contact__body">
+            <span class="help-contact__title">Still need help?</span>
+            <span class="help-contact__desc"
+              >Our team responds to most inquiries within one business day.
+              Include as much detail as possible about the issue.</span
+            >
+          </div>
+          <button type="button" class="btn btn--primary btn--sm">
+            <i class="fa-regular fa-envelope"></i> Contact support
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Help context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Help</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">Quick links</h3>
+          <div class="rp-actions" style="grid-template-columns: 1fr">
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                gap: var(--space-2);
+              "
+            >
+              <i
+                class="fa-solid fa-rocket"
+                style="
+                  background: transparent;
+                  border: 0;
+                  color: var(--color-primary);
+                "
+              ></i>
+              Getting started guide
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                gap: var(--space-2);
+              "
+            >
+              <i
+                class="fa-solid fa-keyboard"
+                style="
+                  background: transparent;
+                  border: 0;
+                  color: var(--color-primary);
+                "
+              ></i>
+              Keyboard shortcuts
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                gap: var(--space-2);
+              "
+            >
+              <i
+                class="fa-solid fa-code"
+                style="
+                  background: transparent;
+                  border: 0;
+                  color: var(--color-primary);
+                "
+              ></i>
+              API documentation
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                gap: var(--space-2);
+              "
+            >
+              <i
+                class="fa-solid fa-video"
+                style="
+                  background: transparent;
+                  border: 0;
+                  color: var(--color-primary);
+                "
+              ></i>
+              Video tutorials
+            </button>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Status</h3>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--space-2);
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+            "
+          >
+            <span class="status-dot status-dot--success"></span>
+            All systems operational
+          </div>
+          <a
+            href="#"
+            class="rp-section__action"
+            style="display: inline-block; margin-top: var(--space-2)"
+            >Status page →</a
+          >
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

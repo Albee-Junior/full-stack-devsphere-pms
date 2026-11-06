@@ -1,0 +1,25 @@
+meta {
+  name: Submit student assignment
+  type: http
+  seq: 23
+}
+
+post {
+  url: {{baseUrl}}/student/assignments/{{studentAssignmentId}}/submissions
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "submissionText": "A short test submission from Bruno.",
+    "submissionUrl": "https://example.com/student-work"
+  }
+}
+
+assert {
+  res.status: 201
+}

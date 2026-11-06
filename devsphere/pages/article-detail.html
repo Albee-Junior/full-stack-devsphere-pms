@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducing the DevSphere AI Project Planner — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/blog.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search articles…"
+            aria-label="Search articles"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="code-editor.html" class="sidebar__link"
+            ><i class="fa-solid fa-code"></i
+            ><span class="sidebar__link-label">Code Editor</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a href="resources.html" class="sidebar__link"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a
+            href="blog.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="true"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <nav
+          class="breadcrumbs"
+          aria-label="Breadcrumb"
+          style="margin-bottom: var(--space-4)"
+        >
+          <a href="dashboard.html">North Studio</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="blog.html">Blog &amp; Updates</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span aria-current="page"
+            >Introducing the DevSphere AI Project Planner</span
+          >
+        </nav>
+
+        <div class="article-detail">
+          <article>
+            <div class="article-cover">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80"
+                alt="Team collaborating on a product roadmap"
+                loading="lazy"
+              />
+            </div>
+
+            <header class="article-header">
+              <span class="article-header__category">Announcements</span>
+              <h1 class="article-header__title">
+                Introducing the DevSphere AI Project Planner
+              </h1>
+              <p class="article-header__summary">
+                Turn any project brief into an editable task breakdown,
+                milestone plan, and proposed timeline — grounded in the context
+                of the project you're already working on.
+              </p>
+              <div class="article-header__byline">
+                <span class="avatar avatar--blue">MC</span>
+                <div class="article-header__byline-info">
+                  <strong>Maya Chen</strong>
+                  <span>Nov 4, 2024 · 6 min read</span>
+                </div>
+              </div>
+            </header>
+
+            <div class="article-body">
+              <p>
+                Planning a project has always required two distinct skills:
+                <em>deciding what needs to happen</em> and
+                <em>turning that decision into something a team can execute</em
+                >. The first is a product judgment call. The second is mostly
+                busywork.
+              </p>
+
+              <p>
+                Today we're introducing the
+                <strong>DevSphere AI Project Planner</strong> — a
+                workspace-aware assistant that takes a project brief and returns
+                a structured, editable plan: task breakdown, milestones,
+                dependencies, and a proposed timeline. The output isn't a
+                suggestion in a chat window. It's real, editable project
+                structure that appears on your board, in your timeline, and in
+                your reports.
+              </p>
+
+              <h2 id="how-it-works">How it works</h2>
+              <p>
+                The Project Planner operates on the project you select. When you
+                open it from a project's AI workspace, it already knows:
+              </p>
+              <ul>
+                <li>Existing tasks, milestones, and their statuses</li>
+                <li>The team's current workload and assignment history</li>
+                <li>Project goals, deadlines, and stated scope</li>
+                <li>Files and documents attached to the project</li>
+              </ul>
+
+              <p>
+                That context is what makes the output materially different from
+                a generic AI chat. The assistant can reason about what's already
+                in progress, what's blocked, and where new work would
+                realistically fit.
+              </p>
+
+              <h3 id="breaking-down">Breaking down a brief</h3>
+              <p>
+                Paste a project description, an RFP, or a few paragraphs of
+                context. The assistant returns a proposed task list — each item
+                with a suggested priority, an estimated duration, dependencies
+                where they apply, and a suggested owner drawn from people
+                already on the project.
+              </p>
+              <p>
+                You review before anything is created. Suggested tasks appear in
+                an editable preview, not on your board. Accept individual items,
+                edit them, or reject the whole thing. Nothing persists to your
+                workspace until you confirm.
+              </p>
+
+              <h2 id="milestones">Milestones and timeline</h2>
+              <p>
+                The planner also proposes milestones. For a project like the
+                Campus Learning Portal, the milestone plan might look like:
+              </p>
+              <ul>
+                <li>
+                  <strong>Alpha Release</strong> — feature-complete internal
+                  build
+                </li>
+                <li>
+                  <strong>Beta Release</strong> — external testing with pilot
+                  users
+                </li>
+                <li><strong>Public Launch</strong> — general availability</li>
+              </ul>
+              <p>
+                Each milestone is accompanied by a proposed date based on the
+                task dependencies and the team's current workload. The proposal
+                is a starting point — every date is editable before the plan is
+                accepted.
+              </p>
+
+              <h3 id="risk-summary">Risk and dependency summary</h3>
+              <p>
+                Before finalizing, the planner produces a short risk summary:
+                where the plan is likely to slip, which tasks are on the
+                critical path, and which owners appear over-committed. This is
+                where the workspace context matters most — the assistant can
+                flag conflicts against your existing workload, not just against
+                the plan itself.
+              </p>
+
+              <blockquote>
+                <p>
+                  "The plan is a starting point. The value is that the assistant
+                  already understands your workspace, so the first draft is
+                  usually close to right."
+                </p>
+              </blockquote>
+
+              <h2 id="what-changes">What changes for teams</h2>
+              <p>
+                Most teams spend hours translating a brief into an initial plan.
+                That time is often invisible — no one lists "create 40 tasks
+                with estimates and dependencies" in the project kickoff. But
+                it's real, and it's the single biggest source of friction
+                between a project idea and a project that's actually moving.
+              </p>
+              <p>
+                The Project Planner does not remove the need for planning
+                judgment. It removes the mechanical work of structuring the plan
+                so your team can focus on the decisions that actually matter.
+              </p>
+
+              <h2 id="availability">Availability</h2>
+              <p>
+                The Project Planner is available today for every workspace on
+                Pro plans and above. It's also available for Free plan
+                workspaces with a monthly usage cap. You can access it from any
+                project through the <strong>AI Project Workspace</strong> entry
+                point.
+              </p>
+              <p>
+                We're actively iterating — if you have feedback on the output or
+                suggestions for how the planner could be more useful in your
+                workflow, please share it through the in-product feedback
+                control or on the
+                <a href="community.html">DevSphere community</a>.
+              </p>
+            </div>
+
+            <div class="article-feedback">
+              <span class="article-feedback__label"
+                >Was this article helpful?</span
+              >
+              <div class="article-feedback__actions">
+                <button type="button" class="btn btn--secondary btn--sm">
+                  <i class="fa-regular fa-thumbs-up"></i> Yes
+                </button>
+                <button type="button" class="btn btn--secondary btn--sm">
+                  <i class="fa-regular fa-thumbs-down"></i> No
+                </button>
+              </div>
+            </div>
+
+            <section class="article-related">
+              <h2 class="article-related__title">Related articles</h2>
+              <div class="article-related__grid">
+                <article class="article-card">
+                  <div class="article-card__media">
+                    <img
+                      src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=600&q=80"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="article-card__body">
+                    <span class="article-card__category">Tutorials</span>
+                    <h3 class="article-card__title">
+                      <a href="article-detail.html"
+                        >Structuring design tokens for multi-brand products</a
+                      >
+                    </h3>
+                    <div class="article-card__meta">
+                      <span>Sofia Alvarez</span><span class="dot"></span
+                      ><span>8 min</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="article-card">
+                  <div class="article-card__media">
+                    <img
+                      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="article-card__body">
+                    <span class="article-card__category">Engineering</span>
+                    <h3 class="article-card__title">
+                      <a href="article-detail.html"
+                        >How we cut p95 latency by 43% in the workspace shell</a
+                      >
+                    </h3>
+                    <div class="article-card__meta">
+                      <span>James Rivera</span><span class="dot"></span
+                      ><span>11 min</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="article-card">
+                  <div class="article-card__media">
+                    <img
+                      src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=600&q=80"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="article-card__body">
+                    <span class="article-card__category"
+                      >Community stories</span
+                    >
+                    <h3 class="article-card__title">
+                      <a href="article-detail.html"
+                        >How a 6-person studio runs client work on DevSphere</a
+                      >
+                    </h3>
+                    <div class="article-card__meta">
+                      <span>Alex Kim</span><span class="dot"></span
+                      ><span>7 min</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </article>
+
+          <!-- Sticky ToC -->
+          <nav class="article-toc" aria-label="Table of contents">
+            <h3 class="article-toc__title">On this page</h3>
+            <a
+              href="#how-it-works"
+              class="article-toc__link article-toc__link--active"
+              >How it works</a
+            >
+            <a
+              href="#breaking-down"
+              class="article-toc__link article-toc__link--sub"
+              >Breaking down a brief</a
+            >
+            <a href="#milestones" class="article-toc__link"
+              >Milestones and timeline</a
+            >
+            <a
+              href="#risk-summary"
+              class="article-toc__link article-toc__link--sub"
+              >Risk summary</a
+            >
+            <a href="#what-changes" class="article-toc__link"
+              >What changes for teams</a
+            >
+            <a href="#availability" class="article-toc__link">Availability</a>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right panel hidden by default on this reading-focused page -->
+    <aside class="right-panel" aria-label="Article context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Reading</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">Published</h3>
+          <div
+            style="
+              font-size: var(--text-sm);
+              color: var(--color-text-primary);
+              font-weight: var(--font-medium);
+            "
+          >
+            Nov 4, 2024
+          </div>
+          <div
+            style="font-size: var(--text-xs); color: var(--color-text-tertiary)"
+          >
+            By Maya Chen
+          </div>
+        </section>
+        <section class="rp-section">
+          <h3 class="rp-section__title">About the author</h3>
+          <div class="rp-participant">
+            <span class="avatar avatar--blue">MC</span>
+            <div class="rp-participant__body">
+              <span class="rp-participant__name">Maya Chen</span>
+              <span class="rp-participant__role"
+                >Product Lead · North Studio</span
+              >
+            </div>
+          </div>
+          <p
+            style="
+              font-size: var(--text-xs);
+              color: var(--color-text-secondary);
+              line-height: 1.55;
+            "
+          >
+            Writes about developer tooling, planning, and how teams can spend
+            less time on mechanics.
+          </p>
+        </section>
+        <section class="rp-section">
+          <h3 class="rp-section__title">More from this category</h3>
+          <a
+            href="article-detail.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 2px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >DevSphere is now available for education</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >Oct 22 · 5 min read</span
+            >
+          </a>
+          <a
+            href="article-detail.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 2px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >Release 3.4 — Messenger improvements</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >Oct 10 · 4 min read</span
+            >
+          </a>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>

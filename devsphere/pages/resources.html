@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources Library — DevSphere</title>
+    <link
+      rel="icon"
+      href="../assets/logo/devsphere-favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/layout/app-shell.css" />
+    <link rel="stylesheet" href="../styles/layout/topbar.css" />
+    <link rel="stylesheet" href="../styles/layout/sidebar.css" />
+    <link rel="stylesheet" href="../styles/layout/right-panel.css" />
+    <link rel="stylesheet" href="../styles/components/avatars.css" />
+    <link rel="stylesheet" href="../styles/components/cards.css" />
+    <link rel="stylesheet" href="../styles/components/dropdowns.css" />
+    <link rel="stylesheet" href="../styles/components/mobile-nav.css" />
+    <link rel="stylesheet" href="../styles/pages/resources.css" />
+  </head>
+  <body class="app">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar__left">
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-sidebar"
+          aria-label="Toggle sidebar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="../index.html" class="auth__brand" aria-label="DevSphere home">
+          <img
+            class="logo-light"
+            src="../assets/logo/devsphere-logo.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+          <img
+            class="logo-dark"
+            src="../assets/logo/devsphere-logo-dark.svg"
+            alt="DevSphere"
+            width="160"
+            height="36"
+          />
+        </a>
+        <details class="dropdown">
+          <summary class="workspace-switcher" aria-haspopup="menu">
+            <span class="workspace-switcher__avatar">N</span>
+            <span class="workspace-switcher__name">North Studio</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="dropdown__panel dropdown__panel--left" role="menu">
+            <div class="dropdown__header">
+              <strong>Your workspaces</strong><span>Switch workspace</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <span class="workspace-switcher__avatar">N</span>North Studio
+            </button>
+            <button type="button" class="dropdown__item">
+              <span
+                class="workspace-switcher__avatar"
+                style="background: var(--color-secondary)"
+                >P</span
+              >Personal
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <div class="topbar__center">
+        <label class="topbar__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="search"
+            placeholder="Search resources…"
+            aria-label="Search resources"
+          />
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+
+      <div class="topbar__right">
+        <button type="button" class="icon-btn" aria-label="Help center">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-theme"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <details class="dropdown">
+          <summary
+            class="topbar__profile"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+          >
+            <span class="avatar avatar--status">AK</span>
+          </summary>
+          <div class="dropdown__panel" role="menu">
+            <div class="dropdown__header">
+              <strong>Alex Kim</strong><span>alex@northstudio.io</span>
+            </div>
+            <button type="button" class="dropdown__item">
+              <i class="fa-regular fa-user"></i> View profile
+            </button>
+            <button type="button" class="dropdown__item">
+              <i class="fa-solid fa-gear"></i> Settings
+            </button>
+            <hr class="dropdown__divider" />
+            <button type="button" class="dropdown__item dropdown__item--danger">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </button>
+          </div>
+        </details>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="toggle-right"
+          aria-label="Toggle context panel"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar__nav" aria-label="Workspace sections">
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Workspace</h2>
+          <a href="dashboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-grid-2"></i
+            ><span class="sidebar__link-label">Overview</span></a
+          >
+          <a href="tasks.html" class="sidebar__link"
+            ><i class="fa-solid fa-list-check"></i
+            ><span class="sidebar__link-label">My Tasks</span
+            ><span class="sidebar__badge sidebar__badge--muted">12</span></a
+          >
+          <a href="projects.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder"></i
+            ><span class="sidebar__link-label">Projects</span></a
+          >
+          <a href="calendar.html" class="sidebar__link"
+            ><i class="fa-solid fa-calendar"></i
+            ><span class="sidebar__link-label">Calendar</span></a
+          >
+          <a href="messenger.html" class="sidebar__link"
+            ><i class="fa-solid fa-comment"></i
+            ><span class="sidebar__link-label">Messenger</span
+            ><span class="sidebar__badge">3</span></a
+          >
+          <a href="collaboration.html" class="sidebar__link"
+            ><i class="fa-solid fa-users-viewfinder"></i
+            ><span class="sidebar__link-label">Collaboration</span></a
+          >
+          <a href="whiteboard.html" class="sidebar__link"
+            ><i class="fa-solid fa-chalkboard"></i
+            ><span class="sidebar__link-label">Whiteboard</span></a
+          >
+          <a href="ai-assistant.html" class="sidebar__link"
+            ><i class="fa-solid fa-wand-magic-sparkles"></i
+            ><span class="sidebar__link-label">AI Assistant</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Organization</h2>
+          <a href="teams.html" class="sidebar__link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="sidebar__link-label">Teams</span></a
+          >
+          <a href="groups.html" class="sidebar__link"
+            ><i class="fa-solid fa-user-group"></i
+            ><span class="sidebar__link-label">Groups</span></a
+          >
+          <a href="community.html" class="sidebar__link"
+            ><i class="fa-solid fa-globe"></i
+            ><span class="sidebar__link-label">Community</span></a
+          >
+          <a href="crm.html" class="sidebar__link"
+            ><i class="fa-solid fa-address-book"></i
+            ><span class="sidebar__link-label">CRM</span></a
+          >
+          <a href="analytics.html" class="sidebar__link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="sidebar__link-label">Analytics</span></a
+          >
+        </div>
+        <div class="sidebar__section">
+          <h2 class="sidebar__section-label">Resources</h2>
+          <a href="file-explorer.html" class="sidebar__link"
+            ><i class="fa-solid fa-folder-open"></i
+            ><span class="sidebar__link-label">File Explorer</span></a
+          >
+          <a
+            href="resources.html"
+            class="sidebar__link sidebar__link--active"
+            aria-current="page"
+            ><i class="fa-solid fa-book-open"></i
+            ><span class="sidebar__link-label">Resources</span></a
+          >
+          <a href="extensions.html" class="sidebar__link"
+            ><i class="fa-solid fa-puzzle-piece"></i
+            ><span class="sidebar__link-label">Extensions</span></a
+          >
+          <a href="blog.html" class="sidebar__link"
+            ><i class="fa-solid fa-newspaper"></i
+            ><span class="sidebar__link-label">Blog &amp; Updates</span></a
+          >
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="help-center.html" class="sidebar__link"
+          ><i class="fa-solid fa-circle-question"></i
+          ><span class="sidebar__link-label">Help Center</span></a
+        >
+        <a href="settings.html" class="sidebar__link"
+          ><i class="fa-solid fa-gear"></i
+          ><span class="sidebar__link-label">Settings</span></a
+        >
+        <a href="invite-members.html" class="sidebar__link"
+          ><i class="fa-solid fa-user-plus"></i
+          ><span class="sidebar__link-label">Invite Members</span></a
+        >
+        <div class="sidebar__storage">
+          <div class="sidebar__storage-label">
+            <span>Storage</span><strong>4.2 / 10 GB</strong>
+          </div>
+          <div class="sidebar__storage-bar"><span></span></div>
+          <a href="pricing.html" class="sidebar__upgrade"
+            ><i class="fa-solid fa-bolt"></i> Upgrade plan</a
+          >
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main">
+      <div class="page">
+        <header class="page-header">
+          <div class="page-header__titles">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="dashboard.html">North Studio</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span aria-current="page">Resources</span>
+            </nav>
+            <h1 class="page-title">Resources Library</h1>
+            <p class="page-subtitle">
+              Curated articles, tutorials, templates, and reference material for
+              your work.
+            </p>
+          </div>
+          <div class="page-actions">
+            <button type="button" class="btn btn--secondary btn--sm">
+              <i class="fa-solid fa-folder-plus"></i> New collection
+            </button>
+          </div>
+        </header>
+
+        <!-- Featured collection -->
+        <section class="resource-featured">
+          <div class="resource-featured__content">
+            <span class="resource-featured__eyebrow"
+              ><i class="fa-solid fa-star"></i> Featured collection</span
+            >
+            <h2 class="resource-featured__title">Modern CSS Layout Patterns</h2>
+            <p class="resource-featured__excerpt">
+              A curated set of articles, tutorials, and references covering the
+              CSS features that have actually changed how we build layouts —
+              container queries, subgrid, cascade layers, and scroll-driven
+              animation.
+            </p>
+            <div class="resource-featured__meta">
+              <span><i class="fa-solid fa-book"></i> 12 resources</span>
+              <span>·</span>
+              <span>Curated by Sofia Alvarez</span>
+              <span>·</span>
+              <span>Updated 3 days ago</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: var(--space-2);
+                margin-top: var(--space-2);
+              "
+            >
+              <button type="button" class="btn btn--primary btn--sm">
+                Open collection
+              </button>
+              <button type="button" class="btn btn--secondary btn--sm">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </div>
+          <div class="resource-featured__preview">
+            <img
+              src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=1200&q=80"
+              alt="CSS code on a screen"
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        <!-- Filters -->
+        <div
+          class="resource-filters"
+          role="group"
+          aria-label="Resource filters"
+        >
+          <button type="button" class="resource-chip resource-chip--active">
+            All
+          </button>
+          <button type="button" class="resource-chip">Articles</button>
+          <button type="button" class="resource-chip">Tutorials</button>
+          <button type="button" class="resource-chip">Documentation</button>
+          <button type="button" class="resource-chip">Templates</button>
+          <button type="button" class="resource-chip">Video lessons</button>
+          <button type="button" class="resource-chip">Design resources</button>
+          <button type="button" class="resource-chip">Development</button>
+        </div>
+
+        <h2
+          style="
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-primary);
+          "
+        >
+          Recommended for you
+        </h2>
+
+        <div class="resources-grid">
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--tutorial"
+                ><i class="fa-solid fa-graduation-cap"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Tutorial</span>
+                <h3 class="resource-card__title">
+                  <a href="#">CSS container queries in practice</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              When and how to use container queries instead of media queries in
+              real component design.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#css</span>
+              <span class="resource-card__tag">#layout</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>15 min read</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--docs"
+                ><i class="fa-solid fa-book"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Documentation</span>
+                <h3 class="resource-card__title">
+                  <a href="#">MDN — CSS Grid reference</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              The most complete and up-to-date reference for CSS Grid — worth
+              bookmarking.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#css</span>
+              <span class="resource-card__tag">#reference</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>External link</span>
+              <button
+                type="button"
+                class="resource-card__save resource-card__save--active"
+              >
+                <i class="fa-solid fa-bookmark"></i> Saved
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--template"
+                ><i class="fa-solid fa-file-lines"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Template</span>
+                <h3 class="resource-card__title">
+                  <a href="#">Project kickoff checklist</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              A reusable checklist for kicking off new projects — scope,
+              stakeholders, milestones, and communication plan.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#project-management</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>Use template</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--article"
+                ><i class="fa-solid fa-newspaper"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Article</span>
+                <h3 class="resource-card__title">
+                  <a href="#">React Server Components explained</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              A clear walkthrough of what Server Components are, when they help,
+              and how to migrate.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#react</span>
+              <span class="resource-card__tag">#architecture</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>12 min read</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--video"
+                ><i class="fa-solid fa-play"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Video lesson</span>
+                <h3 class="resource-card__title">
+                  <a href="#">Designing for keyboard-first workflows</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              A 20-minute talk on keyboard interactions — focus management,
+              shortcuts, and discoverability.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#a11y</span>
+              <span class="resource-card__tag">#interaction</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>20 min watch</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--design"
+                ><i class="fa-solid fa-pen-ruler"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Design resource</span>
+                <h3 class="resource-card__title">
+                  <a href="#">Design tokens starter kit</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              A minimal token structure for color, spacing, typography, and
+              shadows — ready to adapt to any product.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#design-systems</span>
+              <span class="resource-card__tag">#tokens</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>Figma + CSS</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--tutorial"
+                ><i class="fa-solid fa-graduation-cap"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Tutorial</span>
+                <h3 class="resource-card__title">
+                  <a href="#">Building accessible color contrast</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              A practical guide to testing and choosing accessible color
+              palettes without sacrificing brand identity.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#a11y</span>
+              <span class="resource-card__tag">#color</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>18 min read</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-card__head">
+              <span class="resource-card__icon resource-card__icon--article"
+                ><i class="fa-solid fa-newspaper"></i
+              ></span>
+              <div class="resource-card__body">
+                <span class="resource-card__type">Article</span>
+                <h3 class="resource-card__title">
+                  <a href="#">Async collaboration without the noise</a>
+                </h3>
+              </div>
+            </div>
+            <p class="resource-card__desc">
+              How to run async workflows that don't drown people in
+              notifications — patterns that actually work.
+            </p>
+            <div class="resource-card__tags">
+              <span class="resource-card__tag">#productivity</span>
+              <span class="resource-card__tag">#async</span>
+            </div>
+            <div class="resource-card__footer">
+              <span>10 min read</span>
+              <button type="button" class="resource-card__save">
+                <i class="fa-regular fa-bookmark"></i> Save
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-panel" aria-label="Resources context">
+      <header class="right-panel__header">
+        <h2 class="right-panel__title">Resources</h2>
+        <button
+          type="button"
+          class="icon-btn"
+          data-action="close-drawer"
+          aria-label="Close panel"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+      <div class="right-panel__body">
+        <section class="rp-section">
+          <h3 class="rp-section__title">My collections</h3>
+          <a
+            href="#"
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--space-2);
+              padding: var(--space-2) 0;
+              font-size: var(--text-sm);
+              font-weight: var(--font-medium);
+              color: var(--color-text-primary);
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <i
+              class="fa-solid fa-bookmark"
+              style="color: var(--color-primary); width: 14px"
+            ></i>
+            Reading list
+            <span
+              style="
+                margin-left: auto;
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+                font-weight: var(--font-normal);
+              "
+              >24</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--space-2);
+              padding: var(--space-2) 0;
+              font-size: var(--text-sm);
+              font-weight: var(--font-medium);
+              color: var(--color-text-primary);
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <i
+              class="fa-solid fa-folder"
+              style="color: var(--color-secondary); width: 14px"
+            ></i>
+            CSS deep dives
+            <span
+              style="
+                margin-left: auto;
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+                font-weight: var(--font-normal);
+              "
+              >8</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--space-2);
+              padding: var(--space-2) 0;
+              font-size: var(--text-sm);
+              font-weight: var(--font-medium);
+              color: var(--color-text-primary);
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <i
+              class="fa-solid fa-folder"
+              style="color: var(--color-accent); width: 14px"
+            ></i>
+            Team onboarding
+            <span
+              style="
+                margin-left: auto;
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+                font-weight: var(--font-normal);
+              "
+              >5</span
+            >
+          </a>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Categories</h3>
+          <div class="rp-actions" style="grid-template-columns: 1fr">
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-code"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                Development</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >86</span
+              >
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-pen-ruler"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                Design</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >42</span
+              >
+            </button>
+            <button
+              type="button"
+              class="rp-action"
+              style="
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span
+                style="display: flex; align-items: center; gap: var(--space-2)"
+                ><i
+                  class="fa-solid fa-briefcase"
+                  style="
+                    background: transparent;
+                    border: 0;
+                    color: var(--color-primary);
+                  "
+                ></i>
+                Business</span
+              >
+              <span style="color: var(--color-text-tertiary); font-size: 10px"
+                >31</span
+              >
+            </button>
+          </div>
+        </section>
+
+        <section class="rp-section">
+          <h3 class="rp-section__title">Recently viewed</h3>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >CSS container queries in practice</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >2 hours ago</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+              border-bottom: 1px solid var(--color-border-subtle);
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >React Server Components explained</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >Yesterday</span
+            >
+          </a>
+          <a
+            href="#"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 1px;
+              padding: var(--space-2) 0;
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-sm);
+                font-weight: var(--font-medium);
+                color: var(--color-text-primary);
+              "
+              >Design tokens starter kit</span
+            >
+            <span
+              style="
+                font-size: var(--text-2xs);
+                color: var(--color-text-tertiary);
+              "
+              >2 days ago</span
+            >
+          </a>
+        </section>
+      </div>
+    </aside>
+
+    <div
+      class="app-backdrop"
+      data-action="close-drawer"
+      aria-hidden="true"
+    ></div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-grid-2"></i><span>Home</span></a
+      >
+      <a href="tasks.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-list-check"></i><span>Tasks</span></a
+      >
+      <a href="projects.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-folder"></i><span>Projects</span></a
+      >
+      <a href="messenger.html" class="mobile-nav__item"
+        ><i class="fa-solid fa-comment"></i><span>Messages</span></a
+      >
+      <button
+        type="button"
+        class="mobile-nav__item"
+        data-action="toggle-sidebar"
+      >
+        <i class="fa-solid fa-bars"></i><span>More</span>
+      </button>
+    </nav>
+
+    <script src="../scripts/app.js"></script>
+  </body>
+</html>
