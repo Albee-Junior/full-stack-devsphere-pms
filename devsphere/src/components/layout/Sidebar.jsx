@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import Avatar from "../ui/Avatar.jsx";
+import BrandMark from "../ui/BrandMark.jsx";
 
 const mainLinks = [
   { label: "Overview", icon: LayoutDashboard },
@@ -96,10 +97,7 @@ export default function Sidebar({ activeView, onNavigate, workspace, user, plan,
       {open && <button className="sidebar-backdrop" aria-label="Close navigation" onClick={onClose} />}
       <aside className={`sidebar ${open ? "sidebar-open" : ""}`}>
         <div className="sidebar-topline">
-          <button className="brand-lockup" onClick={() => onNavigate("Overview")} aria-label="DevSphere home">
-            <img className="logo-light" src="/prototype/assets/logo/devsphere-logo.svg" alt="" />
-            <img className="logo-dark" src="/prototype/assets/logo/devsphere-logo-dark.svg" alt="" />
-          </button>
+          <BrandMark className="brand-lockup" onClick={() => onNavigate("Overview")} />
           <button className="icon-button sidebar-mobile-close" aria-label="Close navigation" onClick={onClose}><X size={17} /></button>
         </div>
         <button className="workspace-switch workspace-switcher" onClick={() => onNavigate("Settings")}>
