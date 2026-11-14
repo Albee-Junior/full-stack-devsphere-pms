@@ -33,6 +33,7 @@ import HelpCenterPage from "./pages/HelpCenterPage.jsx";
 import GroupsPage from "./pages/GroupsPage.jsx";
 import ExtensionsPage from "./pages/ExtensionsPage.jsx";
 import { LoadingState } from "./components/ui/AsyncState.jsx";
+import BrandMark from "./components/ui/BrandMark.jsx";
 
 const pageComponents = {
   Overview: DashboardPage,
@@ -146,7 +147,7 @@ export default function App() {
     setActiveView(label);
   }
 
-  if (loading) return <div className="app-loading"><span className="brand-symbol"><span /><span /><span /><span /></span><LoadingState label="Connecting to DevSphere…" /></div>;
+  if (loading) return <div className="app-loading"><BrandMark className="app-loading-brand" /><LoadingState label="Connecting to DevSphere…" /></div>;
   if (!user) {
     return showAuth
       ? <AuthPage initialMode={authMode} onBack={() => setShowAuth(false)} />
