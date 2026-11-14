@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 import { ErrorState } from "../components/ui/AsyncState.jsx";
+import BrandMark from "../components/ui/BrandMark.jsx";
 
 const steps = [
   { title: "What brings you to DevSphere?", field: "role", options: ["Student", "Business owner", "Freelancer", "Team member", "Educator", "Researcher"] },
@@ -39,7 +40,7 @@ export default function OnboardingPage({ workspace, onSave }) {
 
   return (
     <main className="onboarding-page page-content">
-      <div className="onboarding-brand"><span className="brand-symbol"><span /><span /><span /><span /></span><strong>devsphere<span>.</span></strong></div>
+      <BrandMark className="onboarding-brand" />
       <div className="onboarding-progress" aria-label={`Step ${step + 1} of ${steps.length}`}><span style={{ width: `${((step + 1) / steps.length) * 100}%` }} /></div>
       <div className="onboarding-step"><span className="eyebrow">PERSONALIZE YOUR SPACE · STEP {step + 1} OF {steps.length}</span><h1>{current.title}</h1><p>We’ll shape your workspace around how you learn and work. You can change these choices later.</p>
         {step === 0
