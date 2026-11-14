@@ -524,3 +524,18 @@ button.brand-mark {
 [data-theme="dark"] .workspace-switch {
   color: var(--color-text-primary);
 }
+
+
+.app-loading .app-loading-brand {
+  justify-self: center;
+  color: #29273b;
+}
+
+.app-loading .app-loading-brand .brand-symbol {
+  width: 32px;
+  height: 32px;
+}
+
+.app-loading .app-loading-brand .brand-name {
+  font-size: 24px;
+}
