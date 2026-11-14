@@ -14,7 +14,7 @@ export default function BrandMark({ className = "", onClick, label = "DevSphere"
         <span />
         <span />
       </span>
-      <span className="brand-name">Dev<span>Sphere</span></span>
+      <span className="brand-name">dev<span>sphere</span></span>
     </Tag>
   );
 }
