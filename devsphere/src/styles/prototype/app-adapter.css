@@ -84,11 +84,39 @@
   color: var(--color-text-primary);
 }
 
-.brand-lockup img {
-  width: 148px;
-  height: 34px;
-  object-fit: contain;
-  object-position: left center;
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+button.brand-mark {
+  cursor: pointer;
+}
+
+.brand-mark .brand-symbol {
+  flex: 0 0 auto;
+  transform: none;
+}
+
+.brand-mark .brand-name {
+  white-space: nowrap;
+}
+
+.onboarding-brand .brand-name {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.onboarding-brand .brand-name > span {
+  color: #7463f2;
 }
 
 .workspace-switch {
@@ -240,12 +268,18 @@
   font-size: var(--text-2xs);
 }
 
-.auth-brand img {
-  display: block;
-  width: 180px;
-  height: 40px;
-  object-fit: contain;
-  object-position: left center;
+.auth-brand .brand-symbol {
+  width: 27px;
+  height: 27px;
+}
+
+.auth-brand .brand-name {
+  color: #fff;
+  font-size: 19px;
+}
+
+.auth-brand .brand-name > span {
+  color: #a78bfa;
 }
 
 .main-area {
