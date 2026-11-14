@@ -3,6 +3,7 @@ import { ArrowRight, Eye, EyeOff, Sparkles } from "lucide-react";
 import { get } from "../api/http.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { ErrorState } from "../components/ui/AsyncState.jsx";
+import BrandMark from "../components/ui/BrandMark.jsx";
 
 export default function AuthPage({ onBack, initialMode = "login" }) {
   const { login, register } = useAuth();
@@ -46,7 +47,7 @@ export default function AuthPage({ onBack, initialMode = "login" }) {
   return (
     <main className="auth-page">
       <section className="auth-aside">
-        <button type="button" className="auth-brand" onClick={onBack} aria-label="Back to DevSphere home"><img src="/prototype/assets/logo/devsphere-logo.svg" alt="" /></button>
+        <BrandMark className="auth-brand" onClick={onBack} label="Back to DevSphere home" />
         <div className="auth-hero"><span className="auth-hero-icon"><Sparkles size={19} /></span><span className="eyebrow">YOUR TEAM, IN SYNC</span><h1>Make good work<br />feel a little easier.</h1><p>One thoughtful workspace for your projects, conversations, and the ideas that move you forward.</p></div>
         <div className="auth-aside-footer"><span className="online-dot" /> A calmer way to build, together.</div>
       </section>
